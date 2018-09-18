@@ -1,4 +1,4 @@
-# hiboot-data-data
+# hiboot-data
 
 
 <p align="center">
@@ -19,5 +19,5 @@
   </a>
 </p>
 
-hiboot-data starter, include bolt, etcd, gorm
+hiboot data starter, include bolt, etcd, gorm
 

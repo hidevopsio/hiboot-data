@@ -16,8 +16,8 @@ package service
 
 import (
 	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
-	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot-data/starter/bolt"
+	"github.com/hidevopsio/hiboot/pkg/app"
 )
 
 type UserService struct {

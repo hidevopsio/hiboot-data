@@ -20,9 +20,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
+	"github.com/hidevopsio/hiboot-data/starter/etcd"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot-data/starter/etcd"
 	"time"
 )
 

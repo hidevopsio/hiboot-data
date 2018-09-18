@@ -17,8 +17,8 @@ package service
 import (
 	"errors"
 	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot-data/starter/gorm"
+	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 )
 

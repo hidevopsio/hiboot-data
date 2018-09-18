@@ -17,10 +17,10 @@ package controller
 import (
 	"errors"
 	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
+	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
@@ -79,6 +79,17 @@ func TestCrdRequest(t *testing.T) {
 		Gender:   1,
 	}
 
+	unknownId, err := idgen.NextString()
+	assert.Equal(t, nil, err)
+	svc.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
+
+	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
+		// Then Get User
+		testApp.Get("/user/id/{id}").
+			WithPath("id", unknownId).
+			Expect().Status(http.StatusNotFound)
+	})
+
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User
 		testApp.Post("/user").
@@ -94,17 +105,6 @@ func TestCrdRequest(t *testing.T) {
 		testApp.Get("/user/id/{id}").
 			WithPath("id", id).
 			Expect().Status(http.StatusOK)
-	})
-
-	unknownId, err := idgen.NextString()
-	assert.Equal(t, nil, err)
-	svc.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
-
-	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
-		// Then Get User
-		testApp.Get("/user/id/{id}").
-			WithPath("id", unknownId).
-			Expect().Status(http.StatusNotFound)
 	})
 
 	// assert that the expectations were met

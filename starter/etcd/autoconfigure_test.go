@@ -1,8 +1,8 @@
 package etcd
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/stretchr/testify/assert"
 	"go.etcd.io/etcd/clientv3"
 	"testing"
