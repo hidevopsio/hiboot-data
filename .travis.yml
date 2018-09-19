@@ -11,7 +11,7 @@ branches:
   - master
 
 before_install:
-  - go get -t -v ./...
+  - dep ensure -v
 
 env:
   - APP_PROFILES_ACTIVE=local
