@@ -63,14 +63,16 @@
   version = "v1.3.1"
 
 [[projects]]
-  digest = "1:2d74a130156ab35ee5ddc229e7e3d31d07ddbcd9fd322db3c5427fa356f185f7"
+  digest = "1:8c99488f6d10d92104ee155409ae42ed65badf2a745cd7709c05cb48ef540e68"
   name = "github.com/coreos/etcd"
   packages = [
     "auth/authpb",
+    "clientv3",
     "etcdserver/api/v3rpc/rpctypes",
     "etcdserver/etcdserverpb",
     "mvcc/mvccpb",
     "pkg/tlsutil",
+    "pkg/transport",
     "pkg/types",
   ]
   pruneopts = "UT"
@@ -687,18 +689,6 @@
   revision = "ecda9a501e8220fae3b4b600c3db4b0ba22cfc68"
 
 [[projects]]
-  digest = "1:599a2574a514ae15449eda471490940795244c4a7d39fed758cd7581309812f4"
-  name = "go.etcd.io/etcd"
-  packages = [
-    "clientv3",
-    "mvcc/mvccpb",
-    "pkg/transport",
-  ]
-  pruneopts = "UT"
-  revision = "fca8add78a9d926166eb739b8e4a124434025ba3"
-  version = "v3.3.9"
-
-[[projects]]
   branch = "master"
   digest = "1:21fff5e6df3eecd602ee8f53b0df0e19ecdfbe601e8e1baec628a4189b34d491"
   name = "golang.org/x/crypto"
@@ -849,6 +839,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/boltdb/bolt",
+    "github.com/coreos/etcd/clientv3",
+    "github.com/coreos/etcd/mvcc/mvccpb",
+    "github.com/coreos/etcd/pkg/transport",
     "github.com/erikstmartin/go-testdb",
     "github.com/hidevopsio/gorm",
     "github.com/hidevopsio/gorm/dialects/mssql",
@@ -868,9 +861,6 @@
     "github.com/hidevopsio/hiboot/pkg/utils/reflector",
     "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/mock",
-    "go.etcd.io/etcd/clientv3",
-    "go.etcd.io/etcd/mvcc/mvccpb",
-    "go.etcd.io/etcd/pkg/transport",
     "golang.org/x/net/context",
   ]
   solver-name = "gps-cdcl"

@@ -46,10 +46,6 @@
   version = "1.2.2"
 
 [[constraint]]
-  name = "go.etcd.io/etcd"
-  version = "3.3.9"
-
-[[constraint]]
   branch = "master"
   name = "golang.org/x/net"
 
