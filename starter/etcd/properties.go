@@ -21,7 +21,6 @@ type cert struct {
 }
 
 type properties struct {
-	Type           string   `json:"type" default:"mysql"` // mysql, postgres, sqlite3, mssql,
 	DialTimeout    int64    `json:"dial_timeout"`
 	RequestTimeout int64    `json:"request_timeout"`
 	Endpoints      []string `json:"endpoints"`

@@ -14,7 +14,6 @@ func TestEtcd(t *testing.T) {
 
 	t.Run("should create instance named etcdClient", func(t *testing.T) {
 		conf.Properties = properties{
-			Type:           "etcd",
 			DialTimeout:    5,
 			RequestTimeout: 10,
 			Endpoints:      []string{"172.16.10.470:2379"},
