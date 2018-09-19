@@ -1,8 +1,8 @@
 package fake
 
 import (
-	"github.com/stretchr/testify/mock"
 	"github.com/coreos/etcd/clientv3"
+	"github.com/stretchr/testify/mock"
 	"golang.org/x/net/context"
 )
 

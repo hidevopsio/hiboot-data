@@ -70,7 +70,7 @@ func TestParse(t *testing.T) {
 
 	t.Run("should not parse Id with nil input", func(t *testing.T) {
 		_, _, _, err := repo.Parse("a", (*Foo)(nil))
-		assert.Equal(t, reflector.InvalidInputError, err)
+		assert.Equal(t, reflector.ErrInvalidInput, err)
 	})
 
 	t.Run("should pass test on unimplemented method", func(t *testing.T) {
