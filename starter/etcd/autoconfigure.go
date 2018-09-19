@@ -17,8 +17,8 @@ package etcd
 import (
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"go.etcd.io/etcd/clientv3"
-	"go.etcd.io/etcd/pkg/transport"
+	"github.com/coreos/etcd/clientv3"
+	"github.com/coreos/etcd/pkg/transport"
 	"time"
 )
 
