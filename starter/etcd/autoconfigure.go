@@ -26,6 +26,10 @@ type Repository interface {
 	clientv3.KV
 }
 
+type Client struct {
+	*clientv3.Client
+}
+
 type etcdConfiguration struct {
 	app.Configuration
 	// the properties member name must be Etcd if the mapstructure is etcd,
@@ -38,7 +42,8 @@ func init() {
 }
 
 // EtcdClient create instance named etcdClient
-func (c *etcdConfiguration) Clientv3Client() (cli *clientv3.Client) {
+func (c *etcdConfiguration) EtcdClient() (cli *Client) {
+	cli = new(Client)
 	var err error
 	tlsInfo := transport.TLSInfo{
 		CertFile:      c.Properties.Cert.CertFile,
@@ -50,7 +55,7 @@ func (c *etcdConfiguration) Clientv3Client() (cli *clientv3.Client) {
 		log.Error(err)
 		return nil
 	}
-	cli, err = clientv3.New(clientv3.Config{
+	cli.Client, err = clientv3.New(clientv3.Config{
 		Endpoints:   c.Properties.Endpoints,
 		DialTimeout: time.Duration(c.Properties.DialTimeout) * time.Second,
 		TLS:         tlsConfig,
@@ -63,7 +68,7 @@ func (c *etcdConfiguration) Clientv3Client() (cli *clientv3.Client) {
 }
 
 // EtcdRepository create instance named etcdRepository
-func (c *etcdConfiguration) EtcdRepository(cli *clientv3.Client) Repository {
+func (c *etcdConfiguration) EtcdRepository(cli *Client) Repository {
 	if cli == nil {
 		return nil
 	}

@@ -22,19 +22,19 @@ func TestEtcd(t *testing.T) {
 				KeyFile:       "config/certs/etcd-key.pem",
 				TrustedCAFile: "config/certs/ca.pem"},
 		}
-		client := conf.Clientv3Client()
-		assert.Equal(t, (*clientv3.Client)(nil), client)
+		client := conf.EtcdClient()
+		assert.Equal(t, (*Client)(nil), client)
 
 	})
 
+	client := new(Client)
+	client.Client = new(clientv3.Client)
 	t.Run("should not create instance named etcdRepository", func(t *testing.T) {
-		client := new(clientv3.Client)
 		repo := conf.EtcdRepository(client)
 		assert.Equal(t, nil, repo)
 	})
 
 	t.Run("should create instance named etcdRepository", func(t *testing.T) {
-		client := new(clientv3.Client)
 		client.KV = new(fake.Repository)
 		repo := conf.EtcdRepository(client)
 		assert.Equal(t, client.KV, repo)
