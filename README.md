@@ -1,5 +1,8 @@
 # hiboot-data
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/hidevopsio/hiboot-data/logo/hiboot-data.png?raw=true" alt="hiboot">
+</p>
 
 <p align="center">
   <a href="https://travis-ci.org/hidevopsio/hiboot-data?branch=master">

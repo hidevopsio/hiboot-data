@@ -241,7 +241,7 @@
   version = "v2.0.1"
 
 [[projects]]
-  digest = "1:388dfd2c0cc281cc9b4de330b7f3131bce7f7b444522a93407c82d1bca8af1c7"
+  digest = "1:ca33c91acb12ab4efc1f50916d6c4b2ef0b7c8a81a3c20e68d1275545d76a42d"
   name = "github.com/hidevopsio/hiboot"
   packages = [
     "pkg/app",
@@ -272,8 +272,8 @@
     "pkg/utils/validator",
   ]
   pruneopts = "UT"
-  revision = "72c4263e38acda4262347f2a2357882158940814"
-  version = "v0.7.0"
+  revision = "b890c872f5084fa49b2eb59744ef8ca59a9991f1"
+  version = "v0.7.1"
 
 [[projects]]
   digest = "1:a3ce4de79566c21e93cb6934797fdaa587ad3fc6a964708ab77babe54ea67188"
