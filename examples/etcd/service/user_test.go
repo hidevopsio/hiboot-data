@@ -22,6 +22,8 @@ import (
 	_ "github.com/erikstmartin/go-testdb"
 	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
 	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
@@ -121,4 +123,20 @@ func TestUserCrud(t *testing.T) {
 		err := userService.DeleteUser(id)
 		assert.Equal(t, nil, err)
 	})
+}
+
+func TestDependencyInjection(t *testing.T) {
+	testApp := web.NewTestApplication(t).(app.ApplicationContext)
+
+	svc := testApp.GetInstance("userService")
+	if svc != nil {
+		t.Run("should not get record that does not exist", func(t *testing.T) {
+			s := svc.(UserService)
+			id, err := idgen.NextString()
+			assert.Equal(t, nil, err)
+
+			_, err = s.GetUser(id)
+			assert.NotEqual(t, nil, err)
+		})
+	}
 }

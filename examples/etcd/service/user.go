@@ -79,6 +79,10 @@ func (s *UserServiceImpl) GetUser(id string) (user *entity.User, err error) {
 		return nil, err
 	}
 
+	if resp.Count == 0 {
+		return nil, errors.New("record not found")
+	}
+
 	if err = json.Unmarshal(resp.Kvs[0].Value, &user); err != nil {
 		log.Debugf("failed to unmarshal data, err: %v", err)
 		return nil, err
