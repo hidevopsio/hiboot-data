@@ -22,8 +22,27 @@ import (
 	"time"
 )
 
+type Cluster interface {
+	clientv3.Cluster
+}
+
 type Repository interface {
 	clientv3.KV
+}
+
+type Watcher interface {
+	clientv3.Watcher
+}
+
+type Lease interface {
+	clientv3.Lease
+}
+
+type Auth interface {
+	clientv3.Auth
+}
+type Maintenance interface {
+	clientv3.Maintenance
 }
 
 type Client struct {
@@ -73,4 +92,44 @@ func (c *etcdConfiguration) EtcdRepository(cli *Client) Repository {
 		return nil
 	}
 	return cli.KV
+}
+
+// EtcdWatcher create instance named etcdWatcher
+func (c *etcdConfiguration) EtcdWatcher(cli *Client) Watcher {
+	if cli == nil {
+		return nil
+	}
+	return cli.Watcher
+}
+
+// EtcdCluster create instance named etcdCluster
+func (c *etcdConfiguration) EtcdCluster(cli *Client) Cluster {
+	if cli == nil {
+		return nil
+	}
+	return cli.Cluster
+}
+
+// EtcdCLease create instance named etcdCLease
+func (c *etcdConfiguration) EtcdCLease(cli *Client) Lease {
+	if cli == nil {
+		return nil
+	}
+	return cli.Lease
+}
+
+// EtcdMaintenance create instance named etcdMaintenance
+func (c *etcdConfiguration) EtcdMaintenance(cli *Client) Maintenance {
+	if cli == nil {
+		return nil
+	}
+	return cli.Maintenance
+}
+
+// EtcdAuth create instance named etcdAuth
+func (c *etcdConfiguration) EtcdAuth(cli *Client) Auth {
+	if cli == nil {
+		return nil
+	}
+	return cli.Auth
 }

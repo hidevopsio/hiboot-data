@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/coreos/etcd/clientv3"
 	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
 	"github.com/hidevopsio/hiboot-data/starter/etcd"
 	"github.com/hidevopsio/hiboot/pkg/app"
@@ -26,16 +27,16 @@ import (
 	"time"
 )
 
+// UserService is the interface for userService
 type UserService interface {
 	AddUser(id string, user *entity.User) (err error)
 	GetUser(id string) (user *entity.User, err error)
 	DeleteUser(id string) (err error)
 }
 
-type UserServiceImpl struct {
-	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
-	UserService
+type userService struct {
 	repository etcd.Repository
+	watcher    etcd.Watcher
 }
 
 func init() {
@@ -44,20 +45,23 @@ func init() {
 }
 
 // will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
-func newUserService(repository etcd.Repository) UserService {
-	return &UserServiceImpl{
+func newUserService(repository etcd.Repository, watcher etcd.Watcher) UserService {
+	svc := &userService{
 		repository: repository,
+		watcher:    watcher,
 	}
+	svc.Watch("/user/")
+	return svc
 }
 
-func (s *UserServiceImpl) AddUser(id string, user *entity.User) (err error) {
+func (s *userService) AddUser(id string, user *entity.User) (err error) {
 	if user == nil {
 		return errors.New("user is not allowed nil")
 	}
 	userBuf, _ := json.Marshal(user)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
 	res, err := s.repository.Put(ctx, id, string(userBuf))
-	cancel()
 	if err != nil {
 		fmt.Println("failed to put data to etcd, err:", err)
 		return err
@@ -68,12 +72,12 @@ func (s *UserServiceImpl) AddUser(id string, user *entity.User) (err error) {
 	return nil
 }
 
-func (s *UserServiceImpl) GetUser(id string) (user *entity.User, err error) {
+func (s *userService) GetUser(id string) (user *entity.User, err error) {
 	user = &entity.User{}
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
 	resp, err := s.repository.Get(ctx, id)
-	cancel()
 	if err != nil {
 		log.Debugf("failed to get data from etcd, err: %v", err)
 		return nil, err
@@ -91,9 +95,23 @@ func (s *UserServiceImpl) GetUser(id string) (user *entity.User, err error) {
 	return
 }
 
-func (s *UserServiceImpl) DeleteUser(id string) (err error) {
+func (s *userService) DeleteUser(id string) (err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
 	_, err = s.repository.Delete(ctx, id)
-	cancel()
 	return
+}
+
+func (s *userService) Watch(key string) {
+	ctx, cancel := context.WithTimeout(context.Background(), 360*time.Second)
+	wch := s.watcher.Watch(ctx, key, clientv3.WithPrefix())
+
+	go func() {
+		for resp := range wch {
+			for _, ev := range resp.Events {
+				log.Debugf("WATCH %s %q : %q", ev.Type, ev.Kv.Key, ev.Kv.Value)
+			}
+		}
+		cancel()
+	}()
 }

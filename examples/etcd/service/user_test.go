@@ -40,18 +40,19 @@ var fakeUser = entity.User{
 	Gender:   1,
 }
 
-func newID(t *testing.T) string {
+func newID(t *testing.T, path string) string {
 	id, err := idgen.NextString()
 	fakeUser.Id = id
 	assert.Equal(t, nil, err)
-	return id
+	return path + id
 }
 
 func TestUserCrud(t *testing.T) {
 	fakeRepository := new(fake.Repository)
-	userService := newUserService(fakeRepository)
+	fakeWatcher := new(fake.Watcher)
+	userService := newUserService(fakeRepository, fakeWatcher)
 
-	id := newID(t)
+	id := newID(t, "/UserAddedEvent/")
 	t.Run("should return error if user is nil", func(t *testing.T) {
 		err := userService.AddUser(id, (*entity.User)(nil))
 		assert.NotEqual(t, nil, err)
@@ -66,7 +67,7 @@ func TestUserCrud(t *testing.T) {
 	})
 
 	simulationErr := errors.New("simulation err")
-	id = newID(t)
+	id = newID(t, "/user/")
 	fakeRepository.On("Put", nil, id).Return((*clientv3.PutResponse)(nil), simulationErr)
 	t.Run("should add user", func(t *testing.T) {
 		err := userService.AddUser(id, &fakeUser)
@@ -74,7 +75,7 @@ func TestUserCrud(t *testing.T) {
 	})
 
 	recordNotFound := errors.New("record not found")
-	id = newID(t)
+	id = newID(t, "/user/")
 	fakeRepository.On("Get", nil, id).Return((*clientv3.GetResponse)(nil), recordNotFound)
 	t.Run("should generate user id", func(t *testing.T) {
 		//u := &entity.User{}
@@ -90,7 +91,7 @@ func TestUserCrud(t *testing.T) {
 		Value: fakeUserBuf,
 	}
 	getRes.Kvs = append(getRes.Kvs, kv)
-	id = newID(t)
+	id = newID(t, "/user/")
 	fakeRepository.On("Get", nil, id).Return(getRes, nil)
 	t.Run("should generate user id", func(t *testing.T) {
 		//u := &entity.User{}
@@ -107,7 +108,7 @@ func TestUserCrud(t *testing.T) {
 		Value: []byte("test"),
 	}
 	getRes.Kvs = append(getRes.Kvs, kv)
-	id = newID(t)
+	id = newID(t, "/user/")
 	fakeRepository.On("Get", nil, id).Return(getRes, nil)
 	t.Run("should generate user id", func(t *testing.T) {
 		//u := &entity.User{}
@@ -117,7 +118,7 @@ func TestUserCrud(t *testing.T) {
 		log.Debug("Error %v", err)
 		assert.NotEqual(t, getRes, nil)
 	})
-	id = newID(t)
+	id = newID(t, "/user/")
 	fakeRepository.On("Delete", nil, id).Return((*clientv3.DeleteResponse)(nil), nil)
 	t.Run("should delete user", func(t *testing.T) {
 		err := userService.DeleteUser(id)

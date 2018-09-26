@@ -241,13 +241,14 @@
   version = "v2.0.1"
 
 [[projects]]
-  digest = "1:ca33c91acb12ab4efc1f50916d6c4b2ef0b7c8a81a3c20e68d1275545d76a42d"
+  digest = "1:c4a67ebf74b8e832a0cb912b0121a6d0ee9255972835a9e299a4cbc87e4ca858"
   name = "github.com/hidevopsio/hiboot"
   packages = [
     "pkg/app",
     "pkg/app/web",
     "pkg/factory",
     "pkg/factory/autoconfigure",
+    "pkg/factory/autoconfigure/depends",
     "pkg/factory/instantiate",
     "pkg/inject",
     "pkg/log",
@@ -272,8 +273,8 @@
     "pkg/utils/validator",
   ]
   pruneopts = "UT"
-  revision = "b890c872f5084fa49b2eb59744ef8ca59a9991f1"
-  version = "v0.7.1"
+  revision = "851172a093a3d613f9ef6c207050c7a9e1690dc7"
+  version = "v0.8.0"
 
 [[projects]]
   digest = "1:a3ce4de79566c21e93cb6934797fdaa587ad3fc6a964708ab77babe54ea67188"
