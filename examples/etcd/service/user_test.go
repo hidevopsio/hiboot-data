@@ -50,6 +50,8 @@ func newID(t *testing.T, path string) string {
 func TestUserCrud(t *testing.T) {
 	fakeRepository := new(fake.Repository)
 	fakeWatcher := new(fake.Watcher)
+
+	fakeWatcher.On("Watch", nil, "/user/").Return((clientv3.WatchChan)(nil))
 	userService := newUserService(fakeRepository, fakeWatcher)
 
 	id := newID(t, "/UserAddedEvent/")
