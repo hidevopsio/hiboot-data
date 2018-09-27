@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+package starter
 
 import (
 	"github.com/hidevopsio/hiboot/pkg/utils/reflector"
@@ -64,13 +64,13 @@ func TestParse(t *testing.T) {
 	foobar := &Bar{}
 	t.Run("should not parse Id", func(t *testing.T) {
 		_, _, _, err := repo.Parse(foobar)
-		assert.Equal(t, InvalidDataModelError, err)
+		assert.Equal(t, ErrInvalidDataModel, err)
 
 	})
 
 	t.Run("should not parse Id with nil input", func(t *testing.T) {
 		_, _, _, err := repo.Parse("a", (*Foo)(nil))
-		assert.Equal(t, reflector.InvalidInputError, err)
+		assert.Equal(t, reflector.ErrInvalidInput, err)
 	})
 
 	t.Run("should pass test on unimplemented method", func(t *testing.T) {

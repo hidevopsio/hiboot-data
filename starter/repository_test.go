@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+package starter
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -23,8 +23,8 @@ func TestBaseRepository(t *testing.T) {
 	r := &BaseRepository{}
 
 	err := r.DataSource()
-	assert.Equal(t, NotImplemenedError, err)
+	assert.Equal(t, ErrNotImplemented, err)
 
 	err = r.CloseDataSource()
-	assert.Equal(t, NotImplemenedError, err)
+	assert.Equal(t, ErrNotImplemented, err)
 }

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+package starter
 
 import "github.com/hidevopsio/hiboot/pkg/utils/reflector"
 
@@ -36,6 +36,7 @@ func (r *BaseKVRepository) getKey(value interface{}, id string) string {
 	return ""
 }
 
+// Parse parse id
 func (r *BaseKVRepository) Parse(params ...interface{}) ([]byte, []byte, interface{}, error) {
 	var key string
 	var value interface{}
@@ -49,7 +50,7 @@ func (r *BaseKVRepository) Parse(params ...interface{}) ([]byte, []byte, interfa
 			key = r.getKey(value, "Id")
 		}
 		if key == "" {
-			return nil, nil, nil, InvalidDataModelError
+			return nil, nil, nil, ErrInvalidDataModel
 		}
 	}
 

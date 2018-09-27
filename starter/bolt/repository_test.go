@@ -92,7 +92,7 @@ func TestRepositoryCrd(t *testing.T) {
 
 	t.Run("should return InvalidDataModelError", func(t *testing.T) {
 		err := r.Put(&Foo{Name: "foo"})
-		assert.Equal(t, data.InvalidDataModelError, err)
+		assert.Equal(t, starter.ErrInvalidDataModel, err)
 	})
 
 	// close bolt database
@@ -104,18 +104,18 @@ func TestRepositoryWithNilDataSource(t *testing.T) {
 
 	t.Run("should put data into bolt database", func(t *testing.T) {
 		err := r.Put(user)
-		assert.Equal(t, data.InvalidDataSourceError, err)
+		assert.Equal(t, starter.ErrInvalidDataSource, err)
 	})
 
 	t.Run("should get data into bolt database", func(t *testing.T) {
 		u := &User{ID: id}
 		err := r.Get(u)
-		assert.Equal(t, data.InvalidDataSourceError, err)
+		assert.Equal(t, starter.ErrInvalidDataSource, err)
 	})
 
 	t.Run("should delete data into bolt database", func(t *testing.T) {
 		u := &User{ID: id}
 		err := r.Delete(u)
-		assert.Equal(t, data.InvalidDataSourceError, err)
+		assert.Equal(t, starter.ErrInvalidDataSource, err)
 	})
 }

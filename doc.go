@@ -12,4 +12,5 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+// Package hiboot_data provides hiboot data starter and examples
+package hiboot_data

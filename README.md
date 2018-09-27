@@ -92,11 +92,11 @@ import (
 )
 
 type Repository interface {
-	data.KVRepository
+	starter.KVRepository
 }
 
 type repository struct {
-	data.BaseKVRepository
+	starter.BaseKVRepository
 	db         *bolt.DB
 	dataSource DataSource
 }
@@ -114,7 +114,7 @@ func GetRepository() *repository {
 
 func (r *repository) parse(params ...interface{}) ([]byte, []byte, interface{}, error) {
 	if r.db == nil {
-		return nil, nil, nil, data.InvalidDataSourceError
+		return nil, nil, nil, starter.InvalidDataSourceError
 	}
 	return r.Parse(params...)
 }
@@ -135,7 +135,7 @@ func (r *repository) CloseDataSource() error {
 	if r.dataSource != nil {
 		return r.dataSource.Close()
 	}
-	return data.InvalidDataSourceError
+	return starter.InvalidDataSourceError
 }
 
 // Put inserts a key:value pair into the database

@@ -22,7 +22,7 @@ import (
 )
 
 type FakeRepository struct {
-	data.BaseKVRepository
+	starter.BaseKVRepository
 }
 
 func (r *FakeRepository) Get(params ...interface{}) error {

@@ -12,20 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+package starter
 
 import "errors"
 
-var InvalidDataSourceError = errors.New("invalid dataSource")
-var InvalidDataModelError = errors.New("invalid data model, must contains string field ID and assigns string value")
-var NotImplemenedError = errors.New("method is not implemented")
+var (
 
+	// ErrInvalidDataSource invalid data source
+	ErrInvalidDataSource = errors.New("invalid dataSource")
+
+	// ErrInvalidDataModel invalid data model
+	ErrInvalidDataModel = errors.New("invalid data model, must contains string field ID and assigns string value")
+
+	// ErrNotImplemented method is not implemented
+	ErrNotImplemented = errors.New("method is not implemented")
+)
+
+// Repository interface
 type Repository interface {
 	SetDataSource(dataSource interface{})
 	DataSource() interface{}
 	CloseDataSource() error
 }
 
+// BaseRepository base repository
 type BaseRepository struct {
 }
 
@@ -34,9 +44,9 @@ func (r *BaseRepository) SetDataSource(dataSource interface{}) {
 }
 
 func (r *BaseRepository) DataSource() interface{} {
-	return NotImplemenedError
+	return ErrNotImplemented
 }
 
 func (r *BaseRepository) CloseDataSource() error {
-	return NotImplemenedError
+	return ErrNotImplemented
 }
