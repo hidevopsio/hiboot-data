@@ -38,7 +38,7 @@ func (c *gormConfiguration) dataSource() DataSource {
 }
 
 // GormRepository method name must be unique
-func (c *gormConfiguration) GormRepository() Repository {
+func (c *gormConfiguration) Repository() Repository {
 	dataSource := c.dataSource()
 	return dataSource.Repository()
 }

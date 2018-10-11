@@ -27,7 +27,7 @@ func TestNewBolt(t *testing.T) {
 		Timeout:  1,
 	}
 
-	repository := configuration.BoltRepository()
+	repository := configuration.Repository()
 	assert.NotEqual(t, nil, repository)
 	repository.DataSource().(DataSource).Close()
 }
@@ -35,13 +35,13 @@ func TestNewBolt(t *testing.T) {
 func TestNewBoltWithError(t *testing.T) {
 	configuration := new(boltConfiguration)
 
-	repository := configuration.BoltRepository()
+	repository := configuration.Repository()
 	assert.NotEqual(t, nil, repository)
 
 	configuration.BoltProperties = properties{
 		Timeout: 1,
 	}
 
-	repository = configuration.BoltRepository()
+	repository = configuration.Repository()
 	assert.NotEqual(t, nil, repository)
 }
