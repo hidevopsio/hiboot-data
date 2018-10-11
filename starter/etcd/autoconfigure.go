@@ -42,7 +42,7 @@ func init() {
 }
 
 // EtcdClient create instance named etcdClient
-func (c *etcdConfiguration) EtcdClient() (cli *Client) {
+func (c *etcdConfiguration) Client() (cli *Client) {
 	cli = new(Client)
 	var err error
 	tlsInfo := transport.TLSInfo{
@@ -68,7 +68,7 @@ func (c *etcdConfiguration) EtcdClient() (cli *Client) {
 }
 
 // EtcdRepository create instance named etcdRepository
-func (c *etcdConfiguration) EtcdRepository(cli *Client) Repository {
+func (c *etcdConfiguration) Repository(cli *Client) Repository {
 	if cli == nil {
 		return nil
 	}

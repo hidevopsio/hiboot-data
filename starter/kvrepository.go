@@ -53,7 +53,7 @@ func (r *BaseKVRepository) Parse(params ...interface{}) ([]byte, []byte, interfa
 		}
 	}
 
-	bucket, err := reflector.GetLowerCaseObjectName(value)
+	bucket, err := reflector.GetLowerCamelName(value)
 	if err != nil {
 		return nil, nil, nil, err
 	}

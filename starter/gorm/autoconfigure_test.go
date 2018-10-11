@@ -38,6 +38,6 @@ func TestConfiguration(t *testing.T) {
 		},
 	}
 
-	repo := conf.GormRepository()
+	repo := conf.Repository()
 	assert.Equal(t, nil, repo)
 }

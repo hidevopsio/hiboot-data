@@ -41,7 +41,7 @@ func (c *boltConfiguration) dataSource() DataSource {
 	return dataSource
 }
 
-func (c *boltConfiguration) BoltRepository() Repository {
+func (c *boltConfiguration) Repository() Repository {
 	repository := GetRepository()
 	repository.SetDataSource(c.dataSource())
 	return repository

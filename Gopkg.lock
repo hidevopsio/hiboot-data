@@ -88,6 +88,14 @@
   version = "v1.1.1"
 
 [[projects]]
+  digest = "1:e47d51dab652d26c3fba6f8cba403f922d02757a82abdc77e90df7948daf296e"
+  name = "github.com/deckarep/golang-set"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "cbaa98ba5575e67703b32b4b19f73c91f3c4159e"
+  version = "v1.7.1"
+
+[[projects]]
   branch = "master"
   digest = "1:6f120164f62e62991d0f85562abe2002d438abb2ca80b7717a2f4ae2af1c6829"
   name = "github.com/denisenkom/go-mssqldb"
@@ -241,13 +249,15 @@
   version = "v2.0.1"
 
 [[projects]]
-  digest = "1:ca33c91acb12ab4efc1f50916d6c4b2ef0b7c8a81a3c20e68d1275545d76a42d"
+  digest = "1:106bc146027e760ff4f0f47bb54ae2020159abfe1f1fef162d43f194f6c08e52"
   name = "github.com/hidevopsio/hiboot"
   packages = [
     "pkg/app",
     "pkg/app/web",
+    "pkg/app/web/annotation",
     "pkg/factory",
     "pkg/factory/autoconfigure",
+    "pkg/factory/depends",
     "pkg/factory/instantiate",
     "pkg/inject",
     "pkg/log",
@@ -257,6 +267,7 @@
     "pkg/starter/locale",
     "pkg/starter/logging",
     "pkg/system",
+    "pkg/system/types",
     "pkg/utils/cmap",
     "pkg/utils/copier",
     "pkg/utils/crypto",
@@ -272,8 +283,8 @@
     "pkg/utils/validator",
   ]
   pruneopts = "UT"
-  revision = "b890c872f5084fa49b2eb59744ef8ca59a9991f1"
-  version = "v0.7.1"
+  revision = "fe6ec6ff18f881f127a32aa8bd653a48a7178457"
+  version = "v0.9.3"
 
 [[projects]]
   digest = "1:a3ce4de79566c21e93cb6934797fdaa587ad3fc6a964708ab77babe54ea67188"
