@@ -35,7 +35,7 @@ For example, if bolt is imported in you main.go, and you have not manually confi
 then Hiboot auto-configures an database bolt for any service to inject.
 
 You need to opt-in to auto-configuration by embedding app.Configuration in your configuration and
-calling the app.AutoConfiguration() function inside the init() function of your configuration pkg.
+calling the app.Register() function inside the init() function of your configuration pkg.
 
 For more details, see https://godoc.org/github.com/hidevopsio/hiboot/pkg/starter
 
@@ -249,7 +249,7 @@ type boltConfiguration struct {
 }
 
 func init() {
-	app.AutoConfiguration(new(boltConfiguration))
+	app.Register(new(boltConfiguration))
 }
 
 func (c *boltConfiguration) dataSource() DataSource {
@@ -293,7 +293,7 @@ type UserService struct {
 }
 
 func init() {
-	app.Component(newUserService)
+	app.Register(newUserService)
 }
 
 // will inject BoltRepository that configured in github.com/hidevopsio/hiboot-data/starter/bolt

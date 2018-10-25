@@ -17,6 +17,7 @@ package controller
 import (
 	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
 	"github.com/hidevopsio/hiboot-data/examples/gorm/service"
+	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/model"
 	"github.com/hidevopsio/hiboot/pkg/utils/copier"
@@ -41,10 +42,10 @@ type userController struct {
 }
 
 func init() {
-	web.RestController(newUserController)
+	app.Register(newUserController)
 }
 
-// Init inject userService automatically
+// newUserController inject userService automatically
 func newUserController(userService service.UserService) *userController {
 	return &userController{
 		userService: userService,

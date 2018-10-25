@@ -53,12 +53,12 @@ func (r *BaseKVRepository) Parse(params ...interface{}) ([]byte, []byte, interfa
 		}
 	}
 
-	bucket, err := reflector.GetLowerCamelName(value)
-	if err != nil {
-		return nil, nil, nil, err
+	bucket := reflector.GetLowerCamelName(value)
+	if bucket == "" {
+		return nil, nil, nil, reflector.ErrInvalidInput
 	}
 
-	return []byte(bucket), []byte(key), value, err
+	return []byte(bucket), []byte(key), value, nil
 }
 
 // Put inserts a key:value pair into the database

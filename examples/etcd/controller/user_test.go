@@ -59,7 +59,7 @@ func (s *fakeService) GetAll() (users *[]entity.User, err error) {
 }
 
 func TestCrdRequest(t *testing.T) {
-	app.Component(new(fake.Repository))
+	app.Register(new(fake.Repository))
 	svc := new(fakeService)
 	userController := newUserController(svc)
 	testApp := web.NewTestApplication(t, userController)

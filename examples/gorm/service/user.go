@@ -29,7 +29,7 @@ type UserService interface {
 	DeleteUser(id uint64) (err error)
 }
 
-type UserServiceImpl struct {
+type userServiceImpl struct {
 	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
 	UserService
 	repository gorm.Repository
@@ -37,18 +37,18 @@ type UserServiceImpl struct {
 
 func init() {
 	// register UserServiceImpl
-	app.Component(newUserService)
+	app.Register(newUserService)
 }
 
 // will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
 func newUserService(repository gorm.Repository) UserService {
 	repository.AutoMigrate(&entity.User{})
-	return &UserServiceImpl{
+	return &userServiceImpl{
 		repository: repository,
 	}
 }
 
-func (s *UserServiceImpl) AddUser(user *entity.User) (err error) {
+func (s *userServiceImpl) AddUser(user *entity.User) (err error) {
 	if user == nil {
 		return errors.New("user is not allowed nil")
 	}
@@ -59,19 +59,19 @@ func (s *UserServiceImpl) AddUser(user *entity.User) (err error) {
 	return
 }
 
-func (s *UserServiceImpl) GetUser(id uint64) (user *entity.User, err error) {
+func (s *userServiceImpl) GetUser(id uint64) (user *entity.User, err error) {
 	user = &entity.User{}
 	err = s.repository.Where("id = ?", id).First(user).Error()
 	return
 }
 
-func (s *UserServiceImpl) GetAll() (users *[]entity.User, err error) {
+func (s *userServiceImpl) GetAll() (users *[]entity.User, err error) {
 	users = &[]entity.User{}
 	err = s.repository.Find(users).Error()
 	return
 }
 
-func (s *UserServiceImpl) DeleteUser(id uint64) (err error) {
+func (s *userServiceImpl) DeleteUser(id uint64) (err error) {
 	err = s.repository.Where("id = ?", id).Delete(entity.User{}).Error()
 	return
 }
