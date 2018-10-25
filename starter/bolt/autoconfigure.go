@@ -27,7 +27,7 @@ type boltConfiguration struct {
 }
 
 func init() {
-	app.AutoConfiguration(new(boltConfiguration))
+	app.Register(new(boltConfiguration))
 }
 
 func (c *boltConfiguration) dataSource() DataSource {

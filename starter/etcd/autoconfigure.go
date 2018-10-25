@@ -38,7 +38,7 @@ type etcdConfiguration struct {
 }
 
 func init() {
-	app.AutoConfiguration(new(etcdConfiguration))
+	app.Register(new(etcdConfiguration))
 }
 
 // EtcdClient create instance named etcdClient

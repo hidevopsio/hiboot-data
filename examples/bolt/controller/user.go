@@ -17,6 +17,7 @@ package controller
 import (
 	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
 	"github.com/hidevopsio/hiboot-data/examples/bolt/service"
+	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/model"
 	"net/http"
@@ -29,7 +30,7 @@ type UserController struct {
 }
 
 func init() {
-	web.RestController(newUserController)
+	app.Register(newUserController)
 }
 
 // newUserController inject userService automatically

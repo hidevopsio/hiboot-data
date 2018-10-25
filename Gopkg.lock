@@ -249,12 +249,12 @@
   version = "v2.0.1"
 
 [[projects]]
-  digest = "1:106bc146027e760ff4f0f47bb54ae2020159abfe1f1fef162d43f194f6c08e52"
+  digest = "1:173091a7a096ae44faffa1c47c80c9eaf2c0bce67c35d41ab5f2a53e386ae580"
   name = "github.com/hidevopsio/hiboot"
   packages = [
     "pkg/app",
     "pkg/app/web",
-    "pkg/app/web/annotation",
+    "pkg/at",
     "pkg/factory",
     "pkg/factory/autoconfigure",
     "pkg/factory/depends",
@@ -283,8 +283,8 @@
     "pkg/utils/validator",
   ]
   pruneopts = "UT"
-  revision = "fe6ec6ff18f881f127a32aa8bd653a48a7178457"
-  version = "v0.9.3"
+  revision = "ab58921ab6a920f53976ebd8df9db0fad0eb867e"
+  version = "v0.9.7"
 
 [[projects]]
   digest = "1:a3ce4de79566c21e93cb6934797fdaa587ad3fc6a964708ab77babe54ea67188"

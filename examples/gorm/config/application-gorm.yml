@@ -3,7 +3,7 @@
 
 gorm:
   type: mysql
-  host: mysql-${app.profiles.active}
+  host: mysql-${app.profiles.active:dev}
   port: 3306
   database: ${app.name:test}
   username: demo

@@ -22,7 +22,7 @@ import (
 func TestConfiguration(t *testing.T) {
 
 	// TODO: should test with fake data source
-	conf := new(gormConfiguration)
+	conf := new(configuration)
 	conf.GormProperties = properties{
 		Type:      "mysql",
 		Host:      "mysql-dev",

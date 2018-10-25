@@ -40,7 +40,7 @@ type UserServiceImpl struct {
 
 func init() {
 	// register UserServiceImpl
-	app.Component(newUserService)
+	app.Register(newUserService)
 }
 
 // will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
