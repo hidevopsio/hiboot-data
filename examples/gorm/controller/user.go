@@ -20,20 +20,8 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/model"
-	"github.com/hidevopsio/hiboot/pkg/utils/copier"
 	"net/http"
 )
-
-type userRequest struct {
-	model.RequestBody
-	Id       uint64 `json:"id"`
-	Name     string `json:"name" validate:"required"`
-	Username string `json:"username" validate:"required"`
-	Password string `json:"password" validate:"required"`
-	Email    string `json:"email" validate:"required,email"`
-	Age      uint   `json:"age" validate:"gte=0,lte=130"`
-	Gender   uint   `json:"gender" validate:"gte=0,lte=2"`
-}
 
 // RestController
 type userController struct {
@@ -53,12 +41,10 @@ func newUserController(userService service.UserService) *userController {
 }
 
 // Post POST /user
-func (c *userController) Post(request *userRequest) (model.Response, error) {
-	var user entity.User
-	copier.Copy(&user, request)
-	err := c.userService.AddUser(&user)
+func (c *userController) Post(request *entity.User) (model.Response, error) {
+	err := c.userService.AddUser(request)
 	response := new(model.BaseResponse)
-	response.SetData(user)
+	response.SetData(request)
 	return response, err
 }
 
