@@ -19,6 +19,8 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/log"
 )
 
+const Profile = "bolt"
+
 type boltConfiguration struct {
 	app.Configuration
 	// the properties member name must be Bolt if the mapstructure is bolt,

@@ -15,61 +15,31 @@
 package controller
 
 import (
-	"errors"
-	"github.com/hidevopsio/gorm"
 	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 	"net/http"
 	"testing"
+	"github.com/hidevopsio/hiboot-data/examples/gorm/service/mocks"
+	"errors"
 )
 
 func init() {
 	log.SetLevel(log.DebugLevel)
 }
 
-var testUser entity.User
-
-type fakeService struct {
-	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
-	mock.Mock
-}
-
-func (s *fakeService) AddUser(user *entity.User) (err error) {
-	return
-}
-
-func (s *fakeService) GetUser(id uint64) (user *entity.User, err error) {
-	args := s.Called(id)
-	return args[0].(*entity.User), args.Error(1)
-}
-
-func (s *fakeService) DeleteUser(id uint64) (err error) {
-	return
-}
-
-func (s *fakeService) GetAll() (users *[]entity.User, err error) {
-	users = &[]entity.User{}
-	args := s.Called()
-	return args[0].(*[]entity.User), args.Error(1)
-}
-
 func TestCrdRequest(t *testing.T) {
-	app.Register(new(gorm.FakeRepository))
-	svc := new(fakeService)
-	userController := newUserController(svc)
-	testApp := web.NewTestApplication(t, userController)
 
-	// TODO: if os.Getenv("INTEGRATION_TEST") == false {
+	mockUserService := new(mocks.UserService)
+	userController := newUserController(mockUserService)
+	testApp := web.NewTestApplication(t, userController)
 
 	id, err := idgen.Next()
 	assert.Equal(t, nil, err)
 
-	testUser = entity.User{
+	testUser := &entity.User{
 		Id:       id,
 		Name:     "Bill Gates",
 		Username: "billg",
@@ -79,6 +49,9 @@ func TestCrdRequest(t *testing.T) {
 		Gender:   1,
 	}
 
+	// first, call mocks.UserService.AddUser
+	mockUserService.On("AddUser", testUser).Return(nil)
+	// then run the test that will call UserService.AddUser
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User
 		testApp.Post("/user").
@@ -86,8 +59,7 @@ func TestCrdRequest(t *testing.T) {
 			Expect().Status(http.StatusOK)
 	})
 
-	svc.On("GetUser", id).Return(&testUser, nil)
-
+	mockUserService.On("GetUser", id).Return(testUser, nil)
 	t.Run("should get user with GET request", func(t *testing.T) {
 		// Then Get User
 		// e.g. GET /user/id/123456
@@ -96,8 +68,7 @@ func TestCrdRequest(t *testing.T) {
 			Expect().Status(http.StatusOK)
 	})
 
-	svc.On("GetAll").Return(&[]entity.User{testUser}, nil)
-
+	mockUserService.On("GetAll").Return(&[]entity.User{*testUser}, nil)
 	t.Run("should get user with GET request", func(t *testing.T) {
 		// Then Get User
 		// e.g. GET /user/id/123456
@@ -106,11 +77,11 @@ func TestCrdRequest(t *testing.T) {
 	})
 
 	// assert that the expectations were met
-	svc.AssertExpectations(t)
+	mockUserService.AssertExpectations(t)
 
 	unknownId, err := idgen.Next()
 	assert.Equal(t, nil, err)
-	svc.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
+	mockUserService.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
 
 	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
 		// Then Get User
@@ -120,8 +91,9 @@ func TestCrdRequest(t *testing.T) {
 	})
 
 	// assert that the expectations were met
-	svc.AssertExpectations(t)
+	mockUserService.AssertExpectations(t)
 
+	mockUserService.On("DeleteUser", id).Return(nil)
 	t.Run("should delete the record with DELETE request", func(t *testing.T) {
 		// Finally Delete User
 		testApp.Delete("/user/id/{id}").
