@@ -18,6 +18,8 @@ import (
 	"github.com/hidevopsio/hiboot/pkg/app"
 )
 
+const Profile = "gorm"
+
 type configuration struct {
 	app.Configuration
 	// the properties member name must be Gorm if the mapstructure is gorm,

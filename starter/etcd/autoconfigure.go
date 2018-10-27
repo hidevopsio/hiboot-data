@@ -22,6 +22,8 @@ import (
 	"time"
 )
 
+const Profile = "etcd"
+
 type Repository interface {
 	clientv3.KV
 }
