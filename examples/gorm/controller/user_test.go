@@ -15,14 +15,14 @@
 package controller
 
 import (
-	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+	"hidevops.io/hiboot-data/examples/gorm/entity"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
-	"github.com/hidevopsio/hiboot-data/examples/gorm/service/mocks"
+	"hidevops.io/hiboot-data/examples/gorm/service/mocks"
 	"errors"
 )
 

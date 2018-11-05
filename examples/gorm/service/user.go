@@ -16,10 +16,10 @@ package service
 
 import (
 	"errors"
-	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
-	"github.com/hidevopsio/hiboot-data/starter/gorm"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+	"hidevops.io/hiboot-data/examples/gorm/entity"
+	"hidevops.io/hiboot-data/starter/gorm"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/utils/idgen"
 )
 
 type UserService interface {
@@ -40,7 +40,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
+// will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
 func newUserService(repository gorm.Repository) UserService {
 	repository.AutoMigrate(&entity.User{})
 	return &userServiceImpl{

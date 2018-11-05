@@ -14,10 +14,10 @@
   <a href="https://opensource.org/licenses/Apache-2.0">
       <img src="https://img.shields.io/badge/License-Apache%202.0-green.svg" />
   </a>
-  <a href="https://goreportcard.com/report/github.com/hidevopsio/hiboot-data">
-      <img src="https://goreportcard.com/badge/github.com/hidevopsio/hiboot-data" />
+  <a href="https://goreportcard.com/report/hidevops.io/hiboot-data">
+      <img src="https://goreportcard.com/badge/hidevops.io/hiboot-data" />
   </a>
-  <a href="https://godoc.org/github.com/hidevopsio/hiboot-data">
+  <a href="https://godoc.org/hidevops.io/hiboot-data">
       <img src="https://godoc.org/github.com/golang/gddo?status.svg" />
   </a>
 </p>
@@ -37,7 +37,7 @@ then Hiboot auto-configures an database bolt for any service to inject.
 You need to opt-in to auto-configuration by embedding app.Configuration in your configuration and
 calling the app.Register() function inside the init() function of your configuration pkg.
 
-For more details, see https://godoc.org/github.com/hidevopsio/hiboot/pkg/starter
+For more details, see https://godoc.org/hidevops.io/hiboot/pkg/starter
 
 ## Creating Your Own Starter
 
@@ -87,7 +87,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/boltdb/bolt"
-	"github.com/hidevopsio/hiboot-data/starter"
+	"hidevops.io/hiboot-data/starter"
 	"sync"
 )
 
@@ -237,8 +237,8 @@ package bolt
 // limitations under the License.
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/log"
 )
 
 type boltConfiguration struct {
@@ -275,7 +275,7 @@ func (c *boltConfiguration) BoltRepository() Repository {
 
 After bolt starter is built, you can inject it directly in your application.
 
-Below is the example, for more details, please see [example](https://github.com/hidevopsio/hiboot-data/tree/master/examples/bolt)
+Below is the example, for more details, please see [example](https://hidevops.io/hiboot-data/tree/master/examples/bolt)
 
 ```go
 
@@ -283,9 +283,9 @@ Below is the example, for more details, please see [example](https://github.com/
 package service
 
 import (
-	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
-	"github.com/hidevopsio/hiboot-data/starter/bolt"
-	"github.com/hidevopsio/hiboot/pkg/app"
+	"hidevops.io/hiboot-data/examples/bolt/entity"
+	"hidevops.io/hiboot-data/starter/bolt"
+	"hidevops.io/hiboot/pkg/app"
 )
 
 type UserService struct {
@@ -296,7 +296,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in github.com/hidevopsio/hiboot-data/starter/bolt
+// will inject BoltRepository that configured in hidevops.io/hiboot-data/starter/bolt
 func newUserService(repository bolt.Repository) *UserService {
 	return &UserService{
 		repository: repository,

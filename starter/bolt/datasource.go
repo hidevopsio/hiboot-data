@@ -16,7 +16,7 @@ package bolt
 
 import (
 	"github.com/boltdb/bolt"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/log"
 	"sync"
 	"time"
 )

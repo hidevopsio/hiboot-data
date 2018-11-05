@@ -22,8 +22,8 @@ import (
 	_ "github.com/hidevopsio/gorm/dialects/mysql"
 	_ "github.com/hidevopsio/gorm/dialects/postgres"
 	_ "github.com/hidevopsio/gorm/dialects/sqlite"
-	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/crypto/rsa"
+	"hidevops.io/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/utils/crypto/rsa"
 	"strings"
 	"sync"
 )

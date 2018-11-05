@@ -19,10 +19,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
-	"github.com/hidevopsio/hiboot-data/starter/etcd"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot-data/examples/etcd/entity"
+	"hidevops.io/hiboot-data/starter/etcd"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/log"
 	"time"
 )
 
@@ -43,7 +43,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
+// will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
 func newUserService(repository etcd.Repository) UserService {
 	return &UserServiceImpl{
 		repository: repository,

@@ -15,11 +15,11 @@
 package controller
 
 import (
-	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
-	"github.com/hidevopsio/hiboot-data/examples/bolt/service"
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/model"
+	"hidevops.io/hiboot-data/examples/bolt/entity"
+	"hidevops.io/hiboot-data/examples/bolt/service"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/model"
 	"net/http"
 )
 

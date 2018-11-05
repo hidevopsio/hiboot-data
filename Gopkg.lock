@@ -249,44 +249,6 @@
   version = "v2.0.1"
 
 [[projects]]
-  digest = "1:173091a7a096ae44faffa1c47c80c9eaf2c0bce67c35d41ab5f2a53e386ae580"
-  name = "github.com/hidevopsio/hiboot"
-  packages = [
-    "pkg/app",
-    "pkg/app/web",
-    "pkg/at",
-    "pkg/factory",
-    "pkg/factory/autoconfigure",
-    "pkg/factory/depends",
-    "pkg/factory/instantiate",
-    "pkg/inject",
-    "pkg/log",
-    "pkg/model",
-    "pkg/starter/actuator",
-    "pkg/starter/actuator/controller",
-    "pkg/starter/locale",
-    "pkg/starter/logging",
-    "pkg/system",
-    "pkg/system/types",
-    "pkg/utils/cmap",
-    "pkg/utils/copier",
-    "pkg/utils/crypto",
-    "pkg/utils/crypto/base64",
-    "pkg/utils/crypto/rsa",
-    "pkg/utils/gotest",
-    "pkg/utils/idgen",
-    "pkg/utils/io",
-    "pkg/utils/mapstruct",
-    "pkg/utils/reflector",
-    "pkg/utils/replacer",
-    "pkg/utils/str",
-    "pkg/utils/validator",
-  ]
-  pruneopts = "UT"
-  revision = "ab58921ab6a920f53976ebd8df9db0fad0eb867e"
-  version = "v0.9.7"
-
-[[projects]]
   digest = "1:a3ce4de79566c21e93cb6934797fdaa587ad3fc6a964708ab77babe54ea67188"
   name = "github.com/imkira/go-interpol"
   packages = ["."]
@@ -845,6 +807,43 @@
   pruneopts = "UT"
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
 
+[[projects]]
+  digest = "1:897413dd11600e88d6d245703a143ddf57f49a9465e727f3ef474a5b62c3b131"
+  name = "hidevops.io/hiboot"
+  packages = [
+    "pkg/app",
+    "pkg/app/web",
+    "pkg/at",
+    "pkg/factory",
+    "pkg/factory/autoconfigure",
+    "pkg/factory/depends",
+    "pkg/factory/instantiate",
+    "pkg/inject",
+    "pkg/log",
+    "pkg/model",
+    "pkg/starter/actuator",
+    "pkg/starter/locale",
+    "pkg/starter/logging",
+    "pkg/system",
+    "pkg/system/types",
+    "pkg/utils/cmap",
+    "pkg/utils/copier",
+    "pkg/utils/crypto",
+    "pkg/utils/crypto/base64",
+    "pkg/utils/crypto/rsa",
+    "pkg/utils/gotest",
+    "pkg/utils/idgen",
+    "pkg/utils/io",
+    "pkg/utils/mapstruct",
+    "pkg/utils/reflector",
+    "pkg/utils/replacer",
+    "pkg/utils/str",
+    "pkg/utils/validator",
+  ]
+  pruneopts = "UT"
+  revision = "c20392e54e55182e640c9bf6d5ab5553fd47d6d5"
+  version = "v0.10.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -859,20 +858,20 @@
     "github.com/hidevopsio/gorm/dialects/mysql",
     "github.com/hidevopsio/gorm/dialects/postgres",
     "github.com/hidevopsio/gorm/dialects/sqlite",
-    "github.com/hidevopsio/hiboot/pkg/app",
-    "github.com/hidevopsio/hiboot/pkg/app/web",
-    "github.com/hidevopsio/hiboot/pkg/log",
-    "github.com/hidevopsio/hiboot/pkg/model",
-    "github.com/hidevopsio/hiboot/pkg/starter/actuator",
-    "github.com/hidevopsio/hiboot/pkg/starter/locale",
-    "github.com/hidevopsio/hiboot/pkg/starter/logging",
-    "github.com/hidevopsio/hiboot/pkg/utils/copier",
-    "github.com/hidevopsio/hiboot/pkg/utils/crypto/rsa",
-    "github.com/hidevopsio/hiboot/pkg/utils/idgen",
-    "github.com/hidevopsio/hiboot/pkg/utils/reflector",
     "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/mock",
     "golang.org/x/net/context",
+    "hidevops.io/hiboot/pkg/app",
+    "hidevops.io/hiboot/pkg/app/web",
+    "hidevops.io/hiboot/pkg/log",
+    "hidevops.io/hiboot/pkg/model",
+    "hidevops.io/hiboot/pkg/starter/actuator",
+    "hidevops.io/hiboot/pkg/starter/locale",
+    "hidevops.io/hiboot/pkg/starter/logging",
+    "hidevops.io/hiboot/pkg/utils/copier",
+    "hidevops.io/hiboot/pkg/utils/crypto/rsa",
+    "hidevops.io/hiboot/pkg/utils/idgen",
+    "hidevops.io/hiboot/pkg/utils/reflector",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
