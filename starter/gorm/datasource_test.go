@@ -16,7 +16,7 @@ package gorm
 
 import (
 	"github.com/hidevopsio/gorm"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/log"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

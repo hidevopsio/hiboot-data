@@ -15,8 +15,8 @@ package bolt
 // limitations under the License.
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/log"
 )
 
 const Profile = "bolt"

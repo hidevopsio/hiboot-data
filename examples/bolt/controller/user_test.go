@@ -15,9 +15,9 @@
 package controller
 
 import (
-	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
-	"github.com/hidevopsio/hiboot/pkg/app/web"
-	"github.com/hidevopsio/hiboot/pkg/log"
+	"hidevops.io/hiboot-data/examples/bolt/entity"
+	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/log"
 	"net/http"
 	"testing"
 )

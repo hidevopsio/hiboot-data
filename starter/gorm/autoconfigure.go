@@ -15,7 +15,7 @@
 package gorm
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/app"
+	"hidevops.io/hiboot/pkg/app"
 )
 
 const Profile = "gorm"

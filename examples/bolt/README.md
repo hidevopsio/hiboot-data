@@ -14,8 +14,8 @@ main.go
 package main
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/starter/web"
-	_ "github.com/hidevopsio/hiboot/examples/db/bolt/controllers"
+	"hidevops.io/hiboot/pkg/starter/web"
+	_ "hidevops.io/hiboot/examples/db/bolt/controllers"
 )
 
 func main()  {
@@ -56,14 +56,14 @@ type UserController struct {
 
 In order to inject Repository into Service, you need to 
 
-* import github.com/hidevopsio/hiboot/pkg/starter/db
+* import hidevops.io/hiboot/pkg/starter/db
 * add tag `component:"repository" dataSourceType:"bolt"` to the field Repository of UserService
 
 
 ```go
 
 import (
-	"github.com/hidevopsio/hiboot/pkg/starter/db"
+	"hidevops.io/hiboot/pkg/starter/db"
 )
 
 type UserService struct {

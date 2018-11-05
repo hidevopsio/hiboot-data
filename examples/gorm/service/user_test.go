@@ -17,7 +17,7 @@ package service
 import (
 	_ "github.com/erikstmartin/go-testdb"
 	"github.com/hidevopsio/gorm"
-	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+	"hidevops.io/hiboot-data/examples/gorm/entity"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

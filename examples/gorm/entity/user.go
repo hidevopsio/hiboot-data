@@ -14,7 +14,7 @@
 
 package entity
 
-import "github.com/hidevopsio/hiboot/pkg/model"
+import "hidevops.io/hiboot/pkg/model"
 
 type User struct {
 	model.RequestBody
