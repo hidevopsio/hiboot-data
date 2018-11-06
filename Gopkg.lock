@@ -808,7 +808,7 @@
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
 
 [[projects]]
-  digest = "1:897413dd11600e88d6d245703a143ddf57f49a9465e727f3ef474a5b62c3b131"
+  digest = "1:fefe44d09982b7f9623e6d060ab97ac859047cf4f04979210a69a8be8fbe3423"
   name = "hidevops.io/hiboot"
   packages = [
     "pkg/app",
@@ -841,8 +841,8 @@
     "pkg/utils/validator",
   ]
   pruneopts = "UT"
-  revision = "c20392e54e55182e640c9bf6d5ab5553fd47d6d5"
-  version = "v0.10.1"
+  revision = "e4b6cdd5b00394e4d583cc81bc4eb8289b5a947a"
+  version = "v0.10.2"
 
 [solve-meta]
   analyzer-name = "dep"
