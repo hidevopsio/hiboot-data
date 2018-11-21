@@ -33,8 +33,6 @@ type UserService interface {
 }
 
 type UserServiceImpl struct {
-	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
-	UserService
 	repository etcd.Repository
 }
 
@@ -43,11 +41,9 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
+// will inject etcd.Repository that configured in hidevops.io/hiboot-data/starter/etcd
 func newUserService(repository etcd.Repository) UserService {
-	return &UserServiceImpl{
-		repository: repository,
-	}
+	return &UserServiceImpl{repository}
 }
 
 func (s *UserServiceImpl) AddUser(id string, user *entity.User) (err error) {

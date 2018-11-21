@@ -30,8 +30,6 @@ type UserService interface {
 }
 
 type userServiceImpl struct {
-	// add UserService, it means that the instance of UserServiceImpl can be found by UserService
-	UserService
 	repository gorm.Repository
 }
 
@@ -40,7 +38,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
+// will inject gorm.Repository that configured in hidevops.io/hiboot-data/starter/gorm
 func newUserService(repository gorm.Repository) UserService {
 	repository.AutoMigrate(&entity.User{})
 	return &userServiceImpl{
