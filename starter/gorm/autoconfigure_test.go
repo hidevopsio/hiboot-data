@@ -22,7 +22,7 @@ import (
 func TestConfiguration(t *testing.T) {
 
 	// TODO: should test with fake data source
-	conf := new(configuration)
+	conf := newConfiguration()
 	conf.Properties = properties{
 		Type:      "mysql",
 		Host:      "mysql-dev",
