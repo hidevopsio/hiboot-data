@@ -16,12 +16,18 @@ package main
 
 import (
 	_ "hidevops.io/hiboot-data/examples/gorm/controller"
+	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/app/web"
-	_ "hidevops.io/hiboot/pkg/starter/actuator"
-	_ "hidevops.io/hiboot/pkg/starter/locale"
-	_ "hidevops.io/hiboot/pkg/starter/logging"
+	"hidevops.io/hiboot/pkg/starter/actuator"
+	"hidevops.io/hiboot/pkg/starter/locale"
+	"hidevops.io/hiboot/pkg/starter/logging"
 )
 
 func main() {
-	web.NewApplication().Run()
+	web.NewApplication().
+		SetProperty(app.ProfilesInclude,
+			actuator.Profile,
+			locale.Profile,
+			logging.Profile).
+		Run()
 }

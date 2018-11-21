@@ -24,17 +24,21 @@ type configuration struct {
 	app.Configuration
 	// the properties member name must be Gorm if the mapstructure is gorm,
 	// so that the reference can be parsed
-	GormProperties properties `mapstructure:"gorm"`
+	Properties properties `mapstructure:"gorm"`
+}
+
+func newConfiguration() *configuration {
+	return &configuration{}
 }
 
 func init() {
-	app.Register(new(configuration))
+	app.Register(newConfiguration)
 }
 
 func (c *configuration) dataSource() DataSource {
 	dataSource := GetDataSource()
 	if !dataSource.IsOpened() {
-		dataSource.Open(&c.GormProperties)
+		dataSource.Open(&c.Properties)
 	}
 	return dataSource
 }

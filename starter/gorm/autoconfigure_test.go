@@ -23,7 +23,7 @@ func TestConfiguration(t *testing.T) {
 
 	// TODO: should test with fake data source
 	conf := new(configuration)
-	conf.GormProperties = properties{
+	conf.Properties = properties{
 		Type:      "mysql",
 		Host:      "mysql-dev",
 		Port:      "3306",

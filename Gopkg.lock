@@ -808,11 +808,12 @@
   revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
 
 [[projects]]
-  digest = "1:fefe44d09982b7f9623e6d060ab97ac859047cf4f04979210a69a8be8fbe3423"
+  digest = "1:be58f3a4065dced4f717ef224d2c0e40b855944274403e324b50902b47069d79"
   name = "hidevops.io/hiboot"
   packages = [
     "pkg/app",
     "pkg/app/web",
+    "pkg/app/web/context",
     "pkg/at",
     "pkg/factory",
     "pkg/factory/autoconfigure",
@@ -831,7 +832,6 @@
     "pkg/utils/crypto",
     "pkg/utils/crypto/base64",
     "pkg/utils/crypto/rsa",
-    "pkg/utils/gotest",
     "pkg/utils/idgen",
     "pkg/utils/io",
     "pkg/utils/mapstruct",
@@ -841,8 +841,8 @@
     "pkg/utils/validator",
   ]
   pruneopts = "UT"
-  revision = "e4b6cdd5b00394e4d583cc81bc4eb8289b5a947a"
-  version = "v0.10.2"
+  revision = "a615cd2622f01d861cbaa0ba7bed7f15073ea771"
+  version = "v0.11.0"
 
 [solve-meta]
   analyzer-name = "dep"
