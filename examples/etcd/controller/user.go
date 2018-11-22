@@ -18,7 +18,7 @@ import (
 	"hidevops.io/hiboot-data/examples/etcd/entity"
 	"hidevops.io/hiboot-data/examples/etcd/service"
 	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/at"
 	"hidevops.io/hiboot/pkg/model"
 	"hidevops.io/hiboot/pkg/utils/copier"
 	"hidevops.io/hiboot/pkg/utils/idgen"
@@ -26,7 +26,8 @@ import (
 )
 
 type userRequest struct {
-	model.RequestBody
+	at.RequestBody
+
 	Id       string `json:"id"`
 	Name     string `json:"name" validate:"required"`
 	Username string `json:"username" validate:"required"`
@@ -38,7 +39,8 @@ type userRequest struct {
 
 // RestController
 type userController struct {
-	web.Controller
+	at.RestController
+
 	userService service.UserService
 }
 
