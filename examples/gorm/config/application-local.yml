@@ -5,3 +5,7 @@ server:
 
 logging:
   level: info
+
+gorm:
+  # mysql-dev is the host name of mysql server, you should change it to 127.0.0.1 if you start mysql on local machine.
+  host: mysql-dev
