@@ -39,7 +39,7 @@
 
 [[constraint]]
   name = "hidevops.io/hiboot"
-  version = "v0.11.1"
+  version = "v1.0.0"
 
 [[constraint]]
   name = "github.com/stretchr/testify"
