@@ -1,4 +1,4 @@
-module github.com/hidevopsio/hiboot-data
+module hidevops.io/hiboot-data
 
 require (
 	cloud.google.com/go v0.28.0
@@ -82,6 +82,5 @@ require (
 	gopkg.in/ini.v1 v1.38.2
 	gopkg.in/yaml.v2 v2.2.1
 	hidevops.io/hiboot v1.0.0
-	hidevops.io/hiboot-data v0.2.1
 	hidevops.io/viper v1.3.2
 )
