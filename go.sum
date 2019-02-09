@@ -260,6 +260,7 @@ google.golang.org/genproto v0.0.0-20180914223249-4b56f30a1fd9 h1:lSYPu0aSPfwHkts
 google.golang.org/genproto v0.0.0-20180914223249-4b56f30a1fd9/go.mod h1:JiN7NxoALGmiZfu7CAH4rXhgtRTLTxftemlI0sWmxmc=
 google.golang.org/grpc v1.14.0 h1:ArxJuB1NWfPY6r9Gp9gqwplT0Ge7nqv9msgu03lHLmo=
 google.golang.org/grpc v1.14.0/go.mod h1:yo6s7OP7yaDglbqo1J04qKzAhqBH6lvTonzMVmEdcZw=
+google.golang.org/grpc v1.15.0 h1:Az/KuahOM4NAidTEuJCv/RonAA7rYsTPkqXVjr+8OOw=
 google.golang.org/grpc v1.15.0/go.mod h1:0JHn/cJsOMiMfNA9+DeHDlAU7KAAB5GDlYFpa9MZMio=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/fsnotify.v1 v1.4.7/go.mod h1:Tz8NjZHkW78fSQdbUxIjBTcgA1z1m8ZHf0WmKUhAMys=
@@ -277,9 +278,6 @@ gopkg.in/russross/blackfriday.v2 v2.0.0+incompatible/go.mod h1:6sSBNz/GtOm/pJTuh
 gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7/go.mod h1:dt/ZhP58zS4L8KSrWDmTeBkI65Dw0HsyUHuEVlX15mw=
 gopkg.in/yaml.v2 v2.2.1 h1:mUhvW9EsL+naU5Q3cakzfE91YhliOondGd6ZrsDBHQE=
 gopkg.in/yaml.v2 v2.2.1/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
-hidevops.io/hiboot v1.0.0 h1:n+9oXm+Pu2MMKdwc7IlTnCiGmUmnXDBuaQIZc02m2Sw=
-hidevops.io/hiboot v1.0.0/go.mod h1:4Sj21e1nFDreyXfj+iOz2OmtNx8KU1Wmv9gojL746G0=
-hidevops.io/hiboot v1.0.1/go.mod h1:hCj6CYyXmWIXmQJbdKXt76QVt5OrmWh0DqeHh+a2kSw=
 hidevops.io/hiboot v1.0.2 h1:3tAjTNI8GP4PDv+EXbmvLGHupuuDOaakBe4o0bIl7os=
 hidevops.io/hiboot v1.0.2/go.mod h1:hCj6CYyXmWIXmQJbdKXt76QVt5OrmWh0DqeHh+a2kSw=
 hidevops.io/hiboot-data v0.2.1 h1:t5q4gXe6+JU9jvxFDHS5fbHGY416nfyY509UsOaEjAw=

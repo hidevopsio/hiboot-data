@@ -77,7 +77,7 @@ require (
 	golang.org/x/text v0.3.0
 	google.golang.org/appengine v1.1.0
 	google.golang.org/genproto v0.0.0-20180914223249-4b56f30a1fd9
-	google.golang.org/grpc v1.14.0
+	google.golang.org/grpc v1.15.0
 	gopkg.in/go-playground/validator.v8 v8.18.2
 	gopkg.in/ini.v1 v1.38.3
 	gopkg.in/yaml.v2 v2.2.1
