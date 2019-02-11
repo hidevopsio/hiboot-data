@@ -81,6 +81,6 @@ require (
 	gopkg.in/go-playground/validator.v8 v8.18.2
 	gopkg.in/ini.v1 v1.38.3
 	gopkg.in/yaml.v2 v2.2.1
-	hidevops.io/hiboot v1.0.2
+	hidevops.io/hiboot v1.0.3
 	hidevops.io/viper v1.3.2
 )
