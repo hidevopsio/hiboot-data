@@ -20,13 +20,13 @@ import (
 	"github.com/coreos/etcd/clientv3"
 	"github.com/coreos/etcd/mvcc/mvccpb"
 	_ "github.com/erikstmartin/go-testdb"
+	"github.com/stretchr/testify/assert"
 	"hidevops.io/hiboot-data/examples/etcd/entity"
 	"hidevops.io/hiboot-data/starter/etcd/fake"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/app/web"
 	"hidevops.io/hiboot/pkg/log"
 	"hidevops.io/hiboot/pkg/utils/idgen"
-	"github.com/stretchr/testify/assert"
 	"testing"
 )
 

@@ -18,7 +18,7 @@ import "errors"
 
 var InvalidDataSourceError = errors.New("invalid dataSource")
 var InvalidDataModelError = errors.New("invalid data model, must contains string field ID and assigns string value")
-var NotImplemenedError = errors.New("method is not implemented")
+var NotImplementedError = errors.New("method is not implemented")
 
 type Repository interface {
 	SetDataSource(dataSource interface{})
@@ -34,9 +34,9 @@ func (r *BaseRepository) SetDataSource(dataSource interface{}) {
 }
 
 func (r *BaseRepository) DataSource() interface{} {
-	return NotImplemenedError
+	return NotImplementedError
 }
 
 func (r *BaseRepository) CloseDataSource() error {
-	return NotImplemenedError
+	return NotImplementedError
 }

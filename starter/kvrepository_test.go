@@ -15,8 +15,8 @@
 package data
 
 import (
-	"hidevops.io/hiboot/pkg/utils/reflector"
 	"github.com/stretchr/testify/assert"
+	"hidevops.io/hiboot/pkg/utils/reflector"
 	"testing"
 )
 
