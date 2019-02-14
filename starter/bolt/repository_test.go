@@ -15,8 +15,8 @@
 package bolt
 
 import (
-	"hidevops.io/hiboot-data/starter"
 	"github.com/stretchr/testify/assert"
+	"hidevops.io/hiboot-data/starter"
 	"testing"
 )
 

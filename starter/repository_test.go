@@ -23,8 +23,8 @@ func TestBaseRepository(t *testing.T) {
 	r := &BaseRepository{}
 
 	err := r.DataSource()
-	assert.Equal(t, NotImplemenedError, err)
+	assert.Equal(t, NotImplementedError, err)
 
 	err = r.CloseDataSource()
-	assert.Equal(t, NotImplemenedError, err)
+	assert.Equal(t, NotImplementedError, err)
 }
