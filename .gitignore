@@ -12,3 +12,4 @@
 *.out
 *.db
 vendor/
+.idea/

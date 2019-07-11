@@ -1,0 +1,13 @@
+# config file for testing
+
+server:
+  port: 8080
+
+logging:
+  level: debug
+
+amqp:
+  host: xxxxx
+  port: xxxx
+  username: xxxx
+  password: xxxxxxx
