@@ -42,16 +42,19 @@ func (chn *Channel) Connect(p *properties) (err error) {
 	return err
 }
 
-func (chn *Channel) Receive(queueName string) {
+func (chn *Channel) Receive(queueName string) (*string, error) {
 	for {
-		msg, ok, _ := chn.Channel.Get(queueName, true)
+		msg, ok, err := chn.Channel.Get(queueName, true)
+		if err != nil {
+			return nil, err
+		}
 		if !ok {
 			time.Sleep(3*1e9)
 			continue
 		}
 		//err = s.channel.Ack(msg.DeliveryTag, false)
 		b := BytesToString(&(msg.Body))
-		fmt.Printf("receve msg is :%s\n", *b)
+		return b, nil
 	}
 }
 
