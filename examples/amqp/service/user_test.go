@@ -15,10 +15,8 @@
 package service
 
 import (
-	"github.com/stretchr/testify/assert"
 	"hidevops.io/hiboot-data/examples/bolt/entity"
 	"hidevops.io/hiboot-data/starter"
-	"testing"
 )
 
 type FakeRepository struct {
@@ -36,19 +34,4 @@ func (r *FakeRepository) Get(params ...interface{}) error {
 	}
 
 	return nil
-}
-
-func init() {
-
-}
-
-func TestCrd(t *testing.T) {
-	userService := newUserService(&FakeRepository{})
-
-	t.Run("should add user", func(t *testing.T) {
-		user := &entity.User{Id: "1", Name: "John Doe", Age: 18}
-		err := userService.AddUser(user)
-		assert.Equal(t, nil, err)
-	})
-
 }

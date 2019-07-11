@@ -15,7 +15,6 @@
 package controller
 
 import (
-	"hidevops.io/hiboot-data/examples/bolt/entity"
 	"hidevops.io/hiboot/pkg/app/web"
 	"hidevops.io/hiboot/pkg/log"
 	"net/http"
@@ -32,30 +31,25 @@ func TestCrdRequest(t *testing.T) {
 
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User
-		testApp.Post("/user").
-			WithJSON(entity.User{Id: "1", Name: "Peter", Age: 18}).
+		testApp.Post("/user/publish").
 			Expect().Status(http.StatusOK)
 	})
 
-	t.Run("should get user with GET request", func(t *testing.T) {
-		// Then Get User
-		testApp.Get("/user/id/{id}").
-			WithPath("id", "1").
+	t.Run("should add user with POST request", func(t *testing.T) {
+		// First, let's Post User
+		testApp.Post("/user/publish").
 			Expect().Status(http.StatusOK)
 	})
 
-	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
-		// Then Get User
-		testApp.Get("/user/id/{id}").
-			WithPath("id", "9999").
-			Expect().Status(http.StatusNotFound)
-	})
-
-	t.Run("should delete the record with DELETE request", func(t *testing.T) {
-		// Finally Delete User
-		testApp.Delete("/user/id/{id}").
-			WithPath("id", "1").
+	t.Run("should add user with POST request", func(t *testing.T) {
+		// First, let's Post User
+		testApp.Post("/user/receive").
 			Expect().Status(http.StatusOK)
 	})
 
+	t.Run("should add user with POST request", func(t *testing.T) {
+		// First, let's Post User
+		testApp.Post("/user/receive1").
+			Expect().Status(http.StatusOK)
+	})
 }

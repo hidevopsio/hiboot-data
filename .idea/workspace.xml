@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="716bb7c8-73ea-4564-9043-965af43f1ed2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/amqp/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/controller/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/controller/user_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/main_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/service/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/amqp/service/user_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/amqp/amqpclient.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/amqp/autoconfigure.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/starter/amqp/autoconfigure_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/amqp/controller/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/examples/amqp/controller/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/amqp/service/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/examples/amqp/service/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/amqp/service/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/examples/amqp/service/user_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,13 +14,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="345" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/starter/amqp/autoconfigure.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+            <state relative-caret-position="457">
+              <caret line="38" column="47" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="47" />
               <folding>
                 <element signature="e#627#667#0" expanded="true" />
               </folding>
@@ -37,10 +32,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starter/amqp/amqpclient.go">
+        <entry file="file://$PROJECT_DIR$/starter/amqp/autoconfigure_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+            <state relative-caret-position="210">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -48,8 +43,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/amqp/service/user_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="240">
+              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/bolt/controller/user_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="37" column="6" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="37" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/amqp/controller/user_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+              <folding>
+                <element signature="e#633#778#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,17 +73,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/amqp/controller/user.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+            <state relative-caret-position="457">
+              <caret line="47" column="36" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/go/src/time/time.go">
+        <entry file="file://$PROJECT_DIR$/starter/amqp/amqpclient.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="637" column="5" selection-start-line="637" selection-start-column="5" selection-end-line="637" selection-end-column="5" />
+            <state relative-caret-position="412">
+              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -76,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/examples/amqp/main.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -84,10 +100,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/amqp/service/user.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="102" column="32" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
+            <state relative-caret-position="36">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/starter/amqp/amqpclient_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="108" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="108" />
               <folding>
-                <element signature="e#630#796#0" expanded="true" />
+                <element signature="e#14#81#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,26 +138,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/starter/amqp/client.go" />
-        <option value="$PROJECT_DIR$/starter/amqp/autoconfigure_test.go" />
         <option value="$PROJECT_DIR$/examples/amqp/config/application.yml" />
         <option value="$PROJECT_DIR$/examples/amqp/config/application-local.yml" />
         <option value="$PROJECT_DIR$/examples/amqp/main.go" />
         <option value="$PROJECT_DIR$/examples/amqp/service/user_test.go" />
-        <option value="$PROJECT_DIR$/starter/amqp/autoconfigure.go" />
         <option value="$PROJECT_DIR$/starter/amqp/amqpclient.go" />
+        <option value="$PROJECT_DIR$/starter/amqp/autoconfigure.go" />
+        <option value="$PROJECT_DIR$/starter/amqp/amqpclient_test.go" />
+        <option value="$PROJECT_DIR$/starter/amqp/autoconfigure_test.go" />
         <option value="$PROJECT_DIR$/examples/amqp/controller/user.go" />
+        <option value="$PROJECT_DIR$/examples/amqp/controller/user_test.go" />
         <option value="$PROJECT_DIR$/examples/amqp/service/user.go" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/hiboot-data.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/dictionaries/clare.xml" />
       </list>
     </option>
   </component>
@@ -146,7 +162,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,6 +210,13 @@
             <path>
               <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
               <item name="hiboot-data" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+              <item name="bolt" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hiboot-data" type="462c0819:PsiDirectoryNode" />
               <item name="starter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -207,28 +229,11 @@
               <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
               <item name="hiboot-data" type="462c0819:PsiDirectoryNode" />
               <item name="starter" type="462c0819:PsiDirectoryNode" />
-              <item name="etcd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hiboot-data" type="462c0819:PsiDirectoryNode" />
-              <item name="starter" type="462c0819:PsiDirectoryNode" />
               <item name="gorm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;hidevops.io/hiboot-data&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;hidevops.io/hiboot-data&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="amqp@v0.0.0-20180315184602-8e4aba63da9f" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hiboot-data" type="b2602c69:ProjectViewProjectNode" />
@@ -259,10 +264,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
@@ -290,7 +297,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.user_test.go">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="hiboot-data" />
       <working_directory value="$PROJECT_DIR$" />
@@ -300,11 +307,89 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="TestCrdRequest in hidevops.io/hiboot-data/examples/amqp/controller" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="hiboot-data" />
+      <working_directory value="$PROJECT_DIR$/examples/amqp/controller" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="hidevops.io/hiboot-data/examples/amqp/controller" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestCrdRequest$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestCrdRequest/should_add_user_with_POST_request in hidevops.io/hiboot-data/examples/amqp/controller" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="hiboot-data" />
+      <working_directory value="$PROJECT_DIR$/examples/amqp/controller" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="hidevops.io/hiboot-data/examples/amqp/controller" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestCrdRequest$/^should_add_user_with_POST_request$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test amqp" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="hiboot-data" />
+      <working_directory value="$PROJECT_DIR$/starter/amqp" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="hidevops.io/hiboot-data" />
+      <directory value="$PROJECT_DIR$/starter/amqp" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="hiboot-data" />
+      <working_directory value="$PROJECT_DIR$/examples/amqp/controller" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="hidevops.io/hiboot-data" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/examples/amqp/controller/user_test.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.user_test.go" />
+        <item itemvalue="Go Test.TestCrdRequest in hidevops.io/hiboot-data/examples/amqp/controller" />
+        <item itemvalue="Go Test.TestCrdRequest/should_add_user_with_POST_request in hidevops.io/hiboot-data/examples/amqp/controller" />
+        <item itemvalue="Go Test.go test amqp" />
         <item itemvalue="Go Build.go build main.go" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestAmqp_in_hidevops_io_hiboot-data_starter_amqp - 2019.07.11 at 13h 02m 37s.xml">
+      <configuration name="TestAmqp in hidevops.io/hiboot-data/starter/amqp" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestAmqp_in_hidevops_io_hiboot-data_starter_amqp - 2019.07.11 at 13h 03m 03s.xml">
+      <configuration name="TestAmqp in hidevops.io/hiboot-data/starter/amqp" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestAmqp_in_hidevops_io_hiboot-data_starter_amqp - 2019.07.11 at 13h 04m 37s.xml">
+      <configuration name="TestAmqp in hidevops.io/hiboot-data/starter/amqp" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestAmqp_in_hidevops_io_hiboot-data_starter_amqp - 2019.07.11 at 13h 04m 59s.xml">
+      <configuration name="TestAmqp in hidevops.io/hiboot-data/starter/amqp" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_test_amqp - 2019.07.11 at 13h 41m 58s.xml">
+      <configuration name="go test amqp" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestCrdRequest_should_add_user_with_POST_request_in_hidevops_io_hiboot-data_examples_amqp_controller - 2019.07.11 at 13h 45m 52s.xml">
+      <configuration name="TestCrdRequest/should_add_user_with_POST_request in hidevops.io/hiboot-data/examples/amqp/controller" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="user_test_go - 2019.07.11 at 13h 46m 03s.xml">
+      <configuration name="user_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestCrdRequest_in_hidevops_io_hiboot-data_examples_amqp_controller - 2019.07.11 at 13h 46m 35s.xml">
+      <configuration name="TestCrdRequest in hidevops.io/hiboot-data/examples/amqp/controller" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestCrdRequest_in_hidevops_io_hiboot-data_examples_amqp_controller - 2019.07.11 at 13h 46m 43s.xml">
+      <configuration name="TestCrdRequest in hidevops.io/hiboot-data/examples/amqp/controller" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="user_test_go - 2019.07.11 at 13h 47m 47s.xml">
+      <configuration name="user_test.go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -317,14 +402,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32913166" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.58963585" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33333334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -332,19 +416,46 @@
       <window_info anchor="bottom" id="Docker" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32913166" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.19887955" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3297568" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.58963585" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32913166" />
+      <window_info anchor="bottom" id="Docker" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.6344538" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/hiboot_data$TestCrdRequest_in_hidevops_io_hiboot_data_examples_amqp_controller.out" NAME="TestCrdRequest in hidevops.io/hiboot-data/examples/amqp/controller Coverage Results" MODIFIED="1562824003147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/hiboot_data$user_test_go.out" NAME="user_test.go Coverage Results" MODIFIED="1562824066947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/hiboot_data$go_test_amqp.out" NAME="go test amqp Coverage Results" MODIFIED="1562823716689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/starter/etcd/autoconfigure_test.go">
@@ -377,16 +488,6 @@
     <entry file="file://$PROJECT_DIR$/examples/amqp/config/ssl/app.rsa" />
     <entry file="file://$PROJECT_DIR$/examples/amqp/config/application-bolt.yml" />
     <entry file="file://$PROJECT_DIR$/examples/amqp/config/keygen.sh" />
-    <entry file="file://$PROJECT_DIR$/starter/amqp/autoconfigure_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#14#183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/amqp/config/application-local.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -397,48 +498,10 @@
     <entry file="file://$PROJECT_DIR$/examples/amqp/main_test.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/starter/etcd/autoconfigure.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starter/gorm/datasource.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#627#968#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starter/gorm/autoconfigure.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/amqp/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/amqp/config/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/go/src/time/time.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="637" column="5" selection-start-line="637" selection-start-column="5" selection-end-line="637" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -463,26 +526,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/starter/amqp/autoconfigure.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
-          <folding>
-            <element signature="e#627#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/amqp/service/user_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/amqp/service/user1.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/amqp/service/user1.go" />
     <entry file="file://$PROJECT_DIR$/../../../pkg/mod/github.com/streadway/amqp@v0.0.0-20180315184602-8e4aba63da9f/channel.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -490,27 +534,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/go/src/time/time.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9510">
+          <caret line="637" column="5" selection-start-line="637" selection-start-column="5" selection-end-line="637" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/etcd/autoconfigure.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="46" column="52" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/gorm/datasource.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+          <folding>
+            <element signature="e#627#968#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/gorm/datasource_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/amqp/mocks/AmqpClient.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/bolt/main_test.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/gorm/autoconfigure.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/gorm/autoconfigure_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/amqp/amqpclient_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="108" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="108" />
+          <folding>
+            <element signature="e#14#81#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/amqp/autoconfigure_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/amqp/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter/amqp/autoconfigure.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <element signature="e#627#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/starter/amqp/amqpclient.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+        <state relative-caret-position="412">
+          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/bolt/controller/user_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="37" column="6" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="37" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/amqp/controller/user.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="50" column="1" lean-forward="true" selection-start-line="50" selection-start-column="1" selection-end-line="50" selection-end-column="1" />
+        <state relative-caret-position="457">
+          <caret line="47" column="36" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/amqp/controller/user_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+          <folding>
+            <element signature="e#633#778#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/amqp/service/user_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/amqp/service/user.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="102" column="32" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
-          <folding>
-            <element signature="e#630#796#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="36">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
