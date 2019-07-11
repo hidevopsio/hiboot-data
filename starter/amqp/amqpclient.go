@@ -27,17 +27,19 @@ type AmqpClient interface {
 	Close()
 }
 
-func Connect(p *properties) (chn *Channel, err error) {
+func NewChannel() (chn *Channel) {
+	return new(Channel)
+}
+
+func (chn *Channel) Connect(p *properties) (err error) {
 	url := fmt.Sprintf("amqp://%s:%s@%s:%d/", p.Username, p.Password, p.Host, p.Port)
 	conn, err := amqp.Dial(url)
 	if err != nil {
 		log.Errorf("Failed to connect to RabbitMQ :%v", err)
 		return
 	}
-	chn = new(Channel)
 	chn.Channel, err = conn.Channel()
-
-	return chn, err
+	return err
 }
 
 func (chn *Channel) Receive(queueName string) {
