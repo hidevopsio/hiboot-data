@@ -1,0 +1,13 @@
+# config file for testing
+
+server:
+  port: 8080
+
+logging:
+  level: debug
+
+amqp:
+  host: 10.10.12.14
+  port: 5672
+  username: cloudtogo
+  password: jYMEBEMCLrybtCr
