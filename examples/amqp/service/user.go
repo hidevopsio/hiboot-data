@@ -15,6 +15,7 @@
 package service
 
 import (
+	"fmt"
 	"hidevops.io/hiboot-data/starter/amqp"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/log"
@@ -42,14 +43,22 @@ const (
 	queueName  = "Test"
 )
 
-func (s *UserService) PublishDirect() error {
-	err := s.channel.PublishDirect(exchange, queueName,  "hello", "info")
-	return err
+func (s *UserService) PublishDirect() (err error) {
+	if s.channel == nil {
+		return fmt.Errorf("channel is not initialzied")
+	}
+
+	err = s.channel.PublishDirect(exchange, queueName,  "hello", "info")
+	return
 }
 
-func (s *UserService) PublishFanout() error {
-	err := s.channel.PublishFanout(exchange, "hello")
-	return err
+func (s *UserService) PublishFanout() (err error) {
+	if s.channel == nil {
+		return fmt.Errorf("channel is not initialzied")
+	}
+
+	err = s.channel.PublishFanout(exchange, "hello")
+	return
 }
 //
 //func (s *UserService) Receive() {
@@ -73,6 +82,10 @@ func (s *UserService) PublishFanout() error {
 //}
 
 func (s *UserService) ReceiveFanout() error {
+	if s.channel == nil {
+		return fmt.Errorf("channel is not initialzied")
+	}
+
 	go func() {
 		for {
 			c, err := s.channel.ReceiveFanout("test2", exchange)
@@ -80,12 +93,14 @@ func (s *UserService) ReceiveFanout() error {
 		}
 	}()
 	return nil
-
-
 }
 
 
 func (s *UserService) ReceiveFanout3() error {
+	if s.channel == nil {
+		return fmt.Errorf("channel is not initialzied")
+	}
+
 	go func() {
 		for {
 			c, err := s.channel.ReceiveFanout("test1", exchange)
@@ -93,7 +108,6 @@ func (s *UserService) ReceiveFanout3() error {
 		}
 	}()
 	return nil
-
 }
 
 //func (s *UserService) ReceiveFanout1() {

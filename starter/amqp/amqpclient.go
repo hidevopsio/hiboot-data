@@ -13,12 +13,12 @@ type Channel struct {
 }
 
 type properties struct {
-	Port      int    `json:"port"`
-	Username  string `json:"username"`
-	Password  string `json:"password"`
-	Host      string `json:"host"`
-	QueueName string `json:"queueName"`
-	Exchange  string `json:"exchange"`
+	Port      int    `json:"port" default:"5672"`
+	Username  string `json:"username" default:"guest"`
+	Password  string `json:"password" default:"guest"`
+	Host      string `json:"host" default:"127.0.0.1"`
+	QueueName string `json:"queueName" default:"my-queue"`
+	Exchange  string `json:"exchange" default:"my-exchange"`
 	SleepTime int64 `json:"sleepTime" default:"3*1e9"`
 }
 
