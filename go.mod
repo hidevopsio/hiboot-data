@@ -11,6 +11,7 @@ require (
 	github.com/go-sql-driver/mysql v1.4.0 // indirect
 	github.com/golang/groupcache v0.0.0-20190129154638-5b532d6fd5ef // indirect
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
+	github.com/hidevopsio/crypto v0.0.0-20181116132211-532a1bf2ebbe // indirect
 	github.com/hidevopsio/gorm v2.0.1+incompatible
 	github.com/jinzhu/copier v0.0.0-20180308034124-7e38e58719c3 // indirect
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
