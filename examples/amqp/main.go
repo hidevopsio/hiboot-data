@@ -16,10 +16,12 @@ package main
 
 import (
 	_ "hidevops.io/hiboot-data/examples/amqp/controller"
+	"hidevops.io/hiboot-data/starter/amqp"
+	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/app/web"
-	_ "hidevops.io/hiboot/pkg/starter/actuator"
+	"hidevops.io/hiboot/pkg/starter/actuator"
 )
 
 func main() {
-	web.NewApplication().Run()
+	web.NewApplication().SetProperty(app.ProfilesInclude, amqp.Profile, actuator.Profile).Run()
 }
