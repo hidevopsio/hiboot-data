@@ -57,6 +57,7 @@ func (s *UserService) PublishFanout() (err error) {
 
 func (s *UserService) ReceiveFanout() error {
 	chn := s.newChannel()
+	defer chn.Close()
 	go func() {
 		for {
 			c, err := chn.ReceiveFanout("test2", exchange)
@@ -69,11 +70,11 @@ func (s *UserService) ReceiveFanout() error {
 
 func (s *UserService) ReceiveFanout3() error {
 	chn := s.newChannel()
-	defer chn.Close()
 	go func() {
 		for {
 			c, err := chn.ReceiveFanout("test1", exchange)
 			log.Infof("cha: %s,  err: %v", *c, err)
+			chn.Close()
 		}
 	}()
 	return nil
