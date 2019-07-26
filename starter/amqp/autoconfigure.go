@@ -37,10 +37,16 @@ func init() {
 
 // Repository method name must be unique
 func (c *configuration) Channel() (chn *Channel) {
-	chn = NewChannel()
+	chn = newChannel()
 	err := chn.Connect(&c.Properties)
 	if err != nil {
 		return nil
 	}
 	return chn
+}
+
+type NewChannel func() (chn *Channel)
+
+func (c *configuration) NewChannel() NewChannel {
+	return c.Channel
 }

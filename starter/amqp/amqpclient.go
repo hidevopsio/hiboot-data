@@ -19,7 +19,7 @@ type properties struct {
 	Host      string `json:"host" default:"127.0.0.1"`
 	QueueName string `json:"queueName" default:"my-queue"`
 	Exchange  string `json:"exchange" default:"my-exchange"`
-	SleepTime int64 `json:"sleepTime" default:"3*1e9"`
+	SleepTime int64  `json:"sleepTime" default:"3*1e9"`
 }
 
 type AmqpClient interface {
@@ -27,7 +27,7 @@ type AmqpClient interface {
 	Close()
 }
 
-func NewChannel() (chn *Channel) {
+func newChannel() (chn *Channel) {
 	return new(Channel)
 }
 
@@ -43,13 +43,14 @@ func (chn *Channel) Connect(p *properties) (err error) {
 }
 
 func (chn *Channel) Receive(queueName string) (*string, error) {
+
 	for {
 		msg, ok, err := chn.Channel.Get(queueName, true)
 		if err != nil {
 			return nil, err
 		}
 		if !ok {
-			time.Sleep(3*1e9)
+			time.Sleep(3 * 1e9)
 			continue
 		}
 		//err = s.channel.Ack(msg.DeliveryTag, false)
@@ -71,7 +72,7 @@ func (chn *Channel) ReceiveFanout(queueName, exchange string) (*string, error) {
 		}
 		msg, ok, err := chn.Get(queueName, true)
 		if !ok {
-			time.Sleep(3*1e9)
+			time.Sleep(3 * 1e9)
 			continue
 		}
 
@@ -80,9 +81,7 @@ func (chn *Channel) ReceiveFanout(queueName, exchange string) (*string, error) {
 		return b, nil
 	}
 
-
 }
-
 
 func (chn *Channel) PublishDirect(exchange, queueName, mgsConnect, key string) error {
 	//type : 交换器类型 DIRECT("direct"), FANOUT("fanout"), TOPIC("topic"), HEADERS("headers");
