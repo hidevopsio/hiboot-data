@@ -15,15 +15,13 @@
 package service
 
 import (
-	"fmt"
 	"hidevops.io/hiboot-data/starter/amqp"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/log"
-
 )
 
 type UserService struct {
-	channel *amqp.Channel
+	newChannel amqp.NewChannel
 }
 
 func init() {
@@ -31,110 +29,52 @@ func init() {
 }
 
 // will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
-func newUserService(channel *amqp.Channel) *UserService {
+func newUserService(newChannel amqp.NewChannel) *UserService {
 	return &UserService{
-		channel: channel,
+		newChannel: newChannel,
 	}
 }
 
 const (
-	mgsConnect = "hello world"
-	exchange   = "test1"
-	queueName  = "Test"
+	exchange = "test1"
 )
 
-func (s *UserService) PublishDirect() (err error) {
-	if s.channel == nil {
-		return fmt.Errorf("channel is not initialzied")
-	}
 
-	err = s.channel.PublishDirect(exchange, queueName,  "hello", "info")
+func (s *UserService) PublishDirect() (err error) {
+	chn := s.newChannel()
+	defer chn.Close()
+	err = chn.PublishDirect("", "test1", "hello", "info")
 	return
 }
 
 func (s *UserService) PublishFanout() (err error) {
-	if s.channel == nil {
-		return fmt.Errorf("channel is not initialzied")
-	}
-
-	err = s.channel.PublishFanout(exchange, "hello")
+	chn := s.newChannel()
+	defer chn.Close()
+	err = chn.PublishFanout(exchange, "hello")
 	return
 }
-//
-//func (s *UserService) Receive() {
-//	for {
-//		msg, ok, err := s.channel.Get(queueName, true)
-//
-//		if !ok {
-//			fmt.Println("do not get msg")
-//			time.Sleep(3*1e9)
-//			continue
-//		}
-//
-//		//err = s.channel.Ack(msg.DeliveryTag, false)
-//		log.Infof("err :%v", err)
-//
-//		b := BytesToString(&(msg.Body))
-//		fmt.Printf("receve msg is :%s\n", *b)
-//	}
-//
-//
-//}
+
 
 func (s *UserService) ReceiveFanout() error {
-	if s.channel == nil {
-		return fmt.Errorf("channel is not initialzied")
-	}
-
+	chn := s.newChannel()
 	go func() {
 		for {
-			c, err := s.channel.ReceiveFanout("test2", exchange)
+			c, err := chn.ReceiveFanout("test2", exchange)
 			log.Infof("cha: %s,  err: %v", *c, err)
+			chn.Close()
 		}
 	}()
 	return nil
 }
-
 
 func (s *UserService) ReceiveFanout3() error {
-	if s.channel == nil {
-		return fmt.Errorf("channel is not initialzied")
-	}
-
+	chn := s.newChannel()
+	defer chn.Close()
 	go func() {
 		for {
-			c, err := s.channel.ReceiveFanout("test1", exchange)
+			c, err := chn.ReceiveFanout("test1", exchange)
 			log.Infof("cha: %s,  err: %v", *c, err)
 		}
 	}()
 	return nil
 }
-
-//func (s *UserService) ReceiveFanout1() {
-//	for {
-//		_, err := s.channel.QueueDeclare("test1", false, false,
-//			false, false, nil)
-//
-//		err = s.channel.QueueBind("test1", "", exchange, false, nil)
-//		msg, ok, err := s.channel.Get("test1", true)
-//		if !ok {
-//			fmt.Println("do not get msg1")
-//			time.Sleep(3*1e9)
-//			continue
-//		}
-//
-//		//err = s.channel.Ack(msg.DeliveryTag, false)
-//		log.Infof("err :%v", err)
-//
-//		b := BytesToString(&(msg.Body))
-//		fmt.Printf("receve msg is1 :%s\n", *b)
-//	}
-//
-//
-//}
-//
-//func BytesToString(b *[]byte) *string {
-//	s := bytes.NewBuffer(*b)
-//	r := s.String()
-//	return &r
-//}
