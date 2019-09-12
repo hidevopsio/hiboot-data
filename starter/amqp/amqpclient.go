@@ -13,12 +13,12 @@ type Channel struct {
 }
 
 type properties struct {
-	Port      int    `json:"port"`
-	Username  string `json:"username"`
-	Password  string `json:"password"`
-	Host      string `json:"host"`
-	QueueName string `json:"queueName"`
-	Exchange  string `json:"exchange"`
+	Port      int    `json:"port" default:"5672"`
+	Username  string `json:"username" default:"guest"`
+	Password  string `json:"password" default:"guest"`
+	Host      string `json:"host" default:"127.0.0.1"`
+	QueueName string `json:"queueName" default:"my-queue"`
+	Exchange  string `json:"exchange" default:"my-exchange"`
 	SleepTime int64  `json:"sleepTime" default:"3*1e9"`
 }
 
@@ -27,7 +27,7 @@ type AmqpClient interface {
 	Close()
 }
 
-func NewChannel() (chn *Channel) {
+func newChannel() (chn *Channel) {
 	return new(Channel)
 }
 
@@ -63,26 +63,6 @@ func (chn *Channel) ReceiveFanout(queueName, exchange string) (*string, error) {
 	if !ok {
 		return nil, err
 	}
-	if err != nil {
-		_, err := chn.QueueDeclare(queueName, false, false,
-			false, false, nil)
-		if err != nil {
-			return nil, err
-		}
-		err = chn.QueueBind(queueName, "", exchange, false, nil)
-		if err != nil {
-			err := chn.ExchangeDeclare(exchange, "fanout", false, false, false, false, nil)
-			if err != nil {
-				return nil, err
-			}
-		}
-		msg, ok, err = chn.Get(queueName, true)
-		if !ok {
-			return nil, err
-		}
-
-	}
-
 	//err = s.channel.Ack(msg.DeliveryTag, false)
 	b := BytesToString(&(msg.Body))
 	return b, nil
@@ -108,13 +88,7 @@ func (chn *Channel) PublishDirect(exchange, queueName, mgsConnect, key string) e
 }
 
 func (chn *Channel) PublishFanout(exchange, mgsConnect string) error {
-	//type : 交换器类型 DIRECT("direct"), FANOUT("fanout"), TOPIC("topic"), HEADERS("headers");
-	//durable: 是否持久化,durable设置为true表示持久化,反之是非持久化
-	err := chn.ExchangeDeclare(exchange, "fanout", false, false, false, false, nil)
-	if err != nil {
-		return err
-	}
-	err = chn.Publish(exchange, "", false, false, amqp.Publishing{
+	err := chn.Publish(exchange, "", false, false, amqp.Publishing{
 		ContentType: "text/plain", Body: []byte(mgsConnect),
 	})
 	return err
@@ -124,4 +98,18 @@ func BytesToString(b *[]byte) *string {
 	s := bytes.NewBuffer(*b)
 	r := s.String()
 	return &r
+}
+
+//CreateFanout 创建Fanout类型的队列
+func (chn *Channel) CreateFanout(queueName, exchange string) error {
+	//type : 交换器类型 DIRECT("direct"), FANOUT("fanout"), TOPIC("topic"), HEADERS("headers");
+	//durable: 是否持久化,durable设置为true表示持久化,反之是非持久化
+	err := chn.ExchangeDeclare(exchange, "fanout", false, false, false, false, nil)
+	_, err = chn.QueueDeclare(queueName, false, false,
+		false, false, nil)
+	if err != nil {
+		return err
+	}
+	err = chn.QueueBind(queueName, "", exchange, false, nil)
+	return err
 }

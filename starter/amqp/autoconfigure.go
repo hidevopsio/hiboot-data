@@ -24,7 +24,7 @@ type configuration struct {
 	app.Configuration
 	// the properties member name must be amqp if the mapstructure is amqp,
 	// so that the reference can be parsed
-	Properties *properties `mapstructure:"amqp"`
+	Properties properties `mapstructure:"amqp"`
 }
 
 func newConfiguration() *configuration {
@@ -37,10 +37,17 @@ func init() {
 
 // Repository method name must be unique
 func (c *configuration) Channel() (chn *Channel) {
-	chn = NewChannel()
-	err := chn.Connect(c.Properties)
+	chn = newChannel()
+	err := chn.Connect(&c.Properties)
 	if err != nil {
 		return nil
 	}
 	return chn
 }
+
+type NewChannel func() (chn *Channel)
+
+func (c *configuration) NewChannel() NewChannel {
+	return c.Channel
+}
+

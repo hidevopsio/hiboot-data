@@ -54,3 +54,8 @@ func (c *UserController) PostReceive1() (model.Response, error) {
 	c.userService.ReceiveFanout3()
 	return nil, nil
 }
+
+func (c *UserController) PostCreate() (model.Response, error) {
+	err := c.userService.Create()
+	return nil, err
+}

@@ -22,7 +22,7 @@ import (
 )
 
 type UserService struct {
-	channel *amqp.Channel
+	newChannel amqp.NewChannel
 }
 
 func init() {
@@ -30,25 +30,33 @@ func init() {
 }
 
 // will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
-func newUserService(channel *amqp.Channel) *UserService {
+func newUserService(newChannel amqp.NewChannel) *UserService {
 	return &UserService{
-		channel: channel,
+		newChannel: newChannel,
 	}
 }
 
 const (
 	mgsConnect = "hello world"
-	exchange   = "test11"
+	exchange   = "test23223"
 	queueName  = "Test"
 )
 
+func (s *UserService) Create() error {
+	shn := s.newChannel()
+	err := shn.CreateFanout(queueName, exchange)
+	return err
+}
+
 func (s *UserService) PublishDirect() error {
-	err := s.channel.PublishDirect(exchange, queueName, "hello", "info")
+	shn := s.newChannel()
+	err := shn.PublishDirect(exchange, queueName, mgsConnect, "info")
 	return err
 }
 
 func (s *UserService) PublishFanout() error {
-	err := s.channel.PublishFanout(exchange, "hello")
+	shn := s.newChannel()
+	err := shn.PublishFanout(exchange, "hello")
 	return err
 }
 
@@ -76,7 +84,8 @@ func (s *UserService) PublishFanout() error {
 func (s *UserService) ReceiveFanout() error {
 	go func() {
 		for {
-			c, _ := s.channel.ReceiveFanout("test22", exchange)
+			shn := s.newChannel()
+			c, _ := shn.ReceiveFanout(queueName, exchange)
 			if c != nil {
 				log.Infof("cha: %s", *c)
 			}
@@ -91,7 +100,8 @@ func (s *UserService) ReceiveFanout() error {
 func (s *UserService) ReceiveFanout3() error {
 	go func() {
 		for {
-			c, _ := s.channel.ReceiveFanout("test22222", exchange)
+			shn := s.newChannel()
+			c, _ := shn.ReceiveFanout("test22222", exchange)
 			if c != nil {
 				log.Infof("cha: %s", *c)
 			}
