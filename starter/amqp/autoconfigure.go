@@ -50,4 +50,3 @@ type NewChannel func() (chn *Channel)
 func (c *configuration) NewChannel() NewChannel {
 	return c.Channel
 }
-

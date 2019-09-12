@@ -6,14 +6,9 @@ server:
 logging:
   level: debug
 
-#amqp:
-#  host: xxxxx
-#  port: xxxx
-#  username: xxxx
-#  password: xxxxxxx
-
 amqp:
-  host: 10.10.12.14
-  port: 5672
-  username: cloudtogo
-  password: jYMEBEMCLrybtCr
+  host: xxxxx
+  port: xxxx
+  username: xxxx
+  password: xxxxxxx
+

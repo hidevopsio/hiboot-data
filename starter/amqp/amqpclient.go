@@ -43,6 +43,7 @@ func (chn *Channel) Connect(p *properties) (err error) {
 }
 
 func (chn *Channel) Receive(queueName string) (*string, error) {
+
 	for {
 		msg, ok, err := chn.Channel.Get(queueName, true)
 		if err != nil {
@@ -113,3 +114,4 @@ func (chn *Channel) CreateFanout(queueName, exchange string) error {
 	err = chn.QueueBind(queueName, "", exchange, false, nil)
 	return err
 }
+
