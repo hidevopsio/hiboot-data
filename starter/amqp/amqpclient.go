@@ -19,7 +19,7 @@ type properties struct {
 	Host      string `json:"host"`
 	QueueName string `json:"queueName"`
 	Exchange  string `json:"exchange"`
-	SleepTime int64 `json:"sleepTime" default:"3*1e9"`
+	SleepTime int64  `json:"sleepTime" default:"3*1e9"`
 }
 
 type AmqpClient interface {
@@ -49,7 +49,7 @@ func (chn *Channel) Receive(queueName string) (*string, error) {
 			return nil, err
 		}
 		if !ok {
-			time.Sleep(3*1e9)
+			time.Sleep(3 * 1e9)
 			continue
 		}
 		//err = s.channel.Ack(msg.DeliveryTag, false)
@@ -59,7 +59,11 @@ func (chn *Channel) Receive(queueName string) (*string, error) {
 }
 
 func (chn *Channel) ReceiveFanout(queueName, exchange string) (*string, error) {
-	for {
+	msg, ok, err := chn.Get(queueName, true)
+	if !ok {
+		return nil, err
+	}
+	if err != nil {
 		_, err := chn.QueueDeclare(queueName, false, false,
 			false, false, nil)
 		if err != nil {
@@ -67,22 +71,23 @@ func (chn *Channel) ReceiveFanout(queueName, exchange string) (*string, error) {
 		}
 		err = chn.QueueBind(queueName, "", exchange, false, nil)
 		if err != nil {
+			err := chn.ExchangeDeclare(exchange, "fanout", false, false, false, false, nil)
+			if err != nil {
+				return nil, err
+			}
+		}
+		msg, ok, err = chn.Get(queueName, true)
+		if !ok {
 			return nil, err
 		}
-		msg, ok, err := chn.Get(queueName, true)
-		if !ok {
-			time.Sleep(3*1e9)
-			continue
-		}
 
-		//err = s.channel.Ack(msg.DeliveryTag, false)
-		b := BytesToString(&(msg.Body))
-		return b, nil
 	}
 
+	//err = s.channel.Ack(msg.DeliveryTag, false)
+	b := BytesToString(&(msg.Body))
+	return b, nil
 
 }
-
 
 func (chn *Channel) PublishDirect(exchange, queueName, mgsConnect, key string) error {
 	//type : 交换器类型 DIRECT("direct"), FANOUT("fanout"), TOPIC("topic"), HEADERS("headers");

@@ -18,7 +18,7 @@ import (
 	"hidevops.io/hiboot-data/starter/amqp"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/log"
-
+	"time"
 )
 
 type UserService struct {
@@ -38,12 +38,12 @@ func newUserService(channel *amqp.Channel) *UserService {
 
 const (
 	mgsConnect = "hello world"
-	exchange   = "test1"
+	exchange   = "test11"
 	queueName  = "Test"
 )
 
 func (s *UserService) PublishDirect() error {
-	err := s.channel.PublishDirect(exchange, queueName,  "hello", "info")
+	err := s.channel.PublishDirect(exchange, queueName, "hello", "info")
 	return err
 }
 
@@ -51,6 +51,7 @@ func (s *UserService) PublishFanout() error {
 	err := s.channel.PublishFanout(exchange, "hello")
 	return err
 }
+
 //
 //func (s *UserService) Receive() {
 //	for {
@@ -75,21 +76,26 @@ func (s *UserService) PublishFanout() error {
 func (s *UserService) ReceiveFanout() error {
 	go func() {
 		for {
-			c, err := s.channel.ReceiveFanout("test2", exchange)
-			log.Infof("cha: %s,  err: %v", *c, err)
+			c, _ := s.channel.ReceiveFanout("test22", exchange)
+			if c != nil {
+				log.Infof("cha: %s", *c)
+			}
+			time.Sleep(5 * time.Second)
+
 		}
 	}()
 	return nil
 
-
 }
-
 
 func (s *UserService) ReceiveFanout3() error {
 	go func() {
 		for {
-			c, err := s.channel.ReceiveFanout("test1", exchange)
-			log.Infof("cha: %s,  err: %v", *c, err)
+			c, _ := s.channel.ReceiveFanout("test22222", exchange)
+			if c != nil {
+				log.Infof("cha: %s", *c)
+			}
+			time.Sleep(5 * time.Second)
 		}
 	}()
 	return nil
