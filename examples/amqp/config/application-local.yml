@@ -5,3 +5,10 @@ server:
 
 logging:
   level: debug
+
+amqp:
+  host: xxxxx
+  port: xxxx
+  username: xxxx
+  password: xxxxxxx
+
