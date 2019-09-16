@@ -6,9 +6,9 @@ server:
 logging:
   level: debug
 
-amqp:
-  host: xxxxx
-  port: xxxx
-  username: xxxx
-  password: xxxxxxx
 
+amqp:
+  host: localhost
+  port: 5672
+  username: root
+  password: 123456
