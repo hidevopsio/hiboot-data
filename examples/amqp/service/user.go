@@ -62,14 +62,21 @@ func (s *UserService) PublishFanout() error {
 
 func (s *UserService) ReceiveFanout() error {
 	go func() {
-		for {
-			shn := s.newChannel()
-			c, _ := shn.ReceiveFanout(queueName, exchange)
-			if c != nil {
-				log.Infof("cha: %s", *c)
+		c := 1
+		shn := s.newChannel()
+		defer shn.Close()
+		chas, err := shn.Receive(queueName)
+		if err != nil {
+			log.Infof("err: %s", err)
+		}
+		for cha := range chas {
+			log.Debugf("cha :%v", *amqp.BytesToString(&(cha.Body)))
+			cha.Ack(false)
+			c ++
+			log.Debugf("cha :%v", c)
+			if c == 5 {
+				return
 			}
-			time.Sleep(5 * time.Second)
-
 		}
 	}()
 	return nil

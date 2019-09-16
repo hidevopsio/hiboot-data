@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/streadway/amqp"
 	"hidevops.io/hiboot/pkg/log"
-	"time"
 )
 
 type Channel struct {
@@ -42,31 +41,42 @@ func (chn *Channel) Connect(p *properties) (err error) {
 	return err
 }
 
-func (chn *Channel) Receive(queueName string) (*string, error) {
+func (chn *Channel) Receive(queueName string) (<-chan amqp.Delivery, error) {
+	return chn.Channel.Consume(queueName,
+		"",
+		false,
+		false,
+		false,
+		false,
+		nil)
 
-	for {
-		msg, ok, err := chn.Channel.Get(queueName, true)
-		if err != nil {
-			return nil, err
-		}
-		if !ok {
-			time.Sleep(3 * 1e9)
-			continue
-		}
-		//err = s.channel.Ack(msg.DeliveryTag, false)
-		b := BytesToString(&(msg.Body))
-		return b, nil
-	}
 }
 
 func (chn *Channel) ReceiveFanout(queueName, exchange string) (*string, error) {
-	msg, ok, err := chn.Get(queueName, true)
-	if !ok {
+	msgs, err := chn.Channel.Consume(queueName,
+		"",
+		false,
+		false,
+		false,
+		false,
+		nil)
+	/*	msg, ok, err := chn.Get(queueName, true)
+		if !ok {
+			return nil, err
+		}*/
+	//err = s.channel.Ack(msg.DeliveryTag, false)
+	if err != nil {
 		return nil, err
 	}
-	//err = s.channel.Ack(msg.DeliveryTag, false)
-	b := BytesToString(&(msg.Body))
-	return b, nil
+	// 使用callback消费数据
+	for msg := range msgs {
+		b := BytesToString(&(msg.Body))
+		fmt.Sprintf("heee: %v", b)
+
+		// 确认收到本条消息, multiple必须为false
+		msg.Ack(false)
+	}
+	return nil, nil
 
 }
 
@@ -114,4 +124,3 @@ func (chn *Channel) CreateFanout(queueName, exchange string) error {
 	err = chn.QueueBind(queueName, "", exchange, false, nil)
 	return err
 }
-
