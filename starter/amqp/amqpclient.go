@@ -100,7 +100,7 @@ func (chn *Channel) PublishDirect(exchange, queueName, mgsConnect, key string) e
 
 func (chn *Channel) PublishFanout(exchange, mgsConnect string) error {
 	err := chn.Publish(exchange, "", false, false, amqp.Publishing{
-		ContentType: "text/plain", Body: []byte(mgsConnect), Expiration: "10000",
+		ContentType: "text/plain", Body: []byte(mgsConnect),
 	})
 	return err
 }
