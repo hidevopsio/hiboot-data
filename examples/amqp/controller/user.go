@@ -44,6 +44,10 @@ func (c *UserController) PostPublish() (model.Response, error) {
 	return nil, err
 }
 
+func (c *UserController) PostPush() (model.Response, error) {
+	err := c.userService.Publish()
+	return nil, err
+}
 
 func (c *UserController) PostReceive() (model.Response, error) {
 	c.userService.ReceiveFanout()
@@ -57,5 +61,10 @@ func (c *UserController) PostReceive1() (model.Response, error) {
 
 func (c *UserController) PostCreate() (model.Response, error) {
 	err := c.userService.Create()
+	return nil, err
+}
+
+func (c *UserController) PostCreate1() (model.Response, error) {
+	err := c.userService.Create1()
 	return nil, err
 }
