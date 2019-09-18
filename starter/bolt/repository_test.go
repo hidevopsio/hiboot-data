@@ -41,7 +41,7 @@ var (
 
 func TestRepositoryCrd(t *testing.T) {
 
-	properties := &properties{
+	properties := &Properties{
 		Database: "test.db",
 		Mode:     0600,
 		Timeout:  2,

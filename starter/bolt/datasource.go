@@ -22,7 +22,7 @@ import (
 )
 
 type DataSource interface {
-	Open(properties *properties) error
+	Open(properties *Properties) error
 	Close() error
 	IsOpened() bool
 	DB() *bolt.DB
@@ -46,7 +46,7 @@ func (d *dataSource) DB() *bolt.DB {
 	return d.db
 }
 
-func (d *dataSource) Open(properties *properties) error {
+func (d *dataSource) Open(properties *Properties) error {
 	if properties == nil {
 		return InvalidPropertiesError
 	}

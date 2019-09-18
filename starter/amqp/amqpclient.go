@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/streadway/amqp"
+	"hidevops.io/hiboot/pkg/at"
 	"hidevops.io/hiboot/pkg/log"
 )
 
@@ -11,7 +12,9 @@ type Channel struct {
 	*amqp.Channel
 }
 
-type properties struct {
+type Properties struct {
+	at.ConfigurationProperties `value:"amqp"`
+
 	Port      int    `json:"port" default:"5672"`
 	Username  string `json:"username" default:"guest"`
 	Password  string `json:"password" default:"guest"`
@@ -30,7 +33,7 @@ func newChannel() (chn *Channel) {
 	return new(Channel)
 }
 
-func (chn *Channel) Connect(p *properties) (err error) {
+func (chn *Channel) Connect(p *Properties) (err error) {
 	url := fmt.Sprintf("amqp://%s:%s@%s:%d/", p.Username, p.Password, p.Host, p.Port)
 	conn, err := amqp.Dial(url)
 	if err != nil {

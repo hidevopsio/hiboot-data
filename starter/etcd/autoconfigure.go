@@ -36,11 +36,11 @@ type etcdConfiguration struct {
 	app.Configuration
 	// the properties member name must be Etcd if the mapstructure is etcd,
 	// so that the reference can be parsed
-	Properties properties `mapstructure:"etcd"`
+	Properties *Properties
 }
 
 func init() {
-	app.Register(new(etcdConfiguration))
+	app.Register(new(etcdConfiguration), new(Properties))
 }
 
 // EtcdClient create instance named etcdClient

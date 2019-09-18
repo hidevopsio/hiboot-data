@@ -33,7 +33,7 @@ type Repository interface {
 }
 
 type DataSource interface {
-	Open(p *properties) error
+	Open(p *Properties) error
 	IsOpened() bool
 	Close() error
 	Repository() gorm.Repository
@@ -58,7 +58,7 @@ func (d *dataSource) Init(repository Repository) {
 	d.repository = repository
 }
 
-func (d *dataSource) Open(p *properties) error {
+func (d *dataSource) Open(p *Properties) error {
 	var err error
 	password := p.Password
 	if p.Config.Decrypt {

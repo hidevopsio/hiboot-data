@@ -14,13 +14,17 @@
 
 package etcd
 
+import "hidevops.io/hiboot/pkg/at"
+
 type cert struct {
 	CertFile      string `json:"cert_file" default:"config/certs/etcd.pem"`
 	KeyFile       string `json:"key_file" default:"config/certs/etcd-key.pem"`
 	TrustedCAFile string `json:"trusted_ca_file" default:"config/certs/ca.pem"`
 }
 
-type properties struct {
+type Properties struct {
+	at.ConfigurationProperties `value:"etcd"`
+
 	DialTimeout    int64    `json:"dial_timeout"`
 	RequestTimeout int64    `json:"request_timeout"`
 	Endpoints      []string `json:"endpoints"`

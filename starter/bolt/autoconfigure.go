@@ -25,7 +25,7 @@ type boltConfiguration struct {
 	app.Configuration
 	// the properties member name must be Bolt if the mapstructure is bolt,
 	// so that the reference can be parsed
-	BoltProperties properties `mapstructure:"bolt"`
+	Properties *Properties
 }
 
 func init() {
@@ -35,7 +35,7 @@ func init() {
 func (c *boltConfiguration) dataSource() DataSource {
 	dataSource := GetDataSource()
 	if !dataSource.IsOpened() {
-		err := dataSource.Open(&c.BoltProperties)
+		err := dataSource.Open(c.Properties)
 		if err != nil {
 			log.Error(err.Error())
 		}

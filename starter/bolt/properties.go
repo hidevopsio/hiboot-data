@@ -14,9 +14,14 @@
 
 package bolt
 
-import "os"
+import (
+	"hidevops.io/hiboot/pkg/at"
+	"os"
+)
 
-type properties struct {
+type Properties struct {
+	at.ConfigurationProperties `value:"bolt"`
+
 	Database string      `json:"database"`
 	Mode     os.FileMode `json:"mode"`
 	Timeout  int64       `json:"timeout"`

@@ -9,7 +9,7 @@ import (
 func TestAmqp(t *testing.T) {
 	log.SetLevel(log.DebugLevel)
 	conf := newConfiguration()
-	conf.Properties = properties{
+	conf.Properties = Properties{
 		Username: "user",
 		Password: "password",
 		Host:     "127.0.0.1",
