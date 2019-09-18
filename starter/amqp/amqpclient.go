@@ -100,7 +100,14 @@ func (chn *Channel) PublishDirect(exchange, queueName, mgsConnect, key string) e
 
 func (chn *Channel) PublishFanout(exchange, mgsConnect string) error {
 	err := chn.Publish(exchange, "", false, false, amqp.Publishing{
-		ContentType: "text/plain", Body: []byte(mgsConnect),
+		ContentType: "text/plain", Body: []byte(mgsConnect), Expiration: "10000",
+	})
+	return err
+}
+
+func (chn *Channel) Push(exchange, key, expiration, mgsConnect string) error {
+	err := chn.Publish(exchange, key, false, false, amqp.Publishing{
+		ContentType: "text/plain", Body: []byte(mgsConnect), Expiration: expiration,
 	})
 	return err
 }
@@ -122,5 +129,18 @@ func (chn *Channel) CreateFanout(queueName, exchange string) error {
 		return err
 	}
 	err = chn.QueueBind(queueName, "", exchange, false, nil)
+	return err
+}
+
+func (chn *Channel) Create(queueName, exchange, key, kind string) error {
+	//type : 交换器类型 DIRECT("direct"), FANOUT("fanout"), TOPIC("topic"), HEADERS("headers");
+	//durable: 是否持久化,durable设置为true表示持久化,反之是非持久化
+	err := chn.ExchangeDeclare(exchange, kind, false, false, false, false, nil)
+	_, err = chn.QueueDeclare(queueName, false, false,
+		false, false, nil)
+	if err != nil {
+		return err
+	}
+	err = chn.QueueBind(queueName, key, exchange, false, nil)
 	return err
 }

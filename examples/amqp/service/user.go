@@ -15,6 +15,7 @@
 package service
 
 import (
+	str_amqp "github.com/streadway/amqp"
 	"hidevops.io/hiboot-data/starter/amqp"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/log"
@@ -40,6 +41,7 @@ const (
 	mgsConnect = "hello world"
 	exchange   = "test23223"
 	queueName  = "Test"
+	key        = "hh"
 )
 
 func (s *UserService) Create() error {
@@ -48,9 +50,21 @@ func (s *UserService) Create() error {
 	return err
 }
 
+func (s *UserService) Create1() error {
+	shn := s.newChannel()
+	err := shn.Create(queueName, exchange, key, str_amqp.ExchangeFanout)
+	return err
+}
+
 func (s *UserService) PublishDirect() error {
 	shn := s.newChannel()
 	err := shn.PublishDirect(exchange, queueName, mgsConnect, "info")
+	return err
+}
+
+func (s *UserService) Publish() error {
+	shn := s.newChannel()
+	err := shn.Push(exchange, key, "100000", "hello")
 	return err
 }
 
@@ -72,7 +86,7 @@ func (s *UserService) ReceiveFanout() error {
 		for cha := range chas {
 			log.Debugf("cha :%v", *amqp.BytesToString(&(cha.Body)))
 			cha.Ack(false)
-			c ++
+			c++
 			log.Debugf("cha :%v", c)
 			if c == 5 {
 				return
