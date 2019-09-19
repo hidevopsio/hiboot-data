@@ -35,5 +35,5 @@ require (
 	go.etcd.io/bbolt v1.3.3 // indirect
 	golang.org/x/net v0.0.0-20190613194153-d28f0bde5980
 	google.golang.org/appengine v1.4.0 // indirect
-	hidevops.io/hiboot v1.2.2-0.20190917040012-38f2bebb9e7c
+	hidevops.io/hiboot v1.2.2-0.20190919062735-b5183b7d77a4
 )
