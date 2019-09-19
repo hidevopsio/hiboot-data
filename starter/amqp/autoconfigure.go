@@ -27,8 +27,8 @@ type configuration struct {
 	Properties *Properties
 }
 
-func newConfiguration() *configuration {
-	return &configuration{}
+func newConfiguration(properties *Properties) *configuration {
+	return &configuration{Properties: properties}
 }
 
 func init() {

@@ -39,8 +39,13 @@ type etcdConfiguration struct {
 	Properties *Properties
 }
 
+func newEtcdConfiguration(properties *Properties) *etcdConfiguration {
+	return &etcdConfiguration{Properties: properties}
+}
+
+
 func init() {
-	app.Register(new(etcdConfiguration), new(Properties))
+	app.Register(newEtcdConfiguration, new(Properties))
 }
 
 // EtcdClient create instance named etcdClient

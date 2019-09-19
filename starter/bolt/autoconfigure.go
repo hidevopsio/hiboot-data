@@ -28,8 +28,12 @@ type boltConfiguration struct {
 	Properties *Properties
 }
 
+func newBoltConfiguration(properties *Properties) *boltConfiguration {
+	return &boltConfiguration{Properties: properties}
+}
+
 func init() {
-	app.Register(new(boltConfiguration))
+	app.Register(newBoltConfiguration, new(Properties))
 }
 
 func (c *boltConfiguration) dataSource() DataSource {

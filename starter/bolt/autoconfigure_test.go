@@ -38,7 +38,7 @@ func TestNewBoltWithError(t *testing.T) {
 	repository := configuration.Repository()
 	assert.NotEqual(t, nil, repository)
 
-	configuration.Properties = Properties{
+	configuration.Properties = &Properties{
 		Timeout: 1,
 	}
 
