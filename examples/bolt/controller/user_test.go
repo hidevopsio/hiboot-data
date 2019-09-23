@@ -28,7 +28,7 @@ func init() {
 
 func TestCrdRequest(t *testing.T) {
 	// TODO: mock UserService
-	testApp := web.NewTestApplication(t, newUserController)
+	testApp := web.NewTestApp(newUserController).Run(t)
 
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User

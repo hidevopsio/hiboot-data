@@ -8,13 +8,13 @@ import (
 
 func TestAmqp(t *testing.T) {
 	log.SetLevel(log.DebugLevel)
-	conf := newConfiguration()
-	conf.Properties = Properties{
+	conf := newConfiguration(&Properties{
 		Username: "user",
 		Password: "password",
 		Host:     "127.0.0.1",
 		Port:     1111,
-	}
+	})
+
 	ch := conf.Channel()
 	var c *Channel
 	assert.Equal(t, c, ch)
