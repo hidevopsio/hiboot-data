@@ -463,6 +463,7 @@ hidevops.io/hiboot v1.2.2-0.20190917040012-38f2bebb9e7c h1:AhMk+Kkof+oxQqRpeLXEJ
 hidevops.io/hiboot v1.2.2-0.20190917040012-38f2bebb9e7c/go.mod h1:239GRpQJGyEZXetSB08vt+rpcud3vPYkC5f4/iiMdY0=
 hidevops.io/hiboot v1.2.2-0.20190919062735-b5183b7d77a4/go.mod h1:239GRpQJGyEZXetSB08vt+rpcud3vPYkC5f4/iiMdY0=
 hidevops.io/hiboot v1.2.2-0.20190919063541-4c9d6a958afd/go.mod h1:239GRpQJGyEZXetSB08vt+rpcud3vPYkC5f4/iiMdY0=
+hidevops.io/hiboot v1.2.2-0.20190923155522-406a1f28682d/go.mod h1:239GRpQJGyEZXetSB08vt+rpcud3vPYkC5f4/iiMdY0=
 hidevops.io/viper v1.3.2 h1:V5S1yGjYbPwWlzg5SzSD7ghBoHLC7RpRjpef2yuHHwI=
 hidevops.io/viper v1.3.2/go.mod h1:B1gD8pJIYvmlHegqP6p/BKe8E9MMfOd4egl98vQbGtM=
 honnef.co/go/tools v0.0.0-20180728063816-88497007e858/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
