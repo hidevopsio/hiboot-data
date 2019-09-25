@@ -5,7 +5,3 @@ server:
 
 logging:
   level: info
-
-gorm:
-  # mysql is the host name of mysql server, you should change it to 127.0.0.1 if you start mysql on local machine.
-  host: 10.10.12.14

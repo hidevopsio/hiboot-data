@@ -36,5 +36,5 @@ require (
 	golang.org/x/net v0.0.0-20190613194153-d28f0bde5980
 	golang.org/x/time v0.0.0-20190921001708-c4c64cad1fd0 // indirect
 	google.golang.org/appengine v1.4.0 // indirect
-	hidevops.io/hiboot v1.2.2-0.20190923155522-406a1f28682d
+	hidevops.io/hiboot v1.2.2-0.20190925030131-c993e3b07160
 )
