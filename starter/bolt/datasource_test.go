@@ -21,7 +21,7 @@ import (
 
 func TestDataSource(t *testing.T) {
 
-	properties := &properties{
+	properties := &Properties{
 		Database: "test.db",
 		Mode:     0600,
 		Timeout:  2,
@@ -45,7 +45,7 @@ func TestDataSource(t *testing.T) {
 
 func TestDataSourceWithEmptyFile(t *testing.T) {
 
-	properties := &properties{
+	properties := &Properties{
 		Timeout: 2,
 	}
 	d := GetDataSource()

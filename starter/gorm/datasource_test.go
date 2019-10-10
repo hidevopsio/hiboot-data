@@ -38,7 +38,7 @@ func init() {
 }
 
 func TestDataSourceOpen(t *testing.T) {
-	prop := &properties{
+	prop := &Properties{
 		Type:      "mysql",
 		Host:      "mysql-dev",
 		Port:      "3306",

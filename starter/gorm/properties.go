@@ -14,12 +14,17 @@
 
 package gorm
 
+import "hidevops.io/hiboot/pkg/at"
+
 type Config struct {
 	Decrypt    bool   `json:"decrypt" default:"true"`
 	DecryptKey string `json:"decrypt_key"`
 }
 
-type properties struct {
+type Properties struct {
+	// annotation ConfigurationProperties
+	at.ConfigurationProperties `value:"gorm"`
+
 	Type      string `json:"type" default:"mysql"` // mysql, postgres, sqlite3, mssql,
 	Host      string `json:"host" default:"mysql-dev"`
 	Port      string `json:"port" default:"3306"`

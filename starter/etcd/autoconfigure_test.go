@@ -13,7 +13,7 @@ func TestEtcd(t *testing.T) {
 	conf := new(etcdConfiguration)
 
 	t.Run("should create instance named etcdClient", func(t *testing.T) {
-		conf.Properties = properties{
+		conf.Properties = &Properties{
 			DialTimeout:    5,
 			RequestTimeout: 10,
 			Endpoints:      []string{"172.16.10.470:2379"},

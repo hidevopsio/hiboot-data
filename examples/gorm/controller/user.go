@@ -18,14 +18,15 @@ import (
 	"hidevops.io/hiboot-data/examples/gorm/entity"
 	"hidevops.io/hiboot-data/examples/gorm/service"
 	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/app/web"
+	"hidevops.io/hiboot/pkg/at"
 	"hidevops.io/hiboot/pkg/model"
 	"net/http"
 )
 
 // RestController
 type userController struct {
-	web.Controller
+	at.RestController
+
 	userService service.UserService
 }
 

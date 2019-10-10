@@ -28,7 +28,7 @@ func init() {
 
 func TestCrdRequest(t *testing.T) {
 	// TODO: mock UserService
-	testApp := web.NewTestApplication(t, newUserController)
+	testApp := web.NewTestApp(newUserController).Run(t)
 
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User
@@ -39,21 +39,21 @@ func TestCrdRequest(t *testing.T) {
 
 	t.Run("should get user with GET request", func(t *testing.T) {
 		// Then Get User
-		testApp.Get("/user/id/{id}").
+		testApp.Get("/user/{id}").
 			WithPath("id", "1").
 			Expect().Status(http.StatusOK)
 	})
 
 	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
 		// Then Get User
-		testApp.Get("/user/id/{id}").
+		testApp.Get("/user/{id}").
 			WithPath("id", "9999").
 			Expect().Status(http.StatusNotFound)
 	})
 
 	t.Run("should delete the record with DELETE request", func(t *testing.T) {
 		// Finally Delete User
-		testApp.Delete("/user/id/{id}").
+		testApp.Delete("/user/{id}").
 			WithPath("id", "1").
 			Expect().Status(http.StatusOK)
 	})

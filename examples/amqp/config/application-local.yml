@@ -5,3 +5,10 @@ server:
 
 logging:
   level: debug
+
+
+amqp:
+  host: localhost
+  port: 5672
+  username: root
+  password: 123456

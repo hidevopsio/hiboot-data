@@ -8,5 +8,11 @@ app:
     include:
     - amqp
 
+amqp:
+  host: amqp
+  port: 5672
+  username: root
+  password: 123456
+
 logging:
   level: debug

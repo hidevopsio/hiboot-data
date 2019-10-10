@@ -21,7 +21,7 @@ import (
 
 func TestNewBolt(t *testing.T) {
 	configuration := new(boltConfiguration)
-	configuration.BoltProperties = properties{
+	configuration.Properties = &Properties{
 		Database: "test.db",
 		Mode:     0600,
 		Timeout:  1,
@@ -38,7 +38,7 @@ func TestNewBoltWithError(t *testing.T) {
 	repository := configuration.Repository()
 	assert.NotEqual(t, nil, repository)
 
-	configuration.BoltProperties = properties{
+	configuration.Properties = &Properties{
 		Timeout: 1,
 	}
 
