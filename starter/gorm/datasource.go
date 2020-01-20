@@ -78,8 +78,11 @@ func (d *dataSource) Open(p *Properties) error {
 
 	d.repository, err = gorm.Open(p.Type, source)
 	db := d.repository.SqlDB()
+	// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
 	db.SetConnMaxLifetime(p.ConnMaxLifetime)
+	// SetMaxIdleConns sets the maximum number of connections in the idle connection pool
 	db.SetMaxIdleConns(p.MaxIdleConns)
+	// SetMaxOpenConns sets the maximum number of open connections to the database.
 	db.SetMaxOpenConns(p.MaxOpenConns)
 	if err != nil {
 		log.Errorf("dataSource connection failed: %v (%v)", err, p)
