@@ -5,3 +5,10 @@ server:
 
 logging:
   level: info
+
+gorm:
+  host: 10.10.12.14
+  database: demo
+  password: mN632xQ/rlS3E0r0pGz/bSvbEAoAGQSMSzxc1EmHUdjf6oGhMNtQ1EQmd14+LSMcqnr6Ln1UNoQvzgZMCyqAty4tXVFAxd+h+YABDcf+gBS+b+I4R4iQmxVdbT/FA2OcXiqT4XW0YKHh1KuHw/fBqhn2QwqH2IVIaUzA7689dpw=
+
+
