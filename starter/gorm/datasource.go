@@ -77,7 +77,9 @@ func (d *dataSource) Open(p *Properties) error {
 		p.Username, password, p.Host, p.Port, databaseName, p.Charset, parseTime, loc)
 
 	d.repository, err = gorm.Open(p.Type, source)
-
+	db := d.repository.SqlDB()
+	db.SetConnMaxLifetime(p.ConnMaxLifetime)
+	db.SetMaxIdleConns(p.MaxIdleConns)
 	if err != nil {
 		log.Errorf("dataSource connection failed: %v (%v)", err, p)
 		defer func() {
