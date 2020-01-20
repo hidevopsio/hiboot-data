@@ -80,6 +80,7 @@ func (d *dataSource) Open(p *Properties) error {
 	db := d.repository.SqlDB()
 	db.SetConnMaxLifetime(p.ConnMaxLifetime)
 	db.SetMaxIdleConns(p.MaxIdleConns)
+	db.SetMaxOpenConns(p.MaxOpenConns)
 	if err != nil {
 		log.Errorf("dataSource connection failed: %v (%v)", err, p)
 		defer func() {

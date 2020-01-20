@@ -40,4 +40,5 @@ type Properties struct {
 	Config          Config        `json:"config"`
 	ConnMaxLifetime time.Duration `json:"connMaxLifetime" default:"60 * time.Second"`
 	MaxIdleConns    int           `json:"maxIdleConns" default:"20"`
+	MaxOpenConns    int           `json:"maxOpenConns" default:"200"`
 }
