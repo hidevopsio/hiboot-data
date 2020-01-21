@@ -14,7 +14,9 @@
 
 package gorm
 
-import "hidevops.io/hiboot/pkg/at"
+import (
+	"hidevops.io/hiboot/pkg/at"
+)
 
 type Config struct {
 	Decrypt    bool   `json:"decrypt" default:"true"`
@@ -25,14 +27,17 @@ type Properties struct {
 	// annotation ConfigurationProperties
 	at.ConfigurationProperties `value:"gorm"`
 
-	Type      string `json:"type" default:"mysql"` // mysql, postgres, sqlite3, mssql,
-	Host      string `json:"host" default:"mysql-dev"`
-	Port      string `json:"port" default:"3306"`
-	Database  string `json:"database"`
-	Username  string `json:"username"`
-	Password  string `json:"password"`
-	Charset   string `json:"charset" default:"utf8"`
-	ParseTime bool   `json:"parse_time" default:"true"`
-	Loc       string `json:"loc" default:"Asia/Shanghai"`
-	Config    Config `json:"config"`
+	Type            string `json:"type" default:"mysql"` // mysql, postgres, sqlite3, mssql,
+	Host            string `json:"host" default:"mysql-dev"`
+	Port            string `json:"port" default:"3306"`
+	Database        string `json:"database"`
+	Username        string `json:"username"`
+	Password        string `json:"password"`
+	Charset         string `json:"charset" default:"utf8"`
+	ParseTime       bool   `json:"parse_time" default:"true"`
+	Loc             string `json:"loc" default:"Asia/Shanghai"`
+	Config          Config `json:"config"`
+	ConnMaxLifetime string `json:"connMaxLifetime" default:"60s"`
+	MaxIdleConns    int    `json:"maxIdleConns" default:"20"`
+	MaxOpenConns    int    `json:"maxOpenConns" default:"200"`
 }

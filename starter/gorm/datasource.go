@@ -26,6 +26,7 @@ import (
 	"hidevops.io/hiboot/pkg/utils/crypto/rsa"
 	"strings"
 	"sync"
+	"time"
 )
 
 type Repository interface {
@@ -77,7 +78,6 @@ func (d *dataSource) Open(p *Properties) error {
 		p.Username, password, p.Host, p.Port, databaseName, p.Charset, parseTime, loc)
 
 	d.repository, err = gorm.Open(p.Type, source)
-
 	if err != nil {
 		log.Errorf("dataSource connection failed: %v (%v)", err, p)
 		defer func() {
@@ -88,7 +88,18 @@ func (d *dataSource) Open(p *Properties) error {
 	} else {
 		log.Infof("connected to dataSource %v@%v:%v/%v", p.Username, p.Host, p.Port, databaseName)
 	}
-
+	db := d.repository.SqlDB()
+	// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
+	duration, err := time.ParseDuration(p.ConnMaxLifetime)
+	if err != nil {
+		log.Errorf("dataSource parse duration failed: %v", err)
+		return err
+	}
+	db.SetConnMaxLifetime(duration)
+	// SetMaxIdleConns sets the maximum number of connections in the idle connection pool
+	db.SetMaxIdleConns(p.MaxIdleConns)
+	// SetMaxOpenConns sets the maximum number of open connections to the database.
+	db.SetMaxOpenConns(p.MaxOpenConns)
 	return nil
 }
 

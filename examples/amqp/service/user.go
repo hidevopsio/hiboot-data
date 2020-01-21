@@ -15,6 +15,7 @@
 package service
 
 import (
+	"errors"
 	str_amqp "github.com/streadway/amqp"
 	"hidevops.io/hiboot-data/starter/amqp"
 	"hidevops.io/hiboot/pkg/app"
@@ -46,30 +47,45 @@ const (
 
 func (s *UserService) Create() error {
 	shn := s.newChannel()
+	if shn == nil {
+		return errors.New("get shannel error")
+	}
 	err := shn.CreateFanout(queueName, exchange)
 	return err
 }
 
 func (s *UserService) Create1() error {
 	shn := s.newChannel()
+	if shn == nil {
+		return errors.New("get shannel error")
+	}
 	err := shn.Create(queueName, exchange, key, str_amqp.ExchangeFanout)
 	return err
 }
 
 func (s *UserService) PublishDirect() error {
 	shn := s.newChannel()
+	if shn == nil {
+		return errors.New("get shannel error")
+	}
 	err := shn.PublishDirect(exchange, queueName, mgsConnect, "info")
 	return err
 }
 
 func (s *UserService) Publish() error {
 	shn := s.newChannel()
+	if shn == nil {
+		return errors.New("get shannel error")
+	}
 	err := shn.Push(exchange, key, "100000", "hello")
 	return err
 }
 
 func (s *UserService) PublishFanout() error {
 	shn := s.newChannel()
+	if shn == nil {
+		return errors.New("get shannel error")
+	}
 	err := shn.PublishFanout(exchange, "hello")
 	return err
 }
@@ -78,6 +94,9 @@ func (s *UserService) ReceiveFanout() error {
 	go func() {
 		c := 1
 		shn := s.newChannel()
+		if shn == nil {
+			return
+		}
 		defer shn.Close()
 		chas, err := shn.Receive(queueName)
 		if err != nil {
@@ -100,6 +119,9 @@ func (s *UserService) ReceiveFanout3() error {
 	go func() {
 		for {
 			shn := s.newChannel()
+			if shn == nil {
+				return
+			}
 			c, _ := shn.ReceiveFanout("test22222", exchange)
 			if c != nil {
 				log.Infof("cha: %s", *c)
