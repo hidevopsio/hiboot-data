@@ -25,6 +25,8 @@ require (
 	github.com/lib/pq v1.0.0 // indirect
 	github.com/magiconair/properties v1.8.0
 	github.com/mattn/go-sqlite3 v1.9.0 // indirect
+	github.com/olivere/elastic v6.2.27+incompatible // indirect
+	github.com/olivere/elastic/v6 v6.2.1
 	github.com/prometheus/client_golang v1.1.0 // indirect
 	github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4 // indirect
 	github.com/soheilhy/cmux v0.1.4 // indirect
