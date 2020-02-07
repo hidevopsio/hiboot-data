@@ -13,13 +13,3 @@
 // limitations under the License.
 
 package entity
-
-import (
-	"github.com/stretchr/testify/assert"
-	"testing"
-)
-
-func TestUser(t *testing.T) {
-	u := new(User)
-	assert.Equal(t, "user", u.TableName())
-}

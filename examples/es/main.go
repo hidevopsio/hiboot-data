@@ -15,7 +15,7 @@
 package main
 
 import (
-	_ "hidevops.io/hiboot-data/examples/gorm/controller"
+	_ "hidevops.io/hiboot-data/examples/es/controller"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/app/web"
 	"hidevops.io/hiboot/pkg/starter/actuator"

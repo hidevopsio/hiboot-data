@@ -1,22 +1,16 @@
-package amqp
+package es
 
 import (
-	"github.com/magiconair/properties/assert"
 	"hidevops.io/hiboot/pkg/log"
 	"testing"
 )
 
-func TestAmqp(t *testing.T) {
+func TestClient_Connect(t *testing.T) {
 	log.SetLevel(log.DebugLevel)
 	conf := newConfiguration(&Properties{
-		Username: "user",
-		Password: "password",
 		Host:     "127.0.0.1",
 		Port:     1111,
 	})
 
-	ch := conf.Channel()
-	var c *Channel
-	assert.Equal(t, c, ch)
-
+	conf.Client()
 }

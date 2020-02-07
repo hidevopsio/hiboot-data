@@ -17,8 +17,8 @@ package controller
 import (
 	"errors"
 	"github.com/stretchr/testify/assert"
-	"hidevops.io/hiboot-data/examples/gorm/entity"
-	"hidevops.io/hiboot-data/examples/gorm/service/mocks"
+	"hidevops.io/hiboot-data/examples/es/entity"
+	"hidevops.io/hiboot-data/examples/es/service/mocks"
 	"hidevops.io/hiboot/pkg/app/web"
 	"hidevops.io/hiboot/pkg/log"
 	"hidevops.io/hiboot/pkg/utils/idgen"
@@ -36,7 +36,7 @@ func TestCrdRequest(t *testing.T) {
 	userController := newUserController(mockUserService)
 	testApp := web.NewTestApp(userController).Run(t)
 
-	id, err := idgen.Next()
+	id, err := idgen.NextString()
 	assert.Equal(t, nil, err)
 
 	testUser := &entity.User{
@@ -50,7 +50,7 @@ func TestCrdRequest(t *testing.T) {
 	}
 
 	// first, call mocks.UserService.AddUser
-	mockUserService.On("AddUser", testUser).Return(nil)
+	mockUserService.On("AddUser", testUser).Return(testUser, nil)
 	// then run the test that will call UserService.AddUser
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User
@@ -79,7 +79,7 @@ func TestCrdRequest(t *testing.T) {
 	// assert that the expectations were met
 	mockUserService.AssertExpectations(t)
 
-	unknownId, err := idgen.Next()
+	unknownId, err := idgen.NextString()
 	assert.Equal(t, nil, err)
 	mockUserService.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
 

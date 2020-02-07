@@ -5,3 +5,7 @@ server:
 
 logging:
   level: info
+
+es:
+  host: 10.10.13.5
+  port: 9200

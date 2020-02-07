@@ -15,8 +15,8 @@
 package controller
 
 import (
-	"hidevops.io/hiboot-data/examples/gorm/entity"
-	"hidevops.io/hiboot-data/examples/gorm/service"
+	"hidevops.io/hiboot-data/examples/es/entity"
+	"hidevops.io/hiboot-data/examples/es/service"
 	"hidevops.io/hiboot/pkg/app"
 	"hidevops.io/hiboot/pkg/at"
 	"hidevops.io/hiboot/pkg/model"
@@ -43,14 +43,14 @@ func newUserController(userService service.UserService) *userController {
 
 // Post POST /user
 func (c *userController) Post(request *entity.User) (model.Response, error) {
-	err := c.userService.AddUser(request)
+	user, err := c.userService.AddUser(request)
 	response := new(model.BaseResponse)
-	response.SetData(request)
+	response.SetData(user)
 	return response, err
 }
 
 // GetById GET /id/{id}
-func (c *userController) GetById(id uint64) (response model.Response, err error) {
+func (c *userController) GetById(id string) (response model.Response, err error) {
 	user, err := c.userService.GetUser(id)
 	response = new(model.BaseResponse)
 	if err != nil {
@@ -70,7 +70,7 @@ func (c *userController) GetAll() (response model.Response, err error) {
 }
 
 // DeleteById DELETE /id/{id}
-func (c *userController) DeleteById(id uint64) (response model.Response, err error) {
+func (c *userController) DeleteById(id string) (response model.Response, err error) {
 	err = c.userService.DeleteUser(id)
 	response = new(model.BaseResponse)
 	return
