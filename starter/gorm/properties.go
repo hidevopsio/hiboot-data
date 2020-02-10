@@ -40,4 +40,5 @@ type Properties struct {
 	ConnMaxLifetime string `json:"connMaxLifetime" default:"60s"`
 	MaxIdleConns    int    `json:"maxIdleConns" default:"20"`
 	MaxOpenConns    int    `json:"maxOpenConns" default:"200"`
+	AutoReconnect   bool   `json:"autoReconnect" default:"true"`
 }

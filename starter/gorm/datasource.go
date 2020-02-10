@@ -80,11 +80,16 @@ func (d *dataSource) Open(p *Properties) error {
 	d.repository, err = gorm.Open(p.Type, source)
 	if err != nil {
 		log.Errorf("dataSource connection failed: %v (%v)", err, p)
-		defer func() {
-			d.repository.Close()
-			d.repository = nil
-		}()
-		return err
+		if p.AutoReconnect {
+			time.Sleep(3 * time.Second)
+			d.Open(p)
+		} else {
+			defer func() {
+				d.repository.Close()
+				d.repository = nil
+			}()
+			return err
+		}
 	} else {
 		log.Infof("connected to dataSource %v@%v:%v/%v", p.Username, p.Host, p.Port, databaseName)
 	}
