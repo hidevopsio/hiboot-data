@@ -10,6 +10,7 @@ gorm:
   password: Duahbi3GqMmeS7ogPw743xtmsmVFiDIaNwh24BokqC1BnUIah8doCRRhVuIqtWs3tl8nHRNkEWMIbuKAo6GleN4FwSoO56B8HAxqP3Kv8Jr3A6L2bam1bglFJRDx6rRkSuX4zrO3D/35t1YSFdPKf+n2PWIEeEJI6zcULo7UVKA=
   charset: utf8
   parseTime: true
+  retry_times: 1
   loc: Asia/Shanghai
   config:
     decrypt: true

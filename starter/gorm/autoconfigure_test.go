@@ -38,5 +38,5 @@ func TestConfiguration(t *testing.T) {
 	})
 
 	repo := conf.Repository()
-	assert.Equal(t, nil, repo)
+	assert.NotEqual(t, nil, repo)
 }
