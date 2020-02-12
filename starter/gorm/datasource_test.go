@@ -50,9 +50,11 @@ func TestDataSourceOpen(t *testing.T) {
 		Loc:           "Asia/Shanghai",
 		NowRetryTimes: 0,
 		RetryTimes:    2,
+		Interval:      "1s",
+		AutoReconnect: true,
 		Config: Config{
-			Decrypt: true,
-		},
+		Decrypt: true,
+	},
 	}
 	dataSource := new(dataSource)
 
