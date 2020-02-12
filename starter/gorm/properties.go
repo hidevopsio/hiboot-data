@@ -38,7 +38,10 @@ type Properties struct {
 	Loc             string `json:"loc" default:"Asia/Shanghai"`
 	Config          Config `json:"config"`
 	ConnMaxLifetime string `json:"connMaxLifetime" default:"60s"`
-	MaxIdleConns    int    `json:"maxIdleConns" default:"20"`
-	MaxOpenConns    int    `json:"maxOpenConns" default:"200"`
-	AutoReconnect   bool   `json:"autoReconnect" default:"true"`
+	MaxIdleConns    int    `json:"maxIdle_conns" default:"20"`
+	MaxOpenConns    int    `json:"maxOpen_conns" default:"200"`
+	AutoReconnect   bool   `json:"auto_reconnect" default:"true"`
+	RetryTimes      int    `json:"retry_times" default:"-1"`
+	Interval        string `json:"interval" default:"3s"`
+	NowRetryTimes   int    `json:"now_retry_times" default:"0"`
 }

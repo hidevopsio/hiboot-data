@@ -39,15 +39,17 @@ func init() {
 
 func TestDataSourceOpen(t *testing.T) {
 	prop := &Properties{
-		Type:      "mysql",
-		Host:      "mysql-dev",
-		Port:      "3306",
-		Username:  "test",
-		Password:  "LcNxqoI4zZjAnpiTD7JQxLJR/IgL2iTiSZ2nd7KPEBgxMV+FVhPSzM+fgH93XqZJNpboN4F/buX22yLTXK38AcVGTfID3rmQAOAc9A2DIWNy5v9+3NOY00M8z4dR1XHojheK0681cY9QVjtlJ70jFFDXb7PjFc2fQ0GIyIjBQDY=",
-		Database:  "test",
-		ParseTime: true,
-		Charset:   "utf8",
-		Loc:       "Asia/Shanghai",
+		Type:          "mysql",
+		Host:          "mysql-dev",
+		Port:          "3306",
+		Username:      "test",
+		Password:      "LcNxqoI4zZjAnpiTD7JQxLJR/IgL2iTiSZ2nd7KPEBgxMV+FVhPSzM+fgH93XqZJNpboN4F/buX22yLTXK38AcVGTfID3rmQAOAc9A2DIWNy5v9+3NOY00M8z4dR1XHojheK0681cY9QVjtlJ70jFFDXb7PjFc2fQ0GIyIjBQDY=",
+		Database:      "test",
+		ParseTime:     true,
+		Charset:       "utf8",
+		Loc:           "Asia/Shanghai",
+		NowRetryTimes: 0,
+		RetryTimes:    2,
 		Config: Config{
 			Decrypt: true,
 		},

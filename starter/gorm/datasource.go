@@ -61,37 +61,9 @@ func (d *dataSource) Init(repository Repository) {
 
 func (d *dataSource) Open(p *Properties) error {
 	var err error
-	password := p.Password
-	if p.Config.Decrypt {
-		pwd, err := rsa.DecryptBase64([]byte(password), []byte(p.Config.DecryptKey))
-		if err == nil {
-			password = string(pwd)
-		}
-	}
-	loc := strings.Replace(p.Loc, "/", "%2F", -1)
-	databaseName := strings.Replace(p.Database, "-", "_", -1)
-	parseTime := "False"
-	if p.ParseTime {
-		parseTime = "True"
-	}
-	source := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=%v&parseTime=%v&loc=%v",
-		p.Username, password, p.Host, p.Port, databaseName, p.Charset, parseTime, loc)
-
-	d.repository, err = gorm.Open(p.Type, source)
+	err = d.Connect(p)
 	if err != nil {
-		log.Errorf("dataSource connection failed: %v (%v)", err, p)
-		if p.AutoReconnect {
-			time.Sleep(3 * time.Second)
-			d.Open(p)
-		} else {
-			defer func() {
-				d.repository.Close()
-				d.repository = nil
-			}()
-			return err
-		}
-	} else {
-		log.Infof("connected to dataSource %v@%v:%v/%v", p.Username, p.Host, p.Port, databaseName)
+		return err
 	}
 	db := d.repository.SqlDB()
 	// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
@@ -123,4 +95,55 @@ func (d *dataSource) Close() error {
 
 func (d *dataSource) Repository() gorm.Repository {
 	return d.repository
+}
+
+func (d *dataSource) Interval(p *Properties) error {
+	duration, err := time.ParseDuration(p.Interval)
+	if err != nil {
+		log.Errorf("dataSource parse duration failed: %v", err)
+		return err
+	}
+	time.Sleep(duration)
+	return nil
+}
+
+func (d *dataSource) Connect(p *Properties) (err error) {
+	password := p.Password
+	if p.Config.Decrypt {
+		pwd, err := rsa.DecryptBase64([]byte(password), []byte(p.Config.DecryptKey))
+		if err == nil {
+			password = string(pwd)
+		}
+	}
+	loc := strings.Replace(p.Loc, "/", "%2F", -1)
+	databaseName := strings.Replace(p.Database, "-", "_", -1)
+	parseTime := "False"
+	if p.ParseTime {
+		parseTime = "True"
+	}
+	source := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=%v&parseTime=%v&loc=%v",
+		p.Username, password, p.Host, p.Port, databaseName, p.Charset, parseTime, loc)
+	d.repository, err = gorm.Open(p.Type, source)
+	if err != nil {
+		log.Errorf("dataSource connection failed: %v (%v)", err, p)
+		if p.AutoReconnect {
+			// 重试间隔时间
+			err := d.Interval(p)
+			if err != nil {
+				return err
+			}
+			if p.RetryTimes == -1 {
+				err = d.Connect(p)
+			} else if p.RetryTimes > p.NowRetryTimes {
+				p.NowRetryTimes++
+				err = d.Connect(p)
+			}
+
+		} else {
+			return err
+		}
+	} else {
+		log.Infof("connected to dataSource %v@%v:%v/%v", p.Username, p.Host, p.Port, databaseName)
+	}
+	return err
 }
