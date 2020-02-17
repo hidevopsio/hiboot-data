@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/olivere/elastic/v6"
 	"hidevops.io/hiboot/pkg/at"
+	"hidevops.io/hiboot/pkg/log"
 )
 
 type Properties struct {
@@ -24,8 +25,10 @@ func (c *Client) Connect(p *Properties) (err error) {
 	esUrl := fmt.Sprintf("http://%s:%d", p.Host, p.Port)
 	client, err := elastic.NewSimpleClient(elastic.SetURL(esUrl))
 	if err != nil {
+		log.Errorf("elastic connection errors:%v", esUrl)
 		return
 	}
 	c.Client = client
+	log.Debugf("elastic connection success")
 	return
 }
