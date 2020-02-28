@@ -15,10 +15,9 @@ type Properties struct {
 	at.ConfigurationProperties `value:"mongo"`
 	Port                       int    `json:"port" default:"5672"`
 	Host                       string `json:"host" default:"127.0.0.1"`
-	Username                   string `json:"username" default:"admin"`
+	Username                   string `json:"username" default:""`
 	Password                   string `json:"password" default:"password"`
 	Timeout                    string `json:"timeout" default:"5s"`
-
 }
 
 type Client struct {
@@ -35,8 +34,13 @@ func (c *Client) Connect(p *Properties) (err error) {
 		log.Errorf("dataSource parse duration failed: %v", err)
 		return err
 	}
+	mongoUrl := ""
+	if p.Username == "" {
+		mongoUrl = fmt.Sprintf("mongodb://%s:%d", p.Host, p.Port)
+	} else {
+		mongoUrl = fmt.Sprintf("mongodb://%s:%s@%s:%d", p.Username, p.Password, p.Host, p.Port)
+	}
 
-	mongoUrl := fmt.Sprintf("mongodb://%s:%d", p.Host, p.Port)
 	client, err := mongo.Connect(context.Background(), options.Client().ApplyURI(mongoUrl))
 	if err != nil {
 		log.Errorf("mongo connection error host:%v, port:%v, username :%v, password :%v", p.Host, p.Port, p.Username, p.Password)

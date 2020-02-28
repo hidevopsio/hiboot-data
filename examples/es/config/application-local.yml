@@ -7,5 +7,5 @@ logging:
   level: info
 
 es:
-  host: 10.10.13.5
+  host: 10.10.13.176
   port: 9200
