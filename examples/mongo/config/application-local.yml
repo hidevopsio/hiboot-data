@@ -1,0 +1,11 @@
+# config file for testing
+
+server:
+  port: 8080
+
+logging:
+  level: info
+
+mongo:
+  host: 10.10.13.2
+  port: 27017

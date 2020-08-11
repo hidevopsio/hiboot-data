@@ -5,6 +5,7 @@ import (
 	"github.com/olivere/elastic/v6"
 	"hidevops.io/hiboot/pkg/at"
 	"time"
+	"hidevops.io/hiboot/pkg/log"
 )
 
 type Properties struct {
@@ -32,8 +33,10 @@ func (c *Client) Connect(p *Properties) (err error) {
 		elastic.SetBasicAuth(p.Username, p.Password),
 		)
 	if err != nil {
+		log.Errorf("elastic connection errors:%v", esUrl)
 		return
 	}
 	c.Client = client
+	log.Debugf("elastic connection success")
 	return
 }

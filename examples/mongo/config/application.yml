@@ -1,0 +1,16 @@
+# config file for testing
+# filename should be application.yml
+
+app:
+  project: examples
+  name: es-demo
+  profiles:
+    include:
+    - actuator
+    - locale
+    - logging
+    - mongo
+
+logging:
+  level: info
+
