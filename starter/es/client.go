@@ -2,7 +2,8 @@ package es
 
 import (
 	"fmt"
-	"github.com/olivere/elastic/v6"
+	"gopkg.in/olivere/elastic.v5"
+	/*"github.com/olivere/elastic/v6"*/
 	"hidevops.io/hiboot/pkg/at"
 	"time"
 	"hidevops.io/hiboot/pkg/log"

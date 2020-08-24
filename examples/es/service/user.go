@@ -57,13 +57,22 @@ func (s *userServiceImpl) AddUser(user *entity.User) (newUser *entity.User, err 
 		}
 		user.Id = id
 	}
-	_, err = s.client.Index().Index("test").Type("test").Id(user.Id).BodyJson(user).Do(context.Background())
+	for i := 0; i < 100; i++ {
+		go func() {
+			_, err = s.client.Index().Index("289639726065910338").Type("pipeline-log").Id(user.Id).BodyJson(user).Do(context.Background())
+			if err != nil {
+				fmt.Printf("set error:%v", err)
+			}
+			fmt.Println("set success!!!")
+		}()
+
+	}
 	newUser = user
 	return
 }
 
 func (s *userServiceImpl) GetUser(id string) (user *entity.User, err error) {
-	esResponse, err := s.client.Get().Index("test").Type("test").Id(id).Do(context.Background())
+	esResponse, err := s.client.Get().Index("289639726065910338").Type("pipeline-log").Id(id).Do(context.Background())
 	if err != nil {
 		// Handle Error
 		return
@@ -77,7 +86,7 @@ func (s *userServiceImpl) GetAll() (users *[]entity.User, err error) {
 	//err = s.repository.Find(users).Error()
 	ctx := context.Background()
 	query := elastic.NewBoolQuery()
-	res, err := s.client.Search().Index("test").Type("test").Size(10).Query(query).Do(ctx)
+	res, err := s.client.Search().Index("289639726065910338").Type("pipeline-log").Size(10).Query(query).Do(ctx)
 	if err != nil {
 		log.Println("err:", err)
 		return
