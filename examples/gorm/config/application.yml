@@ -3,13 +3,14 @@
 
 app:
   project: examples
-  name: gorm-demo
+  name: demo
   profiles:
     include:
     - actuator
     - locale
     - logging
     - gorm
+    - redis
 
 logging:
   level: info

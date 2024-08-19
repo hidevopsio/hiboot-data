@@ -1,0 +1,17 @@
+# config file for testing
+# filename should be application.yml
+
+app:
+  project: examples
+  name: demo
+  profiles:
+    include:
+    - actuator
+    - locale
+    - logging
+    - sqlx
+    - redis
+
+logging:
+  level: info
+

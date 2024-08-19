@@ -14,7 +14,7 @@
 
 package data
 
-import "hidevops.io/hiboot/pkg/utils/reflector"
+import "github.com/hidevopsio/hiboot/pkg/utils/reflector"
 
 // KVRepository is the Key/Value Repository interface
 type KVRepository interface {

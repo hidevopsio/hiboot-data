@@ -3,9 +3,9 @@ package amqp
 import (
 	"bytes"
 	"fmt"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/streadway/amqp"
-	"hidevops.io/hiboot/pkg/at"
-	"hidevops.io/hiboot/pkg/log"
 )
 
 type Channel struct {
@@ -121,7 +121,7 @@ func BytesToString(b *[]byte) *string {
 	return &r
 }
 
-//CreateFanout 创建Fanout类型的队列
+// CreateFanout 创建Fanout类型的队列
 func (chn *Channel) CreateFanout(queueName, exchange string) error {
 	//type : 交换器类型 DIRECT("direct"), FANOUT("fanout"), TOPIC("topic"), HEADERS("headers");
 	//durable: 是否持久化,durable设置为true表示持久化,反之是非持久化

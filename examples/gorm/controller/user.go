@@ -15,19 +15,17 @@
 package controller
 
 import (
-	"hidevops.io/hiboot-data/examples/gorm/entity"
-	"hidevops.io/hiboot-data/examples/gorm/service"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/at"
-	"hidevops.io/hiboot/pkg/model"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/model"
+	"hiboot-data/examples/gorm/entity"
+	"hiboot-data/examples/gorm/service"
 	"net/http"
 )
 
 // RestController
 type userController struct {
 	at.RestController
-
-	userService service.UserService
 }
 
 func init() {
@@ -35,23 +33,21 @@ func init() {
 }
 
 // newUserController inject userService automatically
-func newUserController(userService service.UserService) *userController {
-	return &userController{
-		userService: userService,
-	}
+func newUserController() *userController {
+	return &userController{}
 }
 
-// Post POST /user
-func (c *userController) Post(request *entity.User) (model.Response, error) {
-	err := c.userService.AddUser(request)
+// Post create /user
+func (c *userController) Post(request *entity.User, userService *service.UserService) (model.Response, error) {
+	err := userService.AddUser(request)
 	response := new(model.BaseResponse)
 	response.SetData(request)
 	return response, err
 }
 
 // GetById GET /id/{id}
-func (c *userController) GetById(id uint64) (response model.Response, err error) {
-	user, err := c.userService.GetUser(id)
+func (c *userController) GetById(id uint64, userService *service.UserService) (response model.Response, err error) {
+	user, err := userService.GetUser(id)
 	response = new(model.BaseResponse)
 	if err != nil {
 		response.SetCode(http.StatusNotFound)
@@ -61,17 +57,17 @@ func (c *userController) GetById(id uint64) (response model.Response, err error)
 	return
 }
 
-// GetById GET /id/{id}
-func (c *userController) GetAll() (response model.Response, err error) {
-	users, err := c.userService.GetAll()
+// GetAll GET /id/{id}
+func (c *userController) GetAll(userService *service.UserService) (response model.Response, err error) {
+	users, err := userService.GetAll()
 	response = new(model.BaseResponse)
 	response.SetData(users)
 	return
 }
 
 // DeleteById DELETE /id/{id}
-func (c *userController) DeleteById(id uint64) (response model.Response, err error) {
-	err = c.userService.DeleteUser(id)
+func (c *userController) DeleteById(id uint64, userService *service.UserService) (response model.Response, err error) {
+	err = userService.DeleteUser(id)
 	response = new(model.BaseResponse)
 	return
 }

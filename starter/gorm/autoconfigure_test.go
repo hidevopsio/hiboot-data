@@ -22,7 +22,7 @@ import (
 func TestConfiguration(t *testing.T) {
 
 	// TODO: should test with fake data source
-	conf := newConfiguration(&Properties{
+	conf := newConfiguration(&properties{
 		Type:      "mysql",
 		Host:      "mysql-dev",
 		Port:      "3306",
@@ -37,6 +37,7 @@ func TestConfiguration(t *testing.T) {
 		},
 	})
 
-	repo := conf.Repository()
+	repo, err := conf.DB()
+	assert.Nil(t, err)
 	assert.NotEqual(t, nil, repo)
 }

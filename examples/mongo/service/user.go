@@ -17,11 +17,11 @@ package service
 import (
 	"context"
 	"fmt"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"go.mongodb.org/mongo-driver/bson"
-	"hidevops.io/hiboot-data/examples/mongo/entity"
-	"hidevops.io/hiboot-data/starter/mongo"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/utils/idgen"
+	"hiboot-data/examples/mongo/entity"
+	"hiboot-data/starter/mongo"
 	"log"
 	"time"
 )
@@ -42,7 +42,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject gorm.Repository that configured in hidevops.io/hiboot-data/starter/gorm
+// will inject gorm.Repository that configured in hiboot-data/starter/gorm
 func newUserService(client *mongo.Client) UserService {
 	return &userServiceImpl{
 		client: client,

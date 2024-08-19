@@ -15,11 +15,11 @@
 package controller
 
 import (
-	"hidevops.io/hiboot-data/examples/mongo/entity"
-	"hidevops.io/hiboot-data/examples/mongo/service"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/at"
-	"hidevops.io/hiboot/pkg/model"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/model"
+	"hiboot-data/examples/mongo/entity"
+	"hiboot-data/examples/mongo/service"
 	"net/http"
 )
 

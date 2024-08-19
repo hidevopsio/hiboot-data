@@ -1,0 +1,11 @@
+# config file for testing
+# filename should be application-redis.yml
+
+redis:
+  host: redis-master
+  port: 6379
+  password: cfkK4351ATlJBdRQpZecNWJ1HRzOItqoHPlQgE3f9pgUSA1fAZUnbsz2VEEySf863PWRuNmgjeOvLSzSE8jb4lp1SLVYyh13Awibm0iVryUZIxkRvdIPsm1Pm0Hgj1EGmOUET2+5NEzY995nIXK0WOBLc9nolUmpcamS4NRbaro=
+  db: 0
+  config:
+    decrypt: true
+

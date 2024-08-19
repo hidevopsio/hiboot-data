@@ -15,8 +15,8 @@
 package controller
 
 import (
-	"hidevops.io/hiboot/pkg/app/web"
-	"hidevops.io/hiboot/pkg/log"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"net/http"
 	"testing"
 )
@@ -27,7 +27,7 @@ func init() {
 
 func TestCrdRequest(t *testing.T) {
 	// TODO: mock UserService
-	testApp := web.NewTestApplication(t, newUserController)
+	testApp := web.NewTestApp(t, newUserController).Run(t)
 
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User

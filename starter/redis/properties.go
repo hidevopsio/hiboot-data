@@ -12,7 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+package redis
 
-type Configuration interface {
+import (
+	"github.com/hidevopsio/hiboot/pkg/at"
+)
+
+type Config struct {
+	Decrypt    bool   `json:"decrypt" default:"true"`
+	DecryptKey string `json:"decrypt_key"`
+}
+
+type properties struct {
+	at.ConfigurationProperties `value:"redis"`
+
+	Host     string `json:"host" default:"redis-master"`
+	Port     string `json:"port" default:"6379"`
+	Password string `json:"password"`
+	DB       int    `json:"client" default:"0"`
+	Config   Config `json:"config"`
+	Timeout  int    `json:"timeout" default:"2"`
 }

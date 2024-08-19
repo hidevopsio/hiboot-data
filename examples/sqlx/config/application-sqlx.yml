@@ -1,0 +1,17 @@
+# config file for testing
+# filename should be application-sqlx.yml
+
+sqlx:
+  type: mysql
+  host: mysql
+  port: 3306
+  database: ${app.name:demo}
+  username: root
+  password: cfkK4351ATlJBdRQpZecNWJ1HRzOItqoHPlQgE3f9pgUSA1fAZUnbsz2VEEySf863PWRuNmgjeOvLSzSE8jb4lp1SLVYyh13Awibm0iVryUZIxkRvdIPsm1Pm0Hgj1EGmOUET2+5NEzY995nIXK0WOBLc9nolUmpcamS4NRbaro=
+  charset: utf8
+  parseTime: true
+  retry_times: 1
+  loc: Asia/Shanghai
+  config:
+    decrypt: true
+

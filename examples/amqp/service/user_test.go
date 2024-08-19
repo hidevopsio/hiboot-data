@@ -15,8 +15,8 @@
 package service
 
 import (
-	"hidevops.io/hiboot-data/examples/bolt/entity"
-	"hidevops.io/hiboot-data/starter"
+	"hiboot-data/examples/bolt/entity"
+	"hiboot-data/starter"
 )
 
 type FakeRepository struct {

@@ -15,12 +15,12 @@
 package main
 
 import (
-	_ "hidevops.io/hiboot-data/examples/mongo/controller"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/app/web"
-	"hidevops.io/hiboot/pkg/starter/actuator"
-	"hidevops.io/hiboot/pkg/starter/locale"
-	"hidevops.io/hiboot/pkg/starter/logging"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
+	"github.com/hidevopsio/hiboot/pkg/starter/locale"
+	"github.com/hidevopsio/hiboot/pkg/starter/logging"
+	_ "hiboot-data/examples/mongo/controller"
 )
 
 func main() {

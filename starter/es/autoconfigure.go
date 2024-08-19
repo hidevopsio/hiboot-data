@@ -1,7 +1,7 @@
 package es
 
 import (
-	"hidevops.io/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/app"
 )
 
 const Profile = "es"
@@ -21,7 +21,7 @@ func init() {
 	app.Register(newConfiguration, new(Properties))
 }
 
-// Repository method name must be unique
+// Client method name must be unique
 func (c *configuration) Client() *Client {
 	client := newClient()
 	err := client.Connect(c.Properties)

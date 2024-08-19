@@ -16,10 +16,10 @@ package service
 
 import (
 	"errors"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/log"
 	str_amqp "github.com/streadway/amqp"
-	"hidevops.io/hiboot-data/starter/amqp"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/log"
+	"hiboot-data/starter/amqp"
 	"time"
 )
 
@@ -31,7 +31,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject BoltRepository that configured in hidevops.io/hiboot/pkg/starter/data/bolt
+// will inject BoltRepository that configured in github.com/hidevopsio/hiboot/pkg/starter/data/bolt
 func newUserService(newChannel amqp.NewChannel) *UserService {
 	return &UserService{
 		newChannel: newChannel,

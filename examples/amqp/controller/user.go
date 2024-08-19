@@ -15,13 +15,13 @@
 package controller
 
 import (
-	"hidevops.io/hiboot-data/examples/amqp/service"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/at"
-	"hidevops.io/hiboot/pkg/model"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/model"
+	"hiboot-data/examples/amqp/service"
 )
 
-//hi: RestController
+// hi: RestController
 type UserController struct {
 	at.RestController
 	at.RequestMapping `value:"/user"`
@@ -41,32 +41,44 @@ func newUserController(userService *service.UserService) *UserController {
 }
 
 // Post /user
-func (c *UserController) Publish(at struct{at.PostMapping `value:"/publish"`}) (model.Response, error) {
+func (c *UserController) Publish(at struct {
+	at.PostMapping `value:"/publish"`
+}) (model.Response, error) {
 	err := c.userService.PublishFanout()
 	return nil, err
 }
 
-func (c *UserController) Push(at struct{at.PostMapping `value:"/push"`}) (model.Response, error) {
+func (c *UserController) Push(at struct {
+	at.PostMapping `value:"/push"`
+}) (model.Response, error) {
 	err := c.userService.Publish()
 	return nil, err
 }
 
-func (c *UserController) Receive(at struct{at.PostMapping `value:"/receive"`}) (model.Response, error) {
+func (c *UserController) Receive(at struct {
+	at.PostMapping `value:"/receive"`
+}) (model.Response, error) {
 	c.userService.ReceiveFanout()
 	return nil, nil
 }
 
-func (c *UserController) Receive1(at struct{at.PostMapping `value:"/receive1"`}) (model.Response, error) {
+func (c *UserController) Receive1(at struct {
+	at.PostMapping `value:"/receive1"`
+}) (model.Response, error) {
 	c.userService.ReceiveFanout3()
 	return nil, nil
 }
 
-func (c *UserController) Create(at struct{at.PostMapping `value:"/create"`}) (model.Response, error) {
+func (c *UserController) Create(at struct {
+	at.PostMapping `value:"/create"`
+}) (model.Response, error) {
 	err := c.userService.Create()
 	return nil, err
 }
 
-func (c *UserController) Create1(at struct{at.PostMapping `value:"/create1"`}) (model.Response, error) {
+func (c *UserController) Create1(at struct {
+	at.PostMapping `value:"/create1"`
+}) (model.Response, error) {
 	err := c.userService.Create1()
 	return nil, err
 }

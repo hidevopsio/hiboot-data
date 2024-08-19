@@ -15,15 +15,14 @@
 package controller
 
 import (
-	"hidevops.io/hiboot-data/examples/bolt/entity"
-	"hidevops.io/hiboot-data/examples/bolt/service"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/at"
-	"hidevops.io/hiboot/pkg/model"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/model"
+	"hiboot-data/examples/bolt/entity"
+	"hiboot-data/examples/bolt/service"
 	"net/http"
 )
 
-//hi: RestController
 type UserController struct {
 	at.RestController
 	at.RequestMapping `value:"/user"`
@@ -43,7 +42,9 @@ func newUserController(userService *service.UserService) *UserController {
 }
 
 // Post /user
-func (c *UserController) Post(at struct{at.PostMapping `value:"/"`}, user *entity.User) (model.Response, error) {
+func (c *UserController) Post(at struct {
+	at.PostMapping `value:"/"`
+}, user *entity.User) (model.Response, error) {
 	err := c.userService.AddUser(user)
 	response := new(model.BaseResponse)
 	response.SetData(user)
@@ -51,7 +52,9 @@ func (c *UserController) Post(at struct{at.PostMapping `value:"/"`}, user *entit
 }
 
 // Get /user/id/{id}
-func (c *UserController) GetById(at struct{at.GetMapping `value:"/{id}"`}, id string) (model.Response, error) {
+func (c *UserController) GetById(at struct {
+	at.GetMapping `value:"/{id}"`
+}, id string) (model.Response, error) {
 	user, err := c.userService.GetUser(id)
 	response := new(model.BaseResponse)
 	if err != nil {
@@ -63,7 +66,9 @@ func (c *UserController) GetById(at struct{at.GetMapping `value:"/{id}"`}, id st
 }
 
 // Delete /user/id/{id}
-func (c *UserController) DeleteById(at struct{at.DeleteMapping `value:"/{id}"`}, id string) (response model.Response, err error) {
+func (c *UserController) DeleteById(at struct {
+	at.DeleteMapping `value:"/{id}"`
+}, id string) (response model.Response, err error) {
 	err = c.userService.DeleteUser(id)
 	response = new(model.BaseResponse)
 	return

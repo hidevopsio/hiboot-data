@@ -17,8 +17,8 @@ package etcd
 import (
 	"github.com/coreos/etcd/clientv3"
 	"github.com/coreos/etcd/pkg/transport"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/log"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"time"
 )
 
@@ -42,7 +42,6 @@ type etcdConfiguration struct {
 func newEtcdConfiguration(properties *Properties) *etcdConfiguration {
 	return &etcdConfiguration{Properties: properties}
 }
-
 
 func init() {
 	app.Register(newEtcdConfiguration, new(Properties))

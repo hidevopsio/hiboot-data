@@ -1,8 +1,8 @@
 package amqp
 
 import (
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/magiconair/properties/assert"
-	"hidevops.io/hiboot/pkg/log"
 	"testing"
 )
 

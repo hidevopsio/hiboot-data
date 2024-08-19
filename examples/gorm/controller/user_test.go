@@ -15,13 +15,11 @@
 package controller
 
 import (
-	"errors"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/log"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
-	"hidevops.io/hiboot-data/examples/gorm/entity"
-	"hidevops.io/hiboot-data/examples/gorm/service/mocks"
-	"hidevops.io/hiboot/pkg/app/web"
-	"hidevops.io/hiboot/pkg/log"
-	"hidevops.io/hiboot/pkg/utils/idgen"
+	"hiboot-data/examples/gorm/entity"
 	"net/http"
 	"testing"
 )
@@ -32,9 +30,7 @@ func init() {
 
 func TestCrdRequest(t *testing.T) {
 
-	mockUserService := new(mocks.UserService)
-	userController := newUserController(mockUserService)
-	testApp := web.NewTestApp(userController).Run(t)
+	testApp := web.NewTestApp().Run(t)
 
 	id, err := idgen.Next()
 	assert.Equal(t, nil, err)
@@ -49,8 +45,6 @@ func TestCrdRequest(t *testing.T) {
 		Gender:   1,
 	}
 
-	// first, call mocks.UserService.AddUser
-	mockUserService.On("AddUser", testUser).Return(nil)
 	// then run the test that will call UserService.AddUser
 	t.Run("should add user with POST request", func(t *testing.T) {
 		// First, let's Post User
@@ -59,7 +53,6 @@ func TestCrdRequest(t *testing.T) {
 			Expect().Status(http.StatusOK)
 	})
 
-	mockUserService.On("GetUser", id).Return(testUser, nil)
 	t.Run("should get user with GET request", func(t *testing.T) {
 		// Then Get User
 		// e.g. GET /user/id/123456
@@ -68,7 +61,6 @@ func TestCrdRequest(t *testing.T) {
 			Expect().Status(http.StatusOK)
 	})
 
-	mockUserService.On("GetAll").Return(&[]entity.User{*testUser}, nil)
 	t.Run("should get user with GET request", func(t *testing.T) {
 		// Then Get User
 		// e.g. GET /user/id/123456
@@ -76,12 +68,8 @@ func TestCrdRequest(t *testing.T) {
 			Expect().Status(http.StatusOK)
 	})
 
-	// assert that the expectations were met
-	mockUserService.AssertExpectations(t)
-
 	unknownId, err := idgen.Next()
 	assert.Equal(t, nil, err)
-	mockUserService.On("GetUser", unknownId).Return((*entity.User)(nil), errors.New("not found"))
 
 	t.Run("should return 404 if trying to find a record that does not exist", func(t *testing.T) {
 		// Then Get User
@@ -90,10 +78,6 @@ func TestCrdRequest(t *testing.T) {
 			Expect().Status(http.StatusNotFound)
 	})
 
-	// assert that the expectations were met
-	mockUserService.AssertExpectations(t)
-
-	mockUserService.On("DeleteUser", id).Return(nil)
 	t.Run("should delete the record with DELETE request", func(t *testing.T) {
 		// Finally Delete User
 		testApp.Delete("/user/id/{id}").

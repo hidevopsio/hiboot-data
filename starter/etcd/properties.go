@@ -14,7 +14,7 @@
 
 package etcd
 
-import "hidevops.io/hiboot/pkg/at"
+import "github.com/hidevopsio/hiboot/pkg/at"
 
 type cert struct {
 	CertFile      string `json:"cert_file" default:"config/certs/etcd.pem"`

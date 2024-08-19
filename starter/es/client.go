@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"gopkg.in/olivere/elastic.v5"
 	/*"github.com/olivere/elastic/v6"*/
-	"hidevops.io/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/log"
 	"time"
-	"hidevops.io/hiboot/pkg/log"
 )
 
 type Properties struct {
@@ -32,7 +32,7 @@ func (c *Client) Connect(p *Properties) (err error) {
 		elastic.SetHealthcheckInterval(10*time.Second),
 		elastic.SetURL(esUrl),
 		elastic.SetBasicAuth(p.Username, p.Password),
-		)
+	)
 	if err != nil {
 		log.Errorf("elastic connection errors:%v", esUrl)
 		return

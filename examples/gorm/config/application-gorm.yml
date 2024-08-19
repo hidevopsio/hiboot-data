@@ -3,11 +3,11 @@
 
 gorm:
   type: mysql
-  host: mysql-${app.profiles.active:dev}
+  host: mysql
   port: 3306
-  database: ${app.name:test}
-  username: demo
-  password: Duahbi3GqMmeS7ogPw743xtmsmVFiDIaNwh24BokqC1BnUIah8doCRRhVuIqtWs3tl8nHRNkEWMIbuKAo6GleN4FwSoO56B8HAxqP3Kv8Jr3A6L2bam1bglFJRDx6rRkSuX4zrO3D/35t1YSFdPKf+n2PWIEeEJI6zcULo7UVKA=
+  database: ${app.name:demo}
+  username: root
+  password: cfkK4351ATlJBdRQpZecNWJ1HRzOItqoHPlQgE3f9pgUSA1fAZUnbsz2VEEySf863PWRuNmgjeOvLSzSE8jb4lp1SLVYyh13Awibm0iVryUZIxkRvdIPsm1Pm0Hgj1EGmOUET2+5NEzY995nIXK0WOBLc9nolUmpcamS4NRbaro=
   charset: utf8
   parseTime: true
   retry_times: 1

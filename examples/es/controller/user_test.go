@@ -16,12 +16,12 @@ package controller
 
 import (
 	"errors"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/log"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
-	"hidevops.io/hiboot-data/examples/es/entity"
-	"hidevops.io/hiboot-data/examples/es/service/mocks"
-	"hidevops.io/hiboot/pkg/app/web"
-	"hidevops.io/hiboot/pkg/log"
-	"hidevops.io/hiboot/pkg/utils/idgen"
+	"hiboot-data/examples/es/entity"
+	"hiboot-data/examples/es/service/mocks"
 	"net/http"
 	"testing"
 )

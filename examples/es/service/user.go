@@ -18,11 +18,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/olivere/elastic/v6"
-	"hidevops.io/hiboot-data/examples/es/entity"
-	"hidevops.io/hiboot-data/starter/es"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/utils/idgen"
+	"hiboot-data/examples/es/entity"
+	"hiboot-data/starter/es"
 	"log"
 )
 
@@ -42,7 +42,7 @@ func init() {
 	app.Register(newUserService)
 }
 
-// will inject gorm.Repository that configured in hidevops.io/hiboot-data/starter/gorm
+// will inject gorm.Repository that configured in hiboot-data/starter/gorm
 func newUserService(client *es.Client) UserService {
 	return &userServiceImpl{
 		client: client,

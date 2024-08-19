@@ -15,12 +15,14 @@
 package main
 
 import (
-	_ "hidevops.io/hiboot-data/examples/gorm/controller"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/app/web"
-	"hidevops.io/hiboot/pkg/starter/actuator"
-	"hidevops.io/hiboot/pkg/starter/locale"
-	"hidevops.io/hiboot/pkg/starter/logging"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
+	"github.com/hidevopsio/hiboot/pkg/starter/locale"
+	"github.com/hidevopsio/hiboot/pkg/starter/logging"
+	_ "hiboot-data/examples/gorm/controller"
+	"hiboot-data/starter/gorm"
+	"hiboot-data/starter/redis"
 )
 
 func main() {
@@ -28,6 +30,8 @@ func main() {
 		SetProperty(app.ProfilesInclude,
 			actuator.Profile,
 			locale.Profile,
+			gorm.Profile,
+			redis.Profile,
 			logging.Profile).
 		Run()
 }

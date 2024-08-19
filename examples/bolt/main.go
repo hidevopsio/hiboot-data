@@ -15,11 +15,11 @@
 package main
 
 import (
-	_ "hidevops.io/hiboot-data/examples/bolt/controller"
-	"hidevops.io/hiboot/pkg/app/web"
-	_ "hidevops.io/hiboot/pkg/starter/actuator"
-	_ "hidevops.io/hiboot/pkg/starter/locale"
-	_ "hidevops.io/hiboot/pkg/starter/logging"
+	"github.com/hidevopsio/hiboot/pkg/app/web"
+	_ "github.com/hidevopsio/hiboot/pkg/starter/actuator"
+	_ "github.com/hidevopsio/hiboot/pkg/starter/locale"
+	_ "github.com/hidevopsio/hiboot/pkg/starter/logging"
+	_ "hiboot-data/examples/bolt/controller"
 )
 
 func main() {

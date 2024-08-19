@@ -15,61 +15,89 @@
 package service
 
 import (
+	"context"
+	"encoding/json"
 	"errors"
-	"hidevops.io/hiboot-data/examples/gorm/entity"
-	"hidevops.io/hiboot-data/starter/gorm"
-	"hidevops.io/hiboot/pkg/app"
-	"hidevops.io/hiboot/pkg/utils/idgen"
+	"github.com/hidevopsio/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
+	"hiboot-data/examples/gorm/entity"
+	"hiboot-data/starter/gorm"
+	"hiboot-data/starter/redis"
+	"strconv"
 )
 
-type UserService interface {
-	AddUser(user *entity.User) (err error)
-	GetUser(id uint64) (user *entity.User, err error)
-	GetAll() (user *[]entity.User, err error)
-	DeleteUser(id uint64) (err error)
-}
-
-type userServiceImpl struct {
-	repository gorm.Repository
+type UserService struct {
+	at.Scope `value:"request"`
+	db       *gorm.DB
+	cache    *redis.Client
 }
 
 func init() {
-	// register UserServiceImpl
+	// register UserService
 	app.Register(newUserService)
 }
 
-// will inject gorm.Repository that configured in hidevops.io/hiboot-data/starter/gorm
-func newUserService(repository gorm.Repository) UserService {
-	repository.AutoMigrate(&entity.User{})
-	return &userServiceImpl{
-		repository: repository,
+// will inject gorm.Repository that configured in hiboot-data/starter/gorm
+func newUserService(db *gorm.DB, redisClient *redis.Client) *UserService {
+	_ = db.AutoMigrate(&entity.User{})
+	return &UserService{
+		db:    db,
+		cache: redisClient,
 	}
 }
 
-func (s *userServiceImpl) AddUser(user *entity.User) (err error) {
+func (s *UserService) AddUser(user *entity.User) (err error) {
 	if user == nil {
 		return errors.New("user is not allowed nil")
 	}
 	if user.Id == 0 {
 		user.Id, _ = idgen.Next()
 	}
-	err = s.repository.Create(user).Error()
+	err = s.db.Create(user).Error
+	if err != nil {
+		return
+	}
+	err = s.cacheUser(user)
 	return
 }
 
-func (s *userServiceImpl) GetUser(id uint64) (user *entity.User, err error) {
+func (s *UserService) cacheUser(user *entity.User) (err error) {
+	var userJSON []byte
+	userJSON, err = json.Marshal(user)
+	if err != nil {
+		return
+	}
+	err = s.cache.Set(context.Background(), strconv.FormatUint(user.Id, 16), string(userJSON), 0).Err()
+	return
+}
+
+func (s *UserService) GetUser(id uint64) (user *entity.User, err error) {
 	user = &entity.User{}
-	err = s.repository.Where("id = ?", id).First(user).Error()
+	var res string
+	res, err = s.cache.Get(context.Background(), strconv.FormatUint(id, 16)).Result()
+	if err != nil {
+		return
+	}
+	err = json.Unmarshal([]byte(res), user)
+	if err != nil {
+		err = s.db.Where("id = ?", id).First(user).Error
+		if err != nil {
+			return
+		}
+		err = s.cacheUser(user)
+	}
+
 	return
 }
 
-func (s *userServiceImpl) GetAll() (users *[]entity.User, err error) {
+func (s *UserService) GetAll() (users *[]entity.User, err error) {
 	users = &[]entity.User{}
-	err = s.repository.Find(users).Error()
+	err = s.db.Find(users).Error
 	return
 }
 
-func (s *userServiceImpl) DeleteUser(id uint64) (err error) {
-	err = s.repository.Where("id = ?", id).Delete(entity.User{}).Error()
+func (s *UserService) DeleteUser(id uint64) (err error) {
+	err = s.db.Where("id = ?", id).Delete(entity.User{}).Error
 	return
 }

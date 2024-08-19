@@ -1,7 +1,7 @@
 package mongo
 
 import (
-	"hidevops.io/hiboot/pkg/app"
+	"github.com/hidevopsio/hiboot/pkg/app"
 )
 
 const Profile = "mongo"

@@ -12,4 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package data
+package entity
+
+import "github.com/hidevopsio/hiboot/pkg/model"
+
+type User struct {
+	model.RequestBody
+	Id       uint64 `json:"id"`
+	Name     string `json:"name" validate:"required"`
+	Username string `json:"username" validate:"required"`
+	Password string `json:"password" validate:"required"`
+	Email    string `json:"email" validate:"required,email"`
+	Age      uint   `json:"age" validate:"gte=0,lte=130"`
+	Gender   uint   `json:"gender" validate:"gte=0,lte=2"`
+}
+
+func (u *User) TableName() string {
+	return "user"
+}

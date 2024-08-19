@@ -15,7 +15,7 @@
 package gorm
 
 import (
-	"hidevops.io/hiboot/pkg/at"
+	"github.com/hidevopsio/hiboot/pkg/at"
 )
 
 type Config struct {
@@ -23,7 +23,7 @@ type Config struct {
 	DecryptKey string `json:"decrypt_key"`
 }
 
-type Properties struct {
+type properties struct {
 	// annotation ConfigurationProperties
 	at.ConfigurationProperties `value:"gorm"`
 
