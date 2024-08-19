@@ -15,11 +15,11 @@
 package main
 
 import (
+	_ "github.com/hidevopsio/hiboot-data/examples/amqp/controller"
+	"github.com/hidevopsio/hiboot-data/starter/amqp"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
-	_ "hiboot-data/examples/amqp/controller"
-	"hiboot-data/starter/amqp"
 )
 
 func main() {

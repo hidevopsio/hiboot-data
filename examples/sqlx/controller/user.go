@@ -15,11 +15,11 @@
 package controller
 
 import (
+	"github.com/hidevopsio/hiboot-data/examples/sqlx/entity"
+	"github.com/hidevopsio/hiboot-data/examples/sqlx/service"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/model"
-	"hiboot-data/examples/sqlx/entity"
-	"hiboot-data/examples/sqlx/service"
 	"net/http"
 )
 

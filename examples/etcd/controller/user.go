@@ -15,13 +15,13 @@
 package controller
 
 import (
+	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
+	"github.com/hidevopsio/hiboot-data/examples/etcd/service"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/model"
 	"github.com/hidevopsio/hiboot/pkg/utils/copier"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
-	"hiboot-data/examples/etcd/entity"
-	"hiboot-data/examples/etcd/service"
 	"net/http"
 )
 

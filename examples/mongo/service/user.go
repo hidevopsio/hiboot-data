@@ -17,11 +17,11 @@ package service
 import (
 	"context"
 	"fmt"
+	"github.com/hidevopsio/hiboot-data/examples/mongo/entity"
+	"github.com/hidevopsio/hiboot-data/starter/mongo"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"go.mongodb.org/mongo-driver/bson"
-	"hiboot-data/examples/mongo/entity"
-	"hiboot-data/starter/mongo"
 	"log"
 	"time"
 )

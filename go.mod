@@ -1,4 +1,4 @@
-module hiboot-data
+module github.com/hidevopsio/hiboot-data
 
 go 1.22.6
 

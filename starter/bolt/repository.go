@@ -18,7 +18,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/boltdb/bolt"
-	"hiboot-data/starter"
+	"github.com/hidevopsio/hiboot-data/starter"
 	"sync"
 )
 

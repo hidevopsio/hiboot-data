@@ -18,12 +18,12 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+	"github.com/hidevopsio/hiboot-data/starter/gorm"
+	"github.com/hidevopsio/hiboot-data/starter/redis"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
-	"hiboot-data/examples/gorm/entity"
-	"hiboot-data/starter/gorm"
-	"hiboot-data/starter/redis"
 	"strconv"
 )
 

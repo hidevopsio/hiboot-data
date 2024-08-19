@@ -15,11 +15,11 @@
 package controller
 
 import (
+	"github.com/hidevopsio/hiboot-data/examples/gorm/entity"
+	"github.com/hidevopsio/hiboot-data/examples/gorm/service"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/model"
-	"hiboot-data/examples/gorm/entity"
-	"hiboot-data/examples/gorm/service"
 	"net/http"
 )
 

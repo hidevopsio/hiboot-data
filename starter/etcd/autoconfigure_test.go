@@ -2,9 +2,9 @@ package etcd
 
 import (
 	"github.com/coreos/etcd/clientv3"
+	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/stretchr/testify/assert"
-	"hiboot-data/starter/etcd/fake"
 	"testing"
 )
 

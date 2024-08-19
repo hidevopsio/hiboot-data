@@ -15,14 +15,14 @@
 package main
 
 import (
+	_ "github.com/hidevopsio/hiboot-data/examples/gorm/controller"
+	"github.com/hidevopsio/hiboot-data/starter/gorm"
+	"github.com/hidevopsio/hiboot-data/starter/redis"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
 	"github.com/hidevopsio/hiboot/pkg/starter/locale"
 	"github.com/hidevopsio/hiboot/pkg/starter/logging"
-	_ "hiboot-data/examples/gorm/controller"
-	"hiboot-data/starter/gorm"
-	"hiboot-data/starter/redis"
 )
 
 func main() {

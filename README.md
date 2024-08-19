@@ -84,7 +84,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/boltdb/bolt"
-	"hiboot-data/starter"
+	"github.com/hidevopsio/hiboot-data/starter"
 	"sync"
 )
 
@@ -280,8 +280,8 @@ Below is the example, for more details, please see [example](https://hiboot-data
 package service
 
 import (
-	"hiboot-data/examples/bolt/entity"
-	"hiboot-data/starter/bolt"
+	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
+	"github.com/hidevopsio/hiboot-data/starter/bolt"
 	"github.com/hidevopsio/hiboot/pkg/app"
 )
 

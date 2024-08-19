@@ -15,9 +15,9 @@
 package service
 
 import (
+	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
+	"github.com/hidevopsio/hiboot-data/starter"
 	"github.com/stretchr/testify/assert"
-	"hiboot-data/examples/bolt/entity"
-	"hiboot-data/starter"
 	"testing"
 )
 

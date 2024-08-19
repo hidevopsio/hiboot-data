@@ -15,11 +15,11 @@
 package controller
 
 import (
+	"github.com/hidevopsio/hiboot-data/examples/bolt/entity"
+	"github.com/hidevopsio/hiboot-data/examples/bolt/service"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/model"
-	"hiboot-data/examples/bolt/entity"
-	"hiboot-data/examples/bolt/service"
 	"net/http"
 )
 

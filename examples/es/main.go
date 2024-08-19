@@ -15,12 +15,12 @@
 package main
 
 import (
+	_ "github.com/hidevopsio/hiboot-data/examples/es/controller"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
 	"github.com/hidevopsio/hiboot/pkg/starter/locale"
 	"github.com/hidevopsio/hiboot/pkg/starter/logging"
-	_ "hiboot-data/examples/es/controller"
 )
 
 func main() {

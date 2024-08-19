@@ -19,10 +19,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
+	"github.com/hidevopsio/hiboot-data/starter/etcd"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"hiboot-data/examples/etcd/entity"
-	"hiboot-data/starter/etcd"
 	"time"
 )
 

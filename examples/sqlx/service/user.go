@@ -18,13 +18,13 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/hidevopsio/hiboot-data/examples/sqlx/entity"
+	"github.com/hidevopsio/hiboot-data/starter/redis"
+	"github.com/hidevopsio/hiboot-data/starter/sqlx"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
-	"hiboot-data/examples/sqlx/entity"
-	"hiboot-data/starter/redis"
-	"hiboot-data/starter/sqlx"
 	"strconv"
 )
 

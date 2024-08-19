@@ -15,14 +15,14 @@
 package main
 
 import (
+	_ "github.com/hidevopsio/hiboot-data/examples/sqlx/controller"
+	"github.com/hidevopsio/hiboot-data/starter/redis"
+	"github.com/hidevopsio/hiboot-data/starter/sqlx"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/starter/actuator"
 	"github.com/hidevopsio/hiboot/pkg/starter/locale"
 	"github.com/hidevopsio/hiboot/pkg/starter/logging"
-	_ "hiboot-data/examples/sqlx/controller"
-	"hiboot-data/starter/redis"
-	"hiboot-data/starter/sqlx"
 )
 
 func main() {

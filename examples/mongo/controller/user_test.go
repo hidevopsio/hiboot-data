@@ -16,12 +16,12 @@ package controller
 
 import (
 	"errors"
+	"github.com/hidevopsio/hiboot-data/examples/mongo/entity"
+	"github.com/hidevopsio/hiboot-data/examples/mongo/service/mocks"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
-	"hiboot-data/examples/mongo/entity"
-	"hiboot-data/examples/mongo/service/mocks"
 	"net/http"
 	"testing"
 )

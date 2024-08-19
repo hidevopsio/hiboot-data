@@ -20,13 +20,13 @@ import (
 	"github.com/coreos/etcd/clientv3"
 	"github.com/coreos/etcd/mvcc/mvccpb"
 	_ "github.com/erikstmartin/go-testdb"
+	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
+	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
-	"hiboot-data/examples/etcd/entity"
-	"hiboot-data/starter/etcd/fake"
 	"testing"
 )
 

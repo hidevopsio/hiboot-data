@@ -18,11 +18,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/hidevopsio/hiboot-data/examples/es/entity"
+	"github.com/hidevopsio/hiboot-data/starter/es"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/olivere/elastic/v6"
-	"hiboot-data/examples/es/entity"
-	"hiboot-data/starter/es"
 	"log"
 )
 

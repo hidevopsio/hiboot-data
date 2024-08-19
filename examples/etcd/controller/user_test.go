@@ -16,14 +16,14 @@ package controller
 
 import (
 	"errors"
+	"github.com/hidevopsio/hiboot-data/examples/etcd/entity"
+	"github.com/hidevopsio/hiboot-data/starter/etcd/fake"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/app/web"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"hiboot-data/examples/etcd/entity"
-	"hiboot-data/starter/etcd/fake"
 	"net/http"
 	"testing"
 )

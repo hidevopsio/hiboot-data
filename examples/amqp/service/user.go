@@ -16,10 +16,10 @@ package service
 
 import (
 	"errors"
+	"github.com/hidevopsio/hiboot-data/starter/amqp"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	str_amqp "github.com/streadway/amqp"
-	"hiboot-data/starter/amqp"
 	"time"
 )
 
