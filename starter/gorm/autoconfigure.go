@@ -63,7 +63,9 @@ func (c *configuration) DB() (db *DB, err error) {
 	}
 
 	// create new connection if it is unhealthy
-	log.Infof("create a new database connection to %v@%v:%v", c.prop.Username, c.prop.Host, c.prop.Port)
+	var report string
+	report = fmt.Sprintf("database %v@%v:%v", c.prop.Username, c.prop.Host, c.prop.Port)
+	log.Infof("create new connection to %v", report)
 	db = new(DB)
 	password := c.prop.Password
 	if c.prop.Config.Decrypt {
@@ -85,11 +87,14 @@ func (c *configuration) DB() (db *DB, err error) {
 	)
 	db.DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Errorf("failed to connect db: %v", err)
+		log.Errorf("failed to connect %v, err: %v", report, err)
 		return
 	}
-	log.Infof("database %v@%v:%v is connected", c.prop.Username, c.prop.Host, c.prop.Port)
 
-	c.db = db
+	if sqlDB.Ping() == nil {
+		// If the connection is alive, assign the new connection
+		c.db = db
+		log.Infof("%v is connected", report)
+	}
 	return
 }

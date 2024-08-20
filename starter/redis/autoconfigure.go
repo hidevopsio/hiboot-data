@@ -80,9 +80,12 @@ func (c *configuration) Client() (cli *Client, err error) {
 		log.Errorf("failed to connect to redis server: %v", err)
 		return
 	}
-	log.Infof("redis %v:%v is connected", c.prop.Host, c.prop.Port)
-	cli.Client = redisCli
-	c.client = cli
+	_, err = redisCli.Ping(ctx).Result()
+	if err == nil {
+		log.Infof("redis %v:%v is connected", c.prop.Host, c.prop.Port)
+		cli.Client = redisCli
+		c.client = cli
+	}
 
 	return
 }

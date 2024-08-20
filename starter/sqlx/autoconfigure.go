@@ -87,8 +87,12 @@ func (c *configuration) DB() (db *DB, err error) {
 		log.Errorf("failed to connect db: %v", err)
 		return
 	}
-	log.Infof("%v is connected", report)
 
-	c.db = db
+	if sqlDB.Ping() == nil {
+		// If the connection is alive, assign the new connection
+		c.db = db
+		log.Infof("%v is connected", report)
+	}
+
 	return
 }
