@@ -9,8 +9,8 @@ app:
     - actuator
     - locale
     - logging
-    - gorm
     - redis
+    - gorm
 
 logging:
   level: info

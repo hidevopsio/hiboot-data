@@ -17,10 +17,10 @@ package gorm
 import (
 	"database/sql"
 	"fmt"
+	"github.com/hidevopsio/hiboot-data/utils"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/crypto/rsa"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"strings"
@@ -67,11 +67,7 @@ func (c *configuration) DB() (db *DB, err error) {
 	db = new(DB)
 	password := c.prop.Password
 	if c.prop.Config.Decrypt {
-		var pwd []byte
-		pwd, err = rsa.DecryptBase64([]byte(password), []byte(c.prop.Config.DecryptKey))
-		if err == nil {
-			password = string(pwd)
-		}
+		password = utils.Decrypt(password, c.prop.Config.DecryptKey)
 	}
 	loc := strings.Replace(c.prop.Loc, "/", "%2F", -1)
 	databaseName := strings.Replace(c.prop.Database, "-", "_", -1)

@@ -37,18 +37,18 @@ func init() {
 }
 
 func (c *boltConfiguration) dataSource() DataSource {
-	dataSource := GetDataSource()
-	if !dataSource.IsOpened() {
-		err := dataSource.Open(c.Properties)
+	source := GetDataSource()
+	if !source.IsOpened() {
+		err := source.Open(c.Properties)
 		if err != nil {
 			log.Error(err.Error())
 		}
 	}
-	return dataSource
+	return source
 }
 
 func (c *boltConfiguration) Repository() Repository {
-	repository := GetRepository()
-	repository.SetDataSource(c.dataSource())
-	return repository
+	r := GetRepository()
+	r.SetDataSource(c.dataSource())
+	return r
 }
