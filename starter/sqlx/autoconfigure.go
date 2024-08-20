@@ -17,10 +17,10 @@ package sqlx
 import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql" // MySQL 驱动
+	"github.com/hidevopsio/hiboot-data/utils"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/crypto/rsa"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/mattn/go-sqlite3" // SQLite 驱动
 )
@@ -71,11 +71,7 @@ func (c *configuration) DB() (db *DB, err error) {
 	} else {
 		password := c.prop.Password
 		if c.prop.Config.Decrypt {
-			var pwd []byte
-			pwd, err = rsa.DecryptBase64([]byte(password), []byte(c.prop.Config.DecryptKey))
-			if err == nil {
-				password = string(pwd)
-			}
+			password = utils.Decrypt(password, c.prop.Config.DecryptKey)
 		}
 
 		dsn = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true",
@@ -91,8 +87,12 @@ func (c *configuration) DB() (db *DB, err error) {
 		log.Errorf("failed to connect db: %v", err)
 		return
 	}
-	log.Infof("%v is connected", report)
 
-	c.db = db
+	if sqlDB.Ping() == nil {
+		// If the connection is alive, assign the new connection
+		c.db = db
+		log.Infof("%v is connected", report)
+	}
+
 	return
 }

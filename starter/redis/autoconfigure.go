@@ -17,10 +17,10 @@ package redis
 import (
 	"context"
 	"fmt"
+	"github.com/hidevopsio/hiboot-data/utils"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/crypto/rsa"
 	"github.com/redis/go-redis/v9"
 	"time"
 )
@@ -69,11 +69,7 @@ func (c *configuration) Client() (cli *Client, err error) {
 	cli = new(Client)
 	password := c.prop.Password
 	if c.prop.Config.Decrypt {
-		var pwd []byte
-		pwd, err = rsa.DecryptBase64([]byte(password), []byte(c.prop.Config.DecryptKey))
-		if err == nil {
-			password = string(pwd)
-		}
+		password = utils.Decrypt(password, c.prop.Config.DecryptKey)
 	}
 	redisCli = redis.NewClient(&redis.Options{
 		Addr:     fmt.Sprintf("%v:%v", c.prop.Host, c.prop.Port),
@@ -84,9 +80,12 @@ func (c *configuration) Client() (cli *Client, err error) {
 		log.Errorf("failed to connect to redis server: %v", err)
 		return
 	}
-	log.Infof("redis %v:%v is connected", c.prop.Host, c.prop.Port)
-	cli.Client = redisCli
-	c.client = cli
+	_, err = redisCli.Ping(ctx).Result()
+	if err == nil {
+		log.Infof("redis %v:%v is connected", c.prop.Host, c.prop.Port)
+		cli.Client = redisCli
+		c.client = cli
+	}
 
 	return
 }

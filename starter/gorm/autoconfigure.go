@@ -17,10 +17,10 @@ package gorm
 import (
 	"database/sql"
 	"fmt"
+	"github.com/hidevopsio/hiboot-data/utils"
 	"github.com/hidevopsio/hiboot/pkg/app"
 	"github.com/hidevopsio/hiboot/pkg/at"
 	"github.com/hidevopsio/hiboot/pkg/log"
-	"github.com/hidevopsio/hiboot/pkg/utils/crypto/rsa"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"strings"
@@ -63,15 +63,13 @@ func (c *configuration) DB() (db *DB, err error) {
 	}
 
 	// create new connection if it is unhealthy
-	log.Infof("create a new database connection to %v@%v:%v", c.prop.Username, c.prop.Host, c.prop.Port)
+	var report string
+	report = fmt.Sprintf("database %v@%v:%v", c.prop.Username, c.prop.Host, c.prop.Port)
+	log.Infof("create new connection to %v", report)
 	db = new(DB)
 	password := c.prop.Password
 	if c.prop.Config.Decrypt {
-		var pwd []byte
-		pwd, err = rsa.DecryptBase64([]byte(password), []byte(c.prop.Config.DecryptKey))
-		if err == nil {
-			password = string(pwd)
-		}
+		password = utils.Decrypt(password, c.prop.Config.DecryptKey)
 	}
 	loc := strings.Replace(c.prop.Loc, "/", "%2F", -1)
 	databaseName := strings.Replace(c.prop.Database, "-", "_", -1)
@@ -89,11 +87,14 @@ func (c *configuration) DB() (db *DB, err error) {
 	)
 	db.DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Errorf("failed to connect db: %v", err)
+		log.Errorf("failed to connect %v, err: %v", report, err)
 		return
 	}
-	log.Infof("database %v@%v:%v is connected", c.prop.Username, c.prop.Host, c.prop.Port)
 
-	c.db = db
+	if sqlDB.Ping() == nil {
+		// If the connection is alive, assign the new connection
+		c.db = db
+		log.Infof("%v is connected", report)
+	}
 	return
 }

@@ -47,7 +47,7 @@ func init() {
 	app.Register(newEtcdConfiguration, new(Properties))
 }
 
-// EtcdClient create instance named etcdClient
+// Client create instance named etcdClient
 func (c *etcdConfiguration) Client() (cli *Client) {
 	cli = new(Client)
 	var err error
@@ -73,7 +73,7 @@ func (c *etcdConfiguration) Client() (cli *Client) {
 	return
 }
 
-// EtcdRepository create instance named etcdRepository
+// Repository create instance named etcdRepository
 func (c *etcdConfiguration) Repository(cli *Client) Repository {
 	if cli == nil {
 		return nil
