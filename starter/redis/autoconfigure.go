@@ -28,7 +28,7 @@ import (
 const Profile = "redis"
 
 type Client struct {
-	at.Scope `value:"request"`
+	at.Scope `value:"prototype"`
 
 	*redis.Client
 }

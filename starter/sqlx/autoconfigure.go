@@ -28,7 +28,7 @@ import (
 const Profile = "sqlx"
 
 type DB struct {
-	at.Scope `value:"request"`
+	at.Scope `value:"prototype"`
 	*sqlx.DB
 }
 
