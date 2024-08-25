@@ -29,7 +29,7 @@ import (
 const Profile = "gorm"
 
 type DB struct {
-	at.Scope `value:"request"`
+	at.Scope `value:"prototype"`
 	*gorm.DB
 }
 
